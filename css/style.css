@@ -1,0 +1,257 @@
+/* =========================================================
+   SINDICATO PROGRESA
+   Para cambiar los colores de TODA la web, edita solo estas
+   variables. Están sacadas del logo.
+   ========================================================= */
+:root {
+    --azul:        #1E56D9;   /* azul del logo (color principal) */
+    --azul-oscuro: #0B1F4D;   /* azul marino: barras, pie, títulos */
+    --amarillo:    #FFC914;
+    --rojo:        #E3262E;
+    --verde:       #7BC425;
+
+    --texto:       #1F2937;
+    --texto-suave: #5B6475;
+    --fondo:       #FFFFFF;
+    --fondo-alt:   #F4F6FA;
+    --borde:       #E2E6EE;
+
+    --fuente-titulos: "Montserrat", Arial, sans-serif;
+    --fuente-texto:   "Source Sans 3", Arial, sans-serif;
+
+    /* Bootstrap usa estas para .btn-primary, enlaces, etc. */
+    --bs-primary: var(--azul);
+    --bs-link-color: var(--azul);
+    --bs-link-hover-color: var(--azul-oscuro);
+}
+
+/* ---------- Base ---------- */
+body {
+    font-family: var(--fuente-texto);
+    font-size: 1.075rem;
+    color: var(--texto);
+    background: var(--fondo);
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--fuente-titulos);
+    color: var(--azul-oscuro);
+    font-weight: 700;
+}
+h1 { font-size: clamp(2rem, 4vw, 3.1rem); font-weight: 800; line-height: 1.15; }
+h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); }
+h4 { font-size: 1.1rem; }
+
+.eyebrow {
+    font-family: var(--fuente-titulos);
+    font-size: .8rem;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--azul);
+    margin-bottom: .5rem;
+}
+
+.section      { padding: 5rem 0; }
+.section--alt { background: var(--fondo-alt); }
+section[id]   { scroll-margin-top: 90px; }
+
+/* ---------- Botones ---------- */
+.btn { font-family: var(--fuente-titulos); font-weight: 700; border-radius: 6px; }
+.btn-primary {
+    --bs-btn-bg: var(--azul);
+    --bs-btn-border-color: var(--azul);
+    --bs-btn-hover-bg: var(--azul-oscuro);
+    --bs-btn-hover-border-color: var(--azul-oscuro);
+    --bs-btn-active-bg: var(--azul-oscuro);
+}
+.btn-outline-primary {
+    --bs-btn-color: var(--azul);
+    --bs-btn-border-color: var(--azul);
+    --bs-btn-hover-bg: var(--azul);
+    --bs-btn-hover-border-color: var(--azul);
+}
+/* Botón destacado "Afíliate" */
+.btn-afiliate {
+    background: var(--amarillo);
+    color: var(--azul-oscuro);
+    border: 2px solid var(--amarillo);
+    padding: .55rem 1.4rem;
+}
+.btn-afiliate:hover,
+.btn-afiliate:focus {
+    background: var(--azul-oscuro);
+    border-color: var(--azul-oscuro);
+    color: #fff;
+}
+
+/* ---------- Barra superior ---------- */
+.topbar {
+    background: var(--azul-oscuro);
+    color: #C9D3EA;
+    font-size: .9rem;
+    padding: .45rem 0;
+}
+.topbar a { color: #fff; text-decoration: none; }
+.topbar a:hover { color: var(--amarillo); }
+.topbar i { margin-right: .3rem; }
+
+/* ---------- Navegación ---------- */
+.main-nav {
+    background: #fff;
+    box-shadow: 0 1px 0 var(--borde);
+    padding: .5rem 0;
+}
+.brand-text {
+    font-family: var(--fuente-titulos);
+    font-weight: 800;
+    font-size: .95rem;
+    line-height: 1.05;
+    color: var(--azul);
+}
+.main-nav .nav-link {
+    font-family: var(--fuente-titulos);
+    font-weight: 600;
+    font-size: .92rem;
+    color: var(--azul-oscuro);
+    padding: .5rem .8rem !important;
+    white-space: nowrap;
+}
+.main-nav .nav-link:hover,
+.main-nav .nav-link.active { color: var(--azul); }
+
+/* Franja de 4 colores (las piezas del puzle) */
+.color-stripe { display: flex; height: 5px; }
+.color-stripe span { flex: 1; }
+.color-stripe span:nth-child(1) { background: var(--azul); }
+.color-stripe span:nth-child(2) { background: var(--amarillo); }
+.color-stripe span:nth-child(3) { background: var(--rojo); }
+.color-stripe span:nth-child(4) { background: var(--verde); }
+
+/* ---------- Portada ---------- */
+.hero { padding: 4.5rem 0 5rem; }
+.hero .lead { color: var(--texto-suave); font-size: 1.2rem; margin-top: 1.2rem; }
+.hero-img { border-radius: 14px; box-shadow: 0 20px 50px rgba(11, 31, 77, .15); }
+
+/* ---------- Principios ---------- */
+.principle {
+    height: 100%;
+    background: #fff;
+    border: 1px solid var(--borde);
+    border-top: 5px solid var(--azul);
+    border-radius: 8px;
+    padding: 1.6rem;
+}
+.principle i { font-size: 1.8rem; color: var(--azul-oscuro); }
+.principle h4 { margin: .8rem 0 .4rem; }
+.principle p { color: var(--texto-suave); margin: 0; }
+.principle--blue   { border-top-color: var(--azul); }
+.principle--yellow { border-top-color: var(--amarillo); }
+.principle--red    { border-top-color: var(--rojo); }
+.principle--green  { border-top-color: var(--verde); }
+
+/* ---------- Servicios ---------- */
+.service {
+    height: 100%;
+    background: #fff;
+    border-radius: 8px;
+    padding: 1.8rem;
+    transition: transform .2s, box-shadow .2s;
+}
+.service:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(11, 31, 77, .1); }
+.service i {
+    display: inline-grid;
+    place-items: center;
+    width: 52px; height: 52px;
+    border-radius: 10px;
+    background: rgba(30, 86, 217, .1);
+    color: var(--azul);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+.service p { color: var(--texto-suave); margin: 0; }
+
+/* ---------- Banda CTA ---------- */
+.cta-band {
+    background: var(--azul-oscuro);
+    color: #DCE3F3;
+    padding: 4.5rem 0;
+}
+.cta-band h2 { color: #fff; }
+.cta-band p { font-size: 1.15rem; margin-bottom: 1.8rem; }
+
+/* ---------- Afiliación ---------- */
+.benefits { list-style: none; padding: 0; margin-top: 1.5rem; }
+.benefits li { display: flex; gap: .6rem; margin-bottom: .8rem; }
+.benefits i { color: var(--verde); }
+
+.form-card {
+    background: #fff;
+    border: 1px solid var(--borde);
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(11, 31, 77, .06);
+}
+.form-label { font-weight: 600; color: var(--azul-oscuro); margin-bottom: .3rem; }
+.form-control:focus,
+.form-select:focus,
+.form-check-input:focus {
+    border-color: var(--azul);
+    box-shadow: 0 0 0 .2rem rgba(30, 86, 217, .2);
+}
+.form-check-input:checked { background-color: var(--azul); border-color: var(--azul); }
+.legal-note { font-size: .82rem; color: var(--texto-suave); margin: .6rem 0 0; }
+.hp { position: absolute; left: -9999px; }   /* campo trampa anti-spam */
+
+/* ---------- Contacto ---------- */
+.contact-card {
+    display: flex;
+    flex-direction: column;
+    gap: .2rem;
+    height: 100%;
+    background: #fff;
+    border-radius: 8px;
+    padding: 1.6rem;
+    text-decoration: none;
+    color: var(--texto);
+    border-left: 4px solid var(--azul);
+}
+.contact-card:hover { border-left-color: var(--amarillo); }
+.contact-card i { font-size: 1.5rem; color: var(--azul); }
+.contact-card span { color: var(--texto-suave); font-size: .9rem; }
+.contact-card strong { color: var(--azul-oscuro); word-break: break-word; }
+
+/* ---------- Pie ---------- */
+.footer { background: var(--azul-oscuro); color: #B7C2DC; }
+.footer h5, .footer h6 { color: #fff; }
+.footer ul { list-style: none; padding: 0; }
+.footer li { margin-bottom: .4rem; }
+.footer a { color: #DCE3F3; text-decoration: none; }
+.footer a:hover { color: var(--amarillo); }
+.footer .copy { border-top: 1px solid rgba(255,255,255,.12); padding-top: 1.5rem; margin: 2rem 0 0; font-size: .9rem; }
+
+/* ---------- Aviso de cookies ---------- */
+.cookie-banner {
+    position: fixed;
+    left: 1rem; right: 1rem; bottom: 1rem;
+    z-index: 2000;
+    max-width: 960px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+    background: var(--azul-oscuro);
+    color: #fff;
+    border-radius: 10px;
+    padding: 1.2rem 1.4rem;
+    box-shadow: 0 10px 40px rgba(0,0,0,.3);
+}
+.cookie-banner[hidden] { display: none; }
+.cookie-banner a { color: var(--amarillo); }
+.cookie-main { flex: 1 1 340px; }
+.cookie-main p { margin: 0; font-size: .95rem; }
+.cookie-options { margin-top: .8rem; }
+.cookie-buttons { display: flex; flex-wrap: wrap; gap: .5rem; }
+
+/* ---------- Páginas legales ---------- */
+.legal-page { max-width: 820px; padding: 4rem 1rem; }

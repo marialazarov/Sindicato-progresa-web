@@ -3,114 +3,397 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sindicato Progresa</title>
+    <title>Sindicato Progresa · Progreso y Autonomía</title>
+    <meta name="description" content="PROGRESA es una organización sindical estatal, plural, democrática y autónoma, creada y dirigida por trabajadores.">
 
+    <!-- Fuentes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap + iconos -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <link href="style.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+    <link href="css/style.css" rel="stylesheet">
 </head>
 <body>
 
-    <nav class="navbar navbar-expand-lg custom-navbar">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">SINDICATO PROGRESA</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link active navbar-dark" aria-current="page" href="#">Inicio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active navbar-dark" href="#">opcion 1</a>
-                    </li>
-                       <li class="nav-item">
-                        <a class="nav-link active navbar-dark" href="#">opción 2</a>
-                    </li>
-                       <li class="nav-item">
-                        <a class="nav-link active navbar-dark" href="#">opción 3</a>
-                    </li>
-                       <li class="nav-item">
-                        <a class="nav-link active navbar-dark" href="#">opción 4
-                        </a>
-                    </li>
-                       <li class="nav-item">
-                        <a class="nav-link active navbar-dark" href="#">opción 5</a>
-                    </li>
-                       <li class="nav-item">
-                        <a class="nav-link active navbar-dark" href="#">opción 6</a>
-                    </li>
-            
-                </ul>
-             
-                
-    <!-- esto es la barrita de buscar-->
-            <div class="buscar">
-             <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><g><path d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z"></path></g></svg>
-                <input placeholder="Buscar" type="search" class="input">
-            </div>
-    <!-- esto es el botón de afiliate que queremos que sea importante-->
-                <ul class="navbar-nav ms-auto" id="afiliate">
-                    <li class="nav-item">
-                     <a class="btn btn-light btn-lg ms-3" href="#">Afíliate</a>
-                    </li>
-                </ul>
-            </div>
+<!-- ===== Barra superior de contacto ===== -->
+<div class="topbar">
+    <div class="container d-flex flex-wrap justify-content-between align-items-center gap-2">
+        <div class="d-flex flex-wrap gap-3">
+            <a href="mailto:info@sindicato-progresa.com"><i class="bi bi-envelope"></i> info@sindicato-progresa.com</a>
+            <a href="tel:+34910735435"><i class="bi bi-telephone"></i> 910 735 435</a>
+            <a href="tel:+34685049357"><i class="bi bi-phone"></i> 685 049 357</a>
         </div>
-    </nav>
-
-<!-- Carrusel Principal con Fotos + texto -->
-    <div id="carruselPrincipal" class="carousel slide" data-bs-ride="carousel">
-
-    <div class="carousel-indicators">
-        <button type="button" data-bs-target="#carruselPrincipal" data-bs-slide-to="0" class="active"></button>
-        <button type="button" data-bs-target="#carruselPrincipal" data-bs-slide-to="1"></button>
-        <button type="button" data-bs-target="#carruselPrincipal" data-bs-slide-to="2"></button>
+        <span class="d-none d-md-inline">Organización sindical estatal, plural y autónoma</span>
     </div>
-
-    <div class="carousel-inner">
-        <div class="carousel-item active">
-            <img src="img/ejemplo1.jpg" class="d-block w-100" alt="Trabajadores en asamblea">
-            <div class="carousel-caption d-none d-md-block">
-                <h5>Afíliate</h5>
-                <p>
-                Partcipar en las actividades del sindicato</br>
-                Recibir asesoramiento jurídico y sindical</br>
-                Acceder a información sindical periódica</br>
-                Ejercer cargos y participar democráticamente</br>
-                Confidencialidad absoluta de los datos personales.</p>
-            </div>
-        </div>
-        <div class="carousel-item">
-            <img src="imagenes/foto2.jpg" class="d-block w-100" alt="Manifestación sindical">
-            <div class="carousel-caption d-none d-md-block">
-                <h5>Título de la segunda noticia</h5>
-                <p>Breve descripción de la imagen o noticia.</p>
-            </div>
-        </div>
-        <div class="carousel-item">
-            <img src="imagenes/foto3.jpg" class="d-block w-100" alt="Reunión de trabajadores">
-            <div class="carousel-caption d-none d-md-block">
-                <h5>Título de la tercera noticia</h5>
-                <p>Breve descripción de la imagen o noticia.</p>
-            </div>
-        </div>
-    </div>
-
-    <button class="carousel-control-prev" type="button" data-bs-target="#carruselPrincipal" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Anterior</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carruselPrincipal" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Siguiente</span>
-    </button>
-
 </div>
 
+<!-- ===== Navegación ===== -->
+<nav class="navbar navbar-expand-xl sticky-top main-nav">
+    <div class="container">
+        <a class="navbar-brand d-flex align-items-center gap-2" href="#inicio">
+            <img src="img/logo.jpg" alt="Logo Sindicato Progresa" width="54" height="51">
+            <span class="brand-text">SINDICATO<br>PROGRESA</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Abrir menú">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="menu">
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item"><a class="nav-link" href="#inicio">Inicio</a></li>
+                <li class="nav-item"><a class="nav-link" href="#quienes-somos">Quiénes somos</a></li>
+                <li class="nav-item"><a class="nav-link" href="#servicios">Servicios</a></li>
+                <!-- Páginas pendientes de crear: cambia el href cuando existan -->
+                <li class="nav-item"><a class="nav-link" href="#">Calendario laboral</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Legislación</a></li>
+                <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+            </ul>
+            <a class="btn btn-afiliate" href="#afiliate">Afíliate</a>
+        </div>
+    </div>
+</nav>
+<div class="color-stripe" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
 
+<main>
 
+<!-- ===== Portada ===== -->
+<section id="inicio" class="hero">
+    <div class="container">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-6">
+                <p class="eyebrow">Proyecto Sindical Progreso y Autonomía</p>
+                <h1>Un sindicato diferente, una forma distinta de defenderte</h1>
+                <p class="lead">
+                    Independiente, cercano y comprometido con las personas trabajadoras.
+                    Sin mochilas políticas ni intereses ajenos: la misma defensa para todos.
+                </p>
+                <div class="d-flex flex-wrap gap-3 mt-4">
+                    <a href="#afiliate" class="btn btn-primary btn-lg">Quiero afiliarme</a>
+                    <a href="#quienes-somos" class="btn btn-outline-primary btn-lg">Conócenos</a>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <img src="img/portada.jpg" class="img-fluid hero-img" alt="Sindicato Progresa: Progreso y Autonomía">
+            </div>
+        </div>
+    </div>
+</section>
 
+<!-- ===== Quiénes somos ===== -->
+<section id="quienes-somos" class="section">
+    <div class="container">
+        <div class="row g-5">
+            <div class="col-lg-5">
+                <p class="eyebrow">Quiénes somos</p>
+                <h2>Un sindicalismo renovado, cercano y útil</h2>
+            </div>
+            <div class="col-lg-7">
+                <p>
+                    PROGRESA nace de la necesidad real de construir una organización sindical auténtica,
+                    independiente y comprometida con las personas trabajadoras. Un sindicato que responda
+                    a la realidad social actual y a las verdaderas demandas del mundo laboral.
+                </p>
+                <p>
+                    Tras un profundo análisis del marco sindical actual, constatamos que muchos modelos
+                    tradicionales ya no representan de forma eficaz a los trabajadores. Por ello iniciamos el
+                    <strong>Proyecto Sindical Progreso y Autonomía</strong>.
+                </p>
+            </div>
+        </div>
+
+        <h3 class="mt-5 mb-4">Nuestros principios</h3>
+        <div class="row g-4">
+            <div class="col-sm-6 col-lg-3">
+                <div class="principle principle--blue">
+                    <i class="bi bi-shield-check"></i>
+                    <h4>Independencia</h4>
+                    <p>Política y religiosa. Solo respondemos ante los trabajadores.</p>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-3">
+                <div class="principle principle--yellow">
+                    <i class="bi bi-people"></i>
+                    <h4>Pluralidad</h4>
+                    <p>Respeto a todas las convicciones, sin distinción alguna.</p>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-3">
+                <div class="principle principle--red">
+                    <i class="bi bi-eye"></i>
+                    <h4>Transparencia</h4>
+                    <p>Democracia interna y cuentas claras en cada decisión.</p>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-3">
+                <div class="principle principle--green">
+                    <i class="bi bi-hand-thumbs-up"></i>
+                    <h4>Compromiso</h4>
+                    <p>El sindicato al servicio del trabajador, y no al contrario.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== Servicios ===== -->
+<section id="servicios" class="section section--alt">
+    <div class="container">
+        <p class="eyebrow">Qué hacemos por ti</p>
+        <h2 class="mb-5">Servicios para afiliados</h2>
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-3">
+                <div class="service">
+                    <i class="bi bi-briefcase"></i>
+                    <h4>Asesoramiento jurídico</h4>
+                    <p>Despidos, sanciones, nóminas, contratos y reclamaciones de cantidad.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="service">
+                    <i class="bi bi-chat-square-text"></i>
+                    <h4>Negociación colectiva</h4>
+                    <p>Representación en tu empresa y defensa de tu convenio.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="service">
+                    <i class="bi bi-journal-text"></i>
+                    <h4>Información periódica</h4>
+                    <p>Novedades legales, calendario laboral y avisos de tu sector.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="service">
+                    <i class="bi bi-mortarboard"></i>
+                    <h4>Formación</h4>
+                    <p>Cursos para delegados y para tu desarrollo profesional.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== Banda llamativa ===== -->
+<section class="cta-band">
+    <div class="container text-center">
+        <h2>Hemos venido para quedarnos</h2>
+        <p>Con tu compromiso y participación, PROGRESA será un verdadero motor de cambio social.</p>
+        <a href="#afiliate" class="btn btn-afiliate btn-lg">Afíliate ahora</a>
+    </div>
+</section>
+
+<!-- ===== Afiliación + formulario ===== -->
+<section id="afiliate" class="section">
+    <div class="container">
+        <div class="row g-5">
+            <div class="col-lg-4">
+                <p class="eyebrow">Afiliación</p>
+                <h2>Únete a PROGRESA</h2>
+                <p>Rellena el formulario y nos pondremos en contacto contigo para completar tu alta.</p>
+                <ul class="benefits">
+                    <li><i class="bi bi-check-circle-fill"></i> Participar en las actividades del sindicato</li>
+                    <li><i class="bi bi-check-circle-fill"></i> Asesoramiento jurídico y sindical</li>
+                    <li><i class="bi bi-check-circle-fill"></i> Información sindical periódica</li>
+                    <li><i class="bi bi-check-circle-fill"></i> Ejercer cargos y participar democráticamente</li>
+                    <li><i class="bi bi-check-circle-fill"></i> Confidencialidad absoluta de tus datos</li>
+                </ul>
+            </div>
+
+            <div class="col-lg-8">
+                <form id="form-afiliacion" class="form-card" action="enviar.php" method="post" novalidate>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label for="nombre" class="form-label">Nombre *</label>
+                            <input type="text" class="form-control" id="nombre" name="nombre" required autocomplete="given-name">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="apellidos" class="form-label">Apellidos *</label>
+                            <input type="text" class="form-control" id="apellidos" name="apellidos" required autocomplete="family-name">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="dni" class="form-label">DNI / NIE *</label>
+                            <input type="text" class="form-control" id="dni" name="dni" required pattern="[0-9XYZxyz][0-9]{7}[A-Za-z]" placeholder="12345678A">
+                            <div class="invalid-feedback">Introduce un DNI o NIE válido.</div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="nacimiento" class="form-label">Fecha de nacimiento</label>
+                            <input type="date" class="form-control" id="nacimiento" name="nacimiento" autocomplete="bday">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="email" class="form-label">Correo electrónico *</label>
+                            <input type="email" class="form-control" id="email" name="email" required autocomplete="email">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="telefono" class="form-label">Teléfono *</label>
+                            <input type="tel" class="form-control" id="telefono" name="telefono" required pattern="[0-9 +]{9,15}" autocomplete="tel">
+                        </div>
+                        <div class="col-12">
+                            <label for="direccion" class="form-label">Dirección</label>
+                            <input type="text" class="form-control" id="direccion" name="direccion" autocomplete="street-address">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="cp" class="form-label">Código postal</label>
+                            <input type="text" class="form-control" id="cp" name="cp" pattern="[0-9]{5}" autocomplete="postal-code">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="localidad" class="form-label">Localidad</label>
+                            <input type="text" class="form-control" id="localidad" name="localidad">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="provincia" class="form-label">Provincia</label>
+                            <input type="text" class="form-control" id="provincia" name="provincia">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="empresa" class="form-label">Empresa *</label>
+                            <input type="text" class="form-control" id="empresa" name="empresa" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="sector" class="form-label">Sector *</label>
+                            <select class="form-select" id="sector" name="sector" required>
+                                <option value="">Elige un sector…</option>
+                                <option>Administración pública</option>
+                                <option>Comercio</option>
+                                <option>Educación</option>
+                                <option>Hostelería</option>
+                                <option>Industria</option>
+                                <option>Limpieza</option>
+                                <option>Sanidad</option>
+                                <option>Seguridad</option>
+                                <option>Transporte</option>
+                                <option>Otro</option>
+                            </select>
+                        </div>
+                        <div class="col-12">
+                            <label for="mensaje" class="form-label">¿Algo que debamos saber?</label>
+                            <textarea class="form-control" id="mensaje" name="mensaje" rows="3"></textarea>
+                        </div>
+
+                        <!-- Trampa anti-spam: los humanos no la ven -->
+                        <div class="hp" aria-hidden="true">
+                            <label for="web">No rellenar</label>
+                            <input type="text" id="web" name="web" tabindex="-1" autocomplete="off">
+                        </div>
+
+                        <div class="col-12">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="privacidad" name="privacidad" value="1" required>
+                                <label class="form-check-label" for="privacidad">
+                                    He leído y acepto la <a href="privacidad.html" target="_blank">política de privacidad</a>. *
+                                </label>
+                            </div>
+                            <p class="legal-note">
+                                Responsable: Sindicato Progresa. Finalidad: gestionar tu solicitud de afiliación.
+                                Legitimación: tu consentimiento. Tus datos de afiliación sindical son de categoría
+                                especial y no se cederán a terceros. Puedes ejercer tus derechos en
+                                info@sindicato-progresa.com.
+                            </p>
+                        </div>
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-primary btn-lg w-100">Enviar solicitud</button>
+                            <div id="form-estado" class="mt-3" role="status" aria-live="polite"></div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== Contacto ===== -->
+<section id="contacto" class="section section--alt">
+    <div class="container">
+        <p class="eyebrow">Contacto</p>
+        <h2 class="mb-5">Estamos para escucharte</h2>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <a class="contact-card" href="mailto:info@sindicato-progresa.com">
+                    <i class="bi bi-envelope"></i>
+                    <span>Correo</span>
+                    <strong>info@sindicato-progresa.com</strong>
+                </a>
+            </div>
+            <div class="col-md-4">
+                <a class="contact-card" href="tel:+34910735435">
+                    <i class="bi bi-telephone"></i>
+                    <span>Teléfono</span>
+                    <strong>910 735 435</strong>
+                </a>
+            </div>
+            <div class="col-md-4">
+                <a class="contact-card" href="tel:+34685049357">
+                    <i class="bi bi-phone"></i>
+                    <span>Móvil</span>
+                    <strong>685 049 357</strong>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+</main>
+
+<!-- ===== Pie ===== -->
+<footer class="footer">
+    <div class="color-stripe" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+    <div class="container py-5">
+        <div class="row g-4">
+            <div class="col-md-5">
+                <h5>SINDICATO PROGRESA</h5>
+                <p>Organización sindical estatal, plural, democrática y autónoma, creada y dirigida por trabajadores.</p>
+            </div>
+            <div class="col-6 col-md-3">
+                <h6>Navegación</h6>
+                <ul>
+                    <li><a href="#quienes-somos">Quiénes somos</a></li>
+                    <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="#afiliate">Afíliate</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="col-6 col-md-4">
+                <h6>Legal</h6>
+                <ul>
+                    <li><a href="aviso-legal.html">Aviso legal</a></li>
+                    <li><a href="privacidad.html">Política de privacidad</a></li>
+                    <li><a href="cookies.html">Política de cookies</a></li>
+                    <li><a href="#" data-cookie-settings>Configurar cookies</a></li>
+                </ul>
+            </div>
+        </div>
+        <p class="copy">© <span id="anio"></span> Sindicato Progresa. Todos los derechos reservados.</p>
+    </div>
+</footer>
+
+<!-- ===== Aviso de cookies ===== -->
+<div id="cookie-banner" class="cookie-banner" role="dialog" aria-live="polite" aria-label="Aviso de cookies" hidden>
+    <div class="cookie-main">
+        <p>
+            Usamos cookies propias necesarias para el funcionamiento de la web y, si lo aceptas,
+            cookies de análisis para mejorarla. <a href="cookies.html">Más información</a>.
+        </p>
+        <div class="cookie-options" id="cookie-options" hidden>
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" checked disabled id="ck-necesarias">
+                <label class="form-check-label" for="ck-necesarias">Necesarias (siempre activas)</label>
+            </div>
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="ck-analiticas">
+                <label class="form-check-label" for="ck-analiticas">Análisis</label>
+            </div>
+        </div>
+    </div>
+    <div class="cookie-buttons">
+        <button type="button" class="btn btn-outline-light btn-sm" id="ck-rechazar">Rechazar</button>
+        <button type="button" class="btn btn-outline-light btn-sm" id="ck-configurar">Configurar</button>
+        <button type="button" class="btn btn-outline-light btn-sm" id="ck-guardar" hidden>Guardar selección</button>
+        <button type="button" class="btn btn-afiliate btn-sm" id="ck-aceptar">Aceptar todas</button>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/main.js"></script>
 </body>
 </html>
