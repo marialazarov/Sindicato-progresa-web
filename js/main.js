@@ -37,9 +37,36 @@ function cargarAnaliticas() {
     // gtag('js', new Date()); gtag('config', 'G-XXXXXXX');
 }
 
+// El aviso se crea desde aquí para que sea igual en todas las páginas
+const HTML_AVISO_COOKIES = `
+<div id="cookie-banner" class="cookie-banner" role="dialog" aria-live="polite" aria-label="Aviso de cookies" hidden>
+    <div class="cookie-main">
+        <p>
+            Usamos cookies propias necesarias para el funcionamiento de la web y, si lo aceptas,
+            cookies de análisis para mejorarla. <a href="cookies.html">Más información</a>.
+        </p>
+        <div class="cookie-options" id="cookie-options" hidden>
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" checked disabled id="ck-necesarias">
+                <label class="form-check-label" for="ck-necesarias">Necesarias (siempre activas)</label>
+            </div>
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="ck-analiticas">
+                <label class="form-check-label" for="ck-analiticas">Análisis</label>
+            </div>
+        </div>
+    </div>
+    <div class="cookie-buttons">
+        <button type="button" class="btn btn-outline-light btn-sm" id="ck-rechazar">Rechazar</button>
+        <button type="button" class="btn btn-outline-light btn-sm" id="ck-configurar">Configurar</button>
+        <button type="button" class="btn btn-outline-light btn-sm" id="ck-guardar" hidden>Guardar selección</button>
+        <button type="button" class="btn btn-afiliate btn-sm" id="ck-aceptar">Aceptar todas</button>
+    </div>
+</div>`;
+
 function iniciarCookies() {
+    document.body.insertAdjacentHTML('beforeend', HTML_AVISO_COOKIES);
     const banner     = document.getElementById('cookie-banner');
-    if (!banner) return;
     const opciones   = document.getElementById('cookie-options');
     const chkAnalit  = document.getElementById('ck-analiticas');
     const btnAceptar = document.getElementById('ck-aceptar');

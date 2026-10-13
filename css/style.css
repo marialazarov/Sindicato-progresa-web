@@ -255,3 +255,78 @@ section[id]   { scroll-margin-top: 90px; }
 
 /* ---------- Páginas legales ---------- */
 .legal-page { max-width: 820px; padding: 4rem 1rem; }
+
+/* ---------- Calendario laboral ---------- */
+.page-header { background: var(--fondo-alt); padding: 3.5rem 0 3rem; }
+.page-header .lead { color: var(--texto-suave); }
+.year-tabs .btn.active { background: var(--azul); color: #fff; }
+
+.next-holiday {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: var(--azul-oscuro);
+    color: #fff;
+    border-radius: 10px;
+    padding: 1.1rem 1.4rem;
+    margin-bottom: 2.5rem;
+    border-left: 6px solid var(--amarillo);
+}
+.next-holiday[hidden] { display: none; }
+.next-holiday i { font-size: 1.8rem; color: var(--amarillo); }
+.next-holiday span { display: block; font-size: .85rem; color: #C9D3EA; }
+.next-holiday strong { font-family: var(--fuente-titulos); font-size: 1.1rem; }
+
+.legend { display: flex; flex-wrap: wrap; gap: 1rem; font-size: .9rem; color: var(--texto-suave); }
+.dot { display: inline-block; width: 12px; height: 12px; border-radius: 3px; vertical-align: -1px; margin-right: .3rem; }
+.dot--nacional,   .day--nacional   { background: var(--azul); }
+.dot--autonomico, .day--autonomico { background: var(--rojo); }
+.dot--local,      .day--local      { background: var(--verde); }
+
+.holiday-list { list-style: none; padding: 0; margin: 0 0 1rem; }
+.holiday {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: .7rem 0;
+    border-bottom: 1px solid var(--borde);
+}
+.holiday-date {
+    flex: 0 0 56px;
+    text-align: center;
+    border-radius: 8px;
+    padding: .35rem 0;
+    color: #fff;
+    line-height: 1.1;
+}
+.holiday-date strong { display: block; font-family: var(--fuente-titulos); font-size: 1.3rem; }
+.holiday-date span { font-size: .75rem; text-transform: uppercase; letter-spacing: .05em; }
+.holiday--nacional   .holiday-date { background: var(--azul); }
+.holiday--autonomico .holiday-date { background: var(--rojo); }
+.holiday--local      .holiday-date { background: var(--verde); }
+.holiday-name { font-weight: 600; color: var(--azul-oscuro); }
+.holiday-meta { font-size: .88rem; color: var(--texto-suave); }
+.holiday.is-past { opacity: .45; }
+
+.year-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 1.4rem; }
+.month h3 { font-size: .95rem; margin-bottom: .5rem; }
+.month-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; text-align: center; font-size: .8rem; }
+.month-grid .wd { font-weight: 700; color: var(--texto-suave); font-size: .7rem; }
+.month-grid .day { padding: .25rem 0; border-radius: 4px; }
+.month-grid .day.is-weekend { color: #9AA3B2; }
+.month-grid .day--nacional,
+.month-grid .day--autonomico,
+.month-grid .day--local { color: #fff; font-weight: 700; cursor: help; }
+.month-grid .is-today { outline: 2px solid var(--amarillo); outline-offset: -1px; }
+
+/* Al imprimir / guardar PDF: solo el calendario */
+@media print {
+    .topbar, .main-nav, .footer, .cookie-banner, .year-tabs, .page-header .btn,
+    .next-holiday, .section--alt { display: none !important; }
+    .color-stripe { display: none; }
+    .page-header, .section { padding: 1rem 0; background: none; }
+    .holiday-date, .day--nacional, .day--autonomico, .day--local, .dot {
+        -webkit-print-color-adjust: exact; print-color-adjust: exact;
+    }
+    .holiday.is-past { opacity: 1; }
+}
