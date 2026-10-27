@@ -26,13 +26,13 @@ const PREGUNTAS = [
     },
     {
         pregunta: '¿Cómo me afilio?',
-        claves: ['afiliar', 'afilio', 'afiliacion', 'apuntar', 'apunto', 'unirme', 'alta', 'hacerme socio'],
-        respuesta: 'Rellena el <a href="index.html#afiliate">formulario de afiliación</a> y te llamaremos para completar el alta. También puedes escribirnos o llamarnos (pregúntame por el contacto).'
+        claves: ['afiliar', 'afilio', 'afiliacion', 'apuntar', 'apunto', 'unirme', 'alta', 'hacerme socio', 'ficha', 'nomina', 'domiciliar'],
+        respuesta: 'Rellena tu <a href="afiliacion.html">ficha de afiliación online</a> (por nómina o por banco): te la damos ya rellena, la firmas y la entregas a tu delegado o la envías a afiliacion@sindicato-progresa.com. Si prefieres que te llamemos, usa el <a href="index.html#afiliate">formulario de contacto</a>.'
     },
     {
         pregunta: '¿Cuánto cuesta afiliarse?',
         claves: ['cuanto cuesta', 'cuesta', 'precio', 'cuota', 'pagar', 'dinero', 'gratis'],
-        respuesta: 'Te informamos de la cuota cuando te pongas en contacto con nosotros, sin ningún compromiso. Escríbenos a <a href="mailto:info@sindicato-progresa.com">info@sindicato-progresa.com</a> o rellena el <a href="index.html#afiliate">formulario</a>.'
+        respuesta: 'La cuota mensual es de <strong>11 €</strong> (básica), <strong>8 €</strong> (reducida) o <strong>4 €</strong> para personas en paro y jubiladas. Por nómina se descuenta cada mes y por banco se cobra cada trimestre. Más información en <a href="afiliacion.html">Afiliación</a>.'
     },
     {
         pregunta: '¿Se entera mi empresa si me afilio?',

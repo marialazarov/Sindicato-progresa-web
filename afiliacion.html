@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Afiliación · Sindicato Progresa</title>
+    <meta name="description" content="Afíliate a PROGRESA: rellena tu ficha de afiliación online, descárgala ya rellena, fírmala y envíanosla.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- ===== Barra superior de contacto ===== -->
+<div class="topbar">
+    <div class="container d-flex flex-wrap justify-content-between align-items-center gap-2">
+        <div class="d-flex flex-wrap gap-3">
+            <a href="mailto:info@sindicato-progresa.com"><i class="bi bi-envelope"></i> info@sindicato-progresa.com</a>
+            <a href="tel:+34910735435"><i class="bi bi-telephone"></i> 910 735 435</a>
+            <a href="tel:+34685049357"><i class="bi bi-phone"></i> 685 049 357</a>
+        </div>
+        <span class="d-none d-md-inline">Organización sindical estatal, plural y autónoma</span>
+    </div>
+</div>
+
+<!-- ===== Navegación ===== -->
+<nav class="navbar navbar-expand-xl sticky-top main-nav">
+    <div class="container">
+        <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+            <img src="img/logo.jpg" alt="Logo Sindicato Progresa" width="54" height="51">
+            <span class="brand-text">SINDICATO<br>PROGRESA</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Abrir menú">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="menu">
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+                <li class="nav-item"><a class="nav-link" href="index.html#quienes-somos">Quiénes somos</a></li>
+                <li class="nav-item"><a class="nav-link" href="index.html#servicios">Servicios</a></li>
+                <li class="nav-item"><a class="nav-link" href="calendario.html">Calendario laboral</a></li>
+                <li class="nav-item"><a class="nav-link" href="legislacion.html">Legislación</a></li>
+                <li class="nav-item"><a class="nav-link" href="index.html#contacto">Contacto</a></li>
+            </ul>
+            <a class="btn btn-afiliate" href="afiliacion.html" aria-current="page">Afíliate</a>
+        </div>
+    </div>
+</nav>
+<div class="color-stripe" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+
+<main>
+
+<!-- ===== Cabecera de la página ===== -->
+<section class="page-header">
+    <div class="container">
+        <p class="eyebrow">Únete a PROGRESA</p>
+        <h1>Afiliación</h1>
+        <p class="lead">Rellena tu ficha aquí, descárgala ya rellena, fírmala y envíanosla. Así de fácil.</p>
+    </div>
+</section>
+
+<!-- ===== Pasos y cuotas ===== -->
+<section class="section pt-5 pb-4">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-lg-7">
+                <h2 class="h3 mb-4">¿Cómo afiliarte?</h2>
+                <ol class="steps">
+                    <li><strong>Rellena tu ficha</strong> en el formulario de abajo. Elige si prefieres pagar la cuota por <strong>nómina</strong> o por <strong>banco</strong>.</li>
+                    <li><strong>Descárgala</strong>: te damos la ficha oficial del sindicato con tus datos ya escritos.</li>
+                    <li><strong>Fírmala</strong> en los recuadros de "Fecha y firma".</li>
+                    <li><strong>Entrégala</strong> a tu delegado o delegada, o escanéala y envíala a <a href="mailto:afiliacion@sindicato-progresa.com">afiliacion@sindicato-progresa.com</a>.</li>
+                </ol>
+            </div>
+            <div class="col-lg-5">
+                <div class="fees">
+                    <h2 class="h5 mb-3">Cuotas de afiliación <span class="text-secondary fw-normal">(al mes)</span></h2>
+                    <dl class="mb-2">
+                        <div><dt>Cuota básica</dt><dd>11,00 €</dd></div>
+                        <div><dt>Cuota reducida</dt><dd>8,00 €</dd></div>
+                        <div><dt>Personas en paro y jubiladas</dt><dd>4,00 €</dd></div>
+                    </dl>
+                    <p class="small text-secondary mb-0">Por nómina se descuenta cada mes. Por banco se cobra cada trimestre.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== Ficha online ===== -->
+<section class="section section--alt" id="ficha">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10 col-xl-9">
+                <p class="eyebrow">Ficha de afiliación</p>
+                <h2 class="mb-2">Rellena tu ficha</h2>
+                <p class="text-secondary mb-4"><i class="bi bi-shield-lock"></i> Tus datos <strong>no se envían a ningún sitio</strong>: la ficha se crea en tu propio dispositivo y solo la ves tú hasta que decidas entregarla.</p>
+
+                <ol class="wizard-steps" aria-label="Pasos de la ficha">
+                    <li class="is-active"><span>1</span> Forma de pago</li>
+                    <li><span>2</span> Tus datos</li>
+                    <li><span>3</span> Tu trabajo</li>
+                    <li><span>4</span> Autorización</li>
+                </ol>
+
+                <form id="ficha-form" class="form-card" novalidate>
+
+                    <!-- Paso 1 -->
+                    <fieldset class="wizard-pane" data-paso="1">
+                        <legend class="h4">¿Cómo quieres pagar la cuota?</legend>
+                        <div class="row g-3 mb-4">
+                            <div class="col-md-6">
+                                <input type="radio" class="btn-check" name="pago" id="pago-nomina" value="nomina" required>
+                                <label class="choice" for="pago-nomina">
+                                    <i class="bi bi-file-earmark-text"></i>
+                                    <strong>Descuento en nómina</strong>
+                                    <span>Tu empresa descuenta la cuota cada mes de tu nómina.</span>
+                                </label>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="radio" class="btn-check" name="pago" id="pago-banco" value="banco" required>
+                                <label class="choice" for="pago-banco">
+                                    <i class="bi bi-bank"></i>
+                                    <strong>Domiciliación bancaria</strong>
+                                    <span>Cobramos la cuota cada trimestre en tu cuenta.</span>
+                                </label>
+                            </div>
+                        </div>
+                        <p class="form-label mb-2">¿Eres delegado o delegada sindical?</p>
+                        <div class="d-flex gap-4">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="delegado" id="delegado-no" value="no" checked>
+                                <label class="form-check-label" for="delegado-no">No</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="delegado" id="delegado-si" value="si">
+                                <label class="form-check-label" for="delegado-si">Sí</label>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <!-- Paso 2 -->
+                    <fieldset class="wizard-pane" data-paso="2" hidden>
+                        <legend class="h4">Tus datos personales</legend>
+                        <div class="row g-3">
+                            <div class="col-md-5">
+                                <label for="nombre" class="form-label">Nombre *</label>
+                                <input type="text" class="form-control" id="nombre" name="nombre" required autocomplete="given-name" maxlength="40">
+                            </div>
+                            <div class="col-md-7">
+                                <label for="apellidos" class="form-label">Apellidos *</label>
+                                <input type="text" class="form-control" id="apellidos" name="apellidos" required autocomplete="family-name" maxlength="60">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="dni" class="form-label">DNI / NIE *</label>
+                                <input type="text" class="form-control" id="dni" name="dni" required maxlength="9" placeholder="12345678Z" autocomplete="off">
+                                <div class="invalid-feedback">Revisa el DNI o NIE: 8 números y la letra (o X, Y, Z al principio).</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="nacimiento" class="form-label">Fecha de nacimiento</label>
+                                <input type="date" class="form-control" id="nacimiento" name="nacimiento" autocomplete="bday">
+                            </div>
+                            <div class="col-12">
+                                <label for="domicilio" class="form-label">Domicilio (calle, avenida…) *</label>
+                                <input type="text" class="form-control" id="domicilio" name="domicilio" required autocomplete="address-line1" maxlength="70">
+                            </div>
+                            <div class="col-4 col-md-2">
+                                <label for="numero" class="form-label">Nº</label>
+                                <input type="text" class="form-control" id="numero" name="numero" maxlength="6">
+                            </div>
+                            <div class="col-4 col-md-2">
+                                <label for="piso" class="form-label">Piso</label>
+                                <input type="text" class="form-control" id="piso" name="piso" maxlength="5">
+                            </div>
+                            <div class="col-4 col-md-2">
+                                <label for="letra" class="form-label">Letra</label>
+                                <input type="text" class="form-control" id="letra" name="letra" maxlength="5">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="localidad" class="form-label">Localidad *</label>
+                                <input type="text" class="form-control" id="localidad" name="localidad" required autocomplete="address-level2" maxlength="40">
+                            </div>
+                            <div class="col-md-4">
+                                <label for="cp" class="form-label">Código postal *</label>
+                                <input type="text" class="form-control" id="cp" name="cp" required pattern="[0-9]{5}" inputmode="numeric" maxlength="5" autocomplete="postal-code">
+                                <div class="invalid-feedback">5 números.</div>
+                            </div>
+                            <div class="col-md-8">
+                                <label for="provincia" class="form-label">Provincia *</label>
+                                <input type="text" class="form-control" id="provincia" name="provincia" required autocomplete="address-level1" maxlength="30">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="movil" class="form-label">Teléfono móvil *</label>
+                                <input type="tel" class="form-control" id="movil" name="movil" required pattern="[0-9 +]{9,15}" autocomplete="tel" maxlength="15">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="telefono" class="form-label">Otro teléfono</label>
+                                <input type="tel" class="form-control" id="telefono" name="telefono" pattern="[0-9 +]{9,15}" maxlength="15">
+                            </div>
+                            <div class="col-12">
+                                <label for="email" class="form-label">Correo electrónico *</label>
+                                <input type="email" class="form-control" id="email" name="email" required autocomplete="email" maxlength="60">
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <!-- Paso 3 -->
+                    <fieldset class="wizard-pane" data-paso="3" hidden>
+                        <legend class="h4">Datos de tu trabajo</legend>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="empresa" class="form-label">Empresa *</label>
+                                <input type="text" class="form-control" id="empresa" name="empresa" required autocomplete="organization" maxlength="60">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="organismo" class="form-label">Consejería / Ministerio / Organismo</label>
+                                <input type="text" class="form-control" id="organismo" name="organismo" maxlength="60">
+                                <div class="form-text">Solo si trabajas en la Administración.</div>
+                            </div>
+
+                            <div class="col-12" data-solo="nomina">
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label for="centro" class="form-label">Centro de trabajo</label>
+                                        <input type="text" class="form-control" id="centro" name="centro" maxlength="60">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="departamento" class="form-label">Departamento / Servicio</label>
+                                        <input type="text" class="form-control" id="departamento" name="departamento" maxlength="60">
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="direccion_trabajo" class="form-label">Dirección del centro de trabajo</label>
+                                        <input type="text" class="form-control" id="direccion_trabajo" name="direccion_trabajo" maxlength="60">
+                                    </div>
+                                    <div class="col-md-5">
+                                        <label for="localidad_trabajo" class="form-label">Localidad</label>
+                                        <input type="text" class="form-control" id="localidad_trabajo" name="localidad_trabajo" maxlength="30">
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="cp_trabajo" class="form-label">Código postal</label>
+                                        <input type="text" class="form-control" id="cp_trabajo" name="cp_trabajo" pattern="[0-9]{5}" inputmode="numeric" maxlength="5">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="provincia_trabajo" class="form-label">Provincia</label>
+                                        <input type="text" class="form-control" id="provincia_trabajo" name="provincia_trabajo" maxlength="30">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="telefono_trabajo" class="form-label">Teléfono del puesto de trabajo</label>
+                                        <input type="tel" class="form-control" id="telefono_trabajo" name="telefono_trabajo" pattern="[0-9 +]{9,15}" maxlength="15">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="profesion" class="form-label">Profesión</label>
+                                        <input type="text" class="form-control" id="profesion" name="profesion" maxlength="25">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="categoria" class="form-label">Categoría</label>
+                                        <input type="text" class="form-control" id="categoria" name="categoria" maxlength="25">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="grupo" class="form-label">Grupo / Nivel</label>
+                                        <input type="text" class="form-control" id="grupo" name="grupo" maxlength="15">
+                                    </div>
+                                    <div class="col-12">
+                                        <p class="form-label mb-2">Tipo de relación laboral</p>
+                                        <div class="d-flex flex-wrap gap-3">
+                                            <div class="form-check"><input class="form-check-input" type="checkbox" name="tipo" id="tipo-funcionario" value="funcionario"><label class="form-check-label" for="tipo-funcionario">Funcionario/a</label></div>
+                                            <div class="form-check"><input class="form-check-input" type="checkbox" name="tipo" id="tipo-laboral" value="laboral"><label class="form-check-label" for="tipo-laboral">Laboral</label></div>
+                                            <div class="form-check"><input class="form-check-input" type="checkbox" name="tipo" id="tipo-estatutario" value="estatutario"><label class="form-check-label" for="tipo-estatutario">Estatutario/a</label></div>
+                                            <div class="form-check"><input class="form-check-input" type="checkbox" name="tipo" id="tipo-interino" value="interino"><label class="form-check-label" for="tipo-interino">Interino/a</label></div>
+                                            <div class="form-check"><input class="form-check-input" type="checkbox" name="tipo" id="tipo-eventual" value="eventual"><label class="form-check-label" for="tipo-eventual">Eventual</label></div>
+                                            <div class="form-check"><input class="form-check-input" type="checkbox" name="tipo" id="tipo-titular" value="titular"><label class="form-check-label" for="tipo-titular">Titular</label></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <p class="form-label mb-2">Turno</p>
+                                        <div class="d-flex flex-wrap align-items-center gap-3">
+                                            <div class="form-check"><input class="form-check-input" type="radio" name="turno" id="turno-manana" value="manana"><label class="form-check-label" for="turno-manana">Mañana</label></div>
+                                            <div class="form-check"><input class="form-check-input" type="radio" name="turno" id="turno-tarde" value="tarde"><label class="form-check-label" for="turno-tarde">Tarde</label></div>
+                                            <div class="form-check"><input class="form-check-input" type="radio" name="turno" id="turno-noche" value="noche"><label class="form-check-label" for="turno-noche">Noche</label></div>
+                                            <div class="form-check"><input class="form-check-input" type="radio" name="turno" id="turno-otro" value="otro"><label class="form-check-label" for="turno-otro">Otro:</label></div>
+                                            <input type="text" class="form-control form-control-sm w-auto" id="turno_otro" name="turno_otro" aria-label="Especifica el turno" maxlength="30">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <!-- Paso 4 -->
+                    <fieldset class="wizard-pane" data-paso="4" hidden>
+                        <div data-solo="nomina">
+                            <h3 class="h4">Autorización de descuento en nómina</h3>
+                            <p class="text-secondary">Con esta parte autorizas a tu empresa a descontar la cuota de tu nómina e ingresarla al sindicato.</p>
+                            <div class="row g-3">
+                                <div class="col-md-7">
+                                    <label for="rrhh_empresa" class="form-label">Empresa u organismo que te paga la nómina *</label>
+                                    <input type="text" class="form-control" id="rrhh_empresa" name="rrhh_empresa" required maxlength="60">
+                                    <div class="form-text">Irá dirigida a su director/a de personal.</div>
+                                </div>
+                                <div class="col-md-5">
+                                    <label for="num_nomina" class="form-label">Nº de nómina o de empleado</label>
+                                    <input type="text" class="form-control" id="num_nomina" name="num_nomina" maxlength="20">
+                                </div>
+                                <div class="col-md-7">
+                                    <label for="mes_inicio" class="form-label">Descontar a partir del mes de *</label>
+                                    <select class="form-select" id="mes_inicio" name="mes_inicio" required></select>
+                                </div>
+                                <div class="col-md-5">
+                                    <label for="anio_inicio" class="form-label">Año *</label>
+                                    <select class="form-select" id="anio_inicio" name="anio_inicio" required></select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div data-solo="banco">
+                            <h3 class="h4">Autorización bancaria</h3>
+                            <p class="text-secondary">La cuota se cobrará cada trimestre en esta cuenta.</p>
+                            <div class="row g-3">
+                                <div class="col-12">
+                                    <label for="iban" class="form-label">IBAN de tu cuenta *</label>
+                                    <input type="text" class="form-control iban" id="iban" name="iban" required maxlength="29" placeholder="ES00 0000 0000 0000 0000 0000" autocomplete="off" inputmode="text">
+                                    <div class="invalid-feedback">El IBAN no es correcto. Debe ser una cuenta española: ES y 22 números.</div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="titular" class="form-label">Titular de la cuenta *</label>
+                                    <input type="text" class="form-control" id="titular" name="titular" required maxlength="60">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="banco" class="form-label">Banco o caja *</label>
+                                    <input type="text" class="form-control" id="banco" name="banco" required maxlength="60">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="banco_direccion" class="form-label">Dirección de la oficina</label>
+                                    <input type="text" class="form-control" id="banco_direccion" name="banco_direccion" maxlength="70">
+                                </div>
+                                <div class="col-md-8">
+                                    <label for="banco_poblacion" class="form-label">Población</label>
+                                    <input type="text" class="form-control" id="banco_poblacion" name="banco_poblacion" maxlength="45">
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="banco_cp" class="form-label">Código postal</label>
+                                    <input type="text" class="form-control" id="banco_cp" name="banco_cp" pattern="[0-9]{5}" inputmode="numeric" maxlength="5">
+                                </div>
+                                <div class="col-12">
+                                    <div class="commitment">
+                                        <strong>Compromiso de permanencia</strong>
+                                        <p class="mb-2">Con la ficha por banco te comprometes a permanecer afiliado/a un <strong>mínimo de 2 años</strong>. Si te das de baja antes, PROGRESA podrá cobrarte los servicios jurídicos o cursos que hayas usado. Las consultas de derecho laboral son gratuitas desde el primer día.</p>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="permanencia" name="permanencia" required>
+                                            <label class="form-check-label" for="permanencia">He leído y acepto el compromiso de permanencia *</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-check mt-4">
+                            <input class="form-check-input" type="checkbox" id="privacidad" name="privacidad" required>
+                            <label class="form-check-label" for="privacidad">
+                                He leído la <a href="privacidad.html" target="_blank">política de privacidad</a> y acepto que PROGRESA trate mis datos para gestionar mi afiliación *
+                            </label>
+                        </div>
+                    </fieldset>
+
+                    <div id="ficha-estado" class="mt-3" role="status" aria-live="polite"></div>
+
+                    <div class="wizard-nav">
+                        <button type="button" class="btn btn-outline-primary" id="ficha-atras" hidden><i class="bi bi-arrow-left"></i> Atrás</button>
+                        <button type="button" class="btn btn-primary ms-auto" id="ficha-siguiente">Siguiente <i class="bi bi-arrow-right"></i></button>
+                        <button type="submit" class="btn btn-primary btn-lg ms-auto" id="ficha-descargar" hidden><i class="bi bi-download"></i> Descargar mi ficha</button>
+                    </div>
+                </form>
+
+                <!-- Después de descargar -->
+                <div id="ficha-hecha" class="form-card text-center" hidden tabindex="-1">
+                    <i class="bi bi-check-circle-fill done-icon"></i>
+                    <h3>¡Tu ficha está lista!</h3>
+                    <p>Se ha descargado el archivo <strong id="ficha-nombre-archivo"></strong>. Ahora solo te queda:</p>
+                    <ol class="text-start d-inline-block">
+                        <li>Abrirla, revisar tus datos e <strong>imprimirla</strong>.</li>
+                        <li><strong>Firmarla</strong> en los recuadros de "Fecha y firma".</li>
+                        <li>Entregarla a tu delegado/a o escanearla y enviarla a <a href="mailto:afiliacion@sindicato-progresa.com">afiliacion@sindicato-progresa.com</a>.</li>
+                    </ol>
+                    <div class="d-flex flex-wrap justify-content-center gap-2 mt-3">
+                        <button type="button" class="btn btn-primary" id="ficha-otra-vez"><i class="bi bi-download"></i> Descargarla otra vez</button>
+                        <button type="button" class="btn btn-outline-primary" id="ficha-corregir"><i class="bi bi-pencil"></i> Corregir algún dato</button>
+                    </div>
+                </div>
+
+                <p class="small text-secondary mt-4 mb-0">¿Prefieres rellenarla a mano? Descarga la ficha en blanco:
+                    <a href="docs/ficha-nomina.pdf" target="_blank">descuento en nómina</a> ·
+                    <a href="docs/ficha-banco.pdf" target="_blank">pago por banco</a>.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== Derechos ===== -->
+<section class="section">
+    <div class="container">
+        <p class="eyebrow">Al afiliarte</p>
+        <h2 class="mb-4">Tus derechos como persona afiliada</h2>
+        <ul class="benefits benefits--cols">
+            <li><i class="bi bi-check-circle-fill"></i> Participar en las actividades del sindicato</li>
+            <li><i class="bi bi-check-circle-fill"></i> Recibir asesoramiento jurídico y sindical</li>
+            <li><i class="bi bi-check-circle-fill"></i> Acceder a información sindical periódica</li>
+            <li><i class="bi bi-check-circle-fill"></i> Ejercer cargos y participar democráticamente</li>
+            <li><i class="bi bi-check-circle-fill"></i> Confidencialidad absoluta de tus datos personales</li>
+        </ul>
+    </div>
+</section>
+
+</main>
+
+<!-- ===== Pie ===== -->
+<footer class="footer">
+    <div class="color-stripe" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+    <div class="container py-5">
+        <div class="row g-4">
+            <div class="col-md-5">
+                <h5>SINDICATO PROGRESA</h5>
+                <p>Organización sindical estatal, plural, democrática y autónoma, creada y dirigida por trabajadores.</p>
+            </div>
+            <div class="col-6 col-md-3">
+                <h6>Navegación</h6>
+                <ul>
+                    <li><a href="index.html#quienes-somos">Quiénes somos</a></li>
+                    <li><a href="index.html#servicios">Servicios</a></li>
+                    <li><a href="calendario.html">Calendario laboral</a></li>
+                    <li><a href="legislacion.html">Legislación</a></li>
+                    <li><a href="afiliacion.html">Afíliate</a></li>
+                    <li><a href="index.html#contacto">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="col-6 col-md-4">
+                <h6>Legal</h6>
+                <ul>
+                    <li><a href="aviso-legal.html">Aviso legal</a></li>
+                    <li><a href="privacidad.html">Política de privacidad</a></li>
+                    <li><a href="cookies.html">Política de cookies</a></li>
+                    <li><a href="#" data-cookie-settings>Configurar cookies</a></li>
+                </ul>
+            </div>
+        </div>
+        <p class="copy">© <span id="anio"></span> Sindicato Progresa. Todos los derechos reservados.</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+<script src="js/main.js"></script>
+<script src="js/ficha.js"></script>
+<script src="js/asistente.js"></script>
+</body>
+</html>

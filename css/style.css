@@ -358,6 +358,76 @@ section[id]   { scroll-margin-top: 90px; }
 .law-card span { display: block; font-size: .85rem; color: var(--azul); font-weight: 600; margin-bottom: .4rem; }
 .law-card p { color: var(--texto-suave); margin: 0; font-size: .97rem; }
 
+/* ---------- Afiliación: pasos, cuotas y ficha ---------- */
+.steps { counter-reset: paso; list-style: none; padding: 0; margin: 0; }
+.steps li { counter-increment: paso; position: relative; padding: 0 0 1.1rem 3rem; }
+.steps li::before {
+    content: counter(paso);
+    position: absolute; left: 0; top: -.15rem;
+    width: 2.1rem; height: 2.1rem;
+    display: grid; place-items: center;
+    border-radius: 50%;
+    background: var(--azul); color: #fff;
+    font-family: var(--fuente-titulos); font-weight: 700;
+}
+
+.fees {
+    background: var(--fondo-alt);
+    border-left: 5px solid var(--amarillo);
+    border-radius: 8px;
+    padding: 1.5rem;
+}
+.fees dl > div { display: flex; justify-content: space-between; border-bottom: 1px solid var(--borde); padding: .45rem 0; }
+.fees dt { font-weight: 600; color: var(--azul-oscuro); }
+.fees dd { margin: 0; font-family: var(--fuente-titulos); font-weight: 700; color: var(--azul); }
+
+.wizard-steps { display: flex; list-style: none; padding: 0; margin: 0 0 1.2rem; gap: .5rem; flex-wrap: wrap; }
+.wizard-steps li {
+    flex: 1 1 0;
+    display: flex; align-items: center; gap: .5rem;
+    font-size: .9rem; font-weight: 600; color: var(--texto-suave);
+    border-bottom: 4px solid var(--borde);
+    padding-bottom: .5rem;
+    min-width: 120px;
+}
+.wizard-steps span {
+    display: grid; place-items: center;
+    width: 1.7rem; height: 1.7rem; flex: 0 0 1.7rem;
+    border-radius: 50%;
+    background: var(--borde); color: var(--texto-suave);
+    font-size: .85rem;
+}
+.wizard-steps .is-active { color: var(--azul-oscuro); border-color: var(--azul); }
+.wizard-steps .is-active span { background: var(--azul); color: #fff; }
+.wizard-steps .is-done { border-color: var(--verde); }
+.wizard-steps .is-done span { background: var(--verde); color: #fff; }
+
+.wizard-pane { border: 0; padding: 0; margin: 0; min-width: 0; }
+.wizard-pane legend, .wizard-pane h3 { margin-bottom: 1.2rem; font-family: var(--fuente-titulos); font-weight: 700; color: var(--azul-oscuro); font-size: 1.3rem; }
+.wizard-nav { display: flex; gap: .6rem; margin-top: 1.8rem; padding-top: 1.2rem; border-top: 1px solid var(--borde); }
+
+.choice {
+    display: flex; flex-direction: column; gap: .3rem;
+    height: 100%;
+    border: 2px solid var(--borde);
+    border-radius: 10px;
+    padding: 1.2rem 1.3rem;
+    cursor: pointer;
+    transition: border-color .15s, background .15s;
+}
+.choice i { font-size: 1.7rem; color: var(--azul); }
+.choice strong { font-family: var(--fuente-titulos); color: var(--azul-oscuro); }
+.choice span { color: var(--texto-suave); font-size: .95rem; }
+.choice:hover { border-color: var(--azul); }
+.btn-check:checked + .choice { border-color: var(--azul); background: rgba(30, 86, 217, .06); box-shadow: inset 0 0 0 1px var(--azul); }
+.btn-check:focus-visible + .choice { outline: 3px solid rgba(30, 86, 217, .4); outline-offset: 2px; }
+.was-validated .btn-check:invalid + .choice { border-color: var(--rojo); }
+
+.iban { font-family: ui-monospace, Menlo, Consolas, monospace; letter-spacing: .05em; }
+.commitment { background: #FFF8E1; border: 1px solid #F5DC8A; border-radius: 8px; padding: 1rem 1.2rem; }
+.done-icon { font-size: 3.2rem; color: var(--verde); }
+.benefits--cols { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: .2rem 2rem; margin-top: 0; }
+
 /* ---------- Asistente de dudas ---------- */
 .chat-boton {
     position: fixed;
