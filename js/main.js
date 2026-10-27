@@ -111,12 +111,26 @@ function iniciarFormulario() {
     const estado = document.getElementById('form-estado');
     const boton  = form.querySelector('button[type="submit"]');
 
+    // Versión de prueba en GitHub Pages: ahí no hay PHP, así que no se envía nada.
+    // En el hosting real (one.com) este aviso no aparece.
+    const esPrueba = location.hostname.endsWith('github.io');
+    if (esPrueba) {
+        form.insertAdjacentHTML('afterbegin',
+            '<div class="alert alert-warning"><strong>Versión de prueba:</strong> este formulario todavía no envía solicitudes. ' +
+            'Funcionará cuando la web esté publicada en el dominio oficial.</div>');
+    }
+
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
         form.classList.add('was-validated');
         if (!form.checkValidity()) {
             mostrar('Revisa los campos marcados en rojo.', 'danger');
             form.querySelector(':invalid')?.focus();
+            return;
+        }
+
+        if (esPrueba) {
+            mostrar('Todo correcto. En la versión de prueba no se envía nada: no se ha guardado ningún dato.', 'info');
             return;
         }
 
