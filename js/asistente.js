@@ -21,7 +21,7 @@ const PREGUNTAS = [
     },
     {
         pregunta: '¿Qué gano si me afilio?',
-        claves: ['ventaja', 'beneficio', 'gano', 'por que afiliarme', 'servicios', 'ayuda'],
+        claves: ['ventaja', 'beneficio', 'gano', 'por que afiliarme', 'servicios', 'en que me ayudais'],
         respuesta: 'Al afiliarte tienes asesoramiento jurídico y sindical, información periódica sobre tus derechos y puedes participar en las decisiones del sindicato. Y, sobre todo, no estás solo si tienes un problema en el trabajo. <a href="index.html#servicios">Ver servicios</a>.'
     },
     {
@@ -86,6 +86,26 @@ const PREGUNTAS = [
     }
 ];
 
+// Frases de conversación que no son una duda concreta (se comprueban por palabras enteras)
+const CHARLA = [
+    {
+        claves: ['hola', 'buenas', 'buenos dias', 'buenas tardes', 'buenas noches', 'hey', 'saludos', 'que tal'],
+        respuesta: '¡Hola! 😊 Encantado de ayudarte. Dime en cuál de las dudas de abajo puedo ayudarte, o escríbeme tu pregunta con tus palabras.'
+    },
+    {
+        claves: ['tengo una duda', 'tengo dudas', 'una duda', 'una pregunta', 'tengo una pregunta', 'una consulta', 'ayuda', 'ayudame', 'necesito ayuda', 'informacion', 'no se', 'pregunta'],
+        respuesta: '¡Claro, para eso estoy! 🙂 Dime en cuál de las dudas de abajo puedo ayudarte, o cuéntame tu duda con tus palabras.'
+    },
+    {
+        claves: ['gracias', 'muchas gracias', 'genial', 'perfecto', 'vale', 'ok'],
+        respuesta: '¡De nada! Si te surge otra duda, aquí estoy. Y si prefieres hablar con una persona, <a href="index.html#afiliate">déjanos tu teléfono</a> y te llamamos.'
+    },
+    {
+        claves: ['adios', 'hasta luego', 'hasta pronto', 'chao', 'agur'],
+        respuesta: '¡Hasta pronto! 👋 Aquí estaré si necesitas algo más.'
+    }
+];
+
 const NO_ENTIENDO = 'No tengo una respuesta preparada para eso. Prueba con otras palabras, elige una de las preguntas de abajo o <a href="index.html#contacto">escríbenos</a> y te responde una persona del sindicato.';
 
 // Quita acentos y mayúsculas para comparar ("Afiliación" = "afiliacion")
@@ -104,7 +124,13 @@ function buscarRespuesta(texto) {
         }
         if (puntos > mejorPuntos) { mejor = p; mejorPuntos = puntos; }
     }
-    return mejor ? mejor.respuesta : NO_ENTIENDO;
+    if (mejor) return mejor.respuesta;
+
+    // Si no es una duda concreta, miramos si es un saludo, un "tengo una duda", un gracias…
+    for (const c of CHARLA) {
+        if (c.claves.some(clave => t.includes(' ' + normalizar(clave) + ' '))) return c.respuesta;
+    }
+    return NO_ENTIENDO;
 }
 
 function iniciarAsistente() {
