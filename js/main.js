@@ -101,9 +101,10 @@ function iniciarCookies() {
 }
 
 /* =========================================================
-   2. FORMULARIO DE AFILIACIÓN
+   2. FORMULARIO "TE LLAMAMOS" (portada)
    Valida en el navegador y lo envía a enviar.php sin
-   recargar la página.
+   recargar la página. La afiliación en sí se hace con la
+   ficha online de afiliacion.html (js/ficha.js).
    ========================================================= */
 function iniciarFormulario() {
     const form   = document.getElementById('form-afiliacion');
@@ -116,7 +117,7 @@ function iniciarFormulario() {
     const esPrueba = location.hostname.endsWith('github.io');
     if (esPrueba) {
         form.insertAdjacentHTML('afterbegin',
-            '<div class="alert alert-warning"><strong>Versión de prueba:</strong> este formulario todavía no envía solicitudes. ' +
+            '<div class="alert alert-warning"><strong>Versión de prueba:</strong> este formulario todavía no envía los datos. ' +
             'Funcionará cuando la web esté publicada en el dominio oficial.</div>');
     }
 
@@ -147,7 +148,7 @@ function iniciarFormulario() {
             if (resp.ok && datos.ok) {
                 form.reset();
                 form.classList.remove('was-validated');
-                mostrar('¡Gracias! Hemos recibido tu solicitud. Te contactaremos muy pronto.', 'success');
+                mostrar('¡Gracias! Hemos recibido tus datos. Te llamaremos muy pronto.', 'success');
             } else {
                 mostrar(datos.error || 'No se ha podido enviar. Inténtalo de nuevo.', 'danger');
             }
@@ -155,7 +156,7 @@ function iniciarFormulario() {
             mostrar('Error de conexión. Escríbenos a info@sindicato-progresa.com.', 'danger');
         } finally {
             boton.disabled = false;
-            boton.textContent = 'Enviar solicitud';
+            boton.textContent = 'Quiero que me llamen';
         }
     });
 

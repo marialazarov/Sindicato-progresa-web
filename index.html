@@ -181,16 +181,15 @@
     </div>
 </section>
 
-<!-- ===== Afiliación + formulario ===== -->
+<!-- ===== Afiliación + "Te llamamos" ===== -->
 <section id="afiliate" class="section">
     <div class="container">
         <div class="row g-5">
-            <div class="col-lg-4">
+            <div class="col-lg-5">
                 <p class="eyebrow">Afiliación</p>
                 <h2>Únete a PROGRESA</h2>
-                <p>Rellena el formulario y nos pondremos en contacto contigo para completar tu alta.</p>
-                <a href="afiliacion.html" class="btn btn-primary mb-2"><i class="bi bi-file-earmark-text"></i> Rellenar la ficha de afiliación online</a>
-                <p class="small text-secondary">Por nómina o por banco: te la damos ya rellena para que solo tengas que firmarla.</p>
+                <p>Rellena tu ficha de afiliación online, por nómina o por banco: te la damos ya rellena para que solo tengas que firmarla.</p>
+                <a href="afiliacion.html" class="btn btn-primary btn-lg mb-4"><i class="bi bi-file-earmark-text"></i> Rellenar la ficha de afiliación</a>
                 <ul class="benefits">
                     <li><i class="bi bi-check-circle-fill"></i> Participar en las actividades del sindicato</li>
                     <li><i class="bi bi-check-circle-fill"></i> Asesoramiento jurídico y sindical</li>
@@ -200,73 +199,35 @@
                 </ul>
             </div>
 
-            <div class="col-lg-8">
+            <div class="col-lg-7">
                 <form id="form-afiliacion" class="form-card" action="enviar.php" method="post" novalidate>
+                    <h3 class="h4 mb-1">¿Tienes dudas? Te llamamos</h3>
+                    <p class="text-secondary mb-4">Déjanos tus datos y una persona del sindicato se pondrá en contacto contigo, sin compromiso.</p>
                     <div class="row g-3">
                         <div class="col-md-6">
                             <label for="nombre" class="form-label">Nombre *</label>
-                            <input type="text" class="form-control" id="nombre" name="nombre" required autocomplete="given-name">
-                        </div>
-                        <div class="col-md-6">
-                            <label for="apellidos" class="form-label">Apellidos *</label>
-                            <input type="text" class="form-control" id="apellidos" name="apellidos" required autocomplete="family-name">
-                        </div>
-                        <div class="col-md-6">
-                            <label for="dni" class="form-label">DNI / NIE *</label>
-                            <input type="text" class="form-control" id="dni" name="dni" required pattern="[0-9XYZxyz][0-9]{7}[A-Za-z]" placeholder="12345678A">
-                            <div class="invalid-feedback">Introduce un DNI o NIE válido.</div>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="nacimiento" class="form-label">Fecha de nacimiento</label>
-                            <input type="date" class="form-control" id="nacimiento" name="nacimiento" autocomplete="bday">
-                        </div>
-                        <div class="col-md-6">
-                            <label for="email" class="form-label">Correo electrónico *</label>
-                            <input type="email" class="form-control" id="email" name="email" required autocomplete="email">
+                            <input type="text" class="form-control" id="nombre" name="nombre" required autocomplete="name" maxlength="80">
                         </div>
                         <div class="col-md-6">
                             <label for="telefono" class="form-label">Teléfono *</label>
-                            <input type="tel" class="form-control" id="telefono" name="telefono" required pattern="[0-9 +]{9,15}" autocomplete="tel">
-                        </div>
-                        <div class="col-12">
-                            <label for="direccion" class="form-label">Dirección</label>
-                            <input type="text" class="form-control" id="direccion" name="direccion" autocomplete="street-address">
-                        </div>
-                        <div class="col-md-4">
-                            <label for="cp" class="form-label">Código postal</label>
-                            <input type="text" class="form-control" id="cp" name="cp" pattern="[0-9]{5}" autocomplete="postal-code">
-                        </div>
-                        <div class="col-md-4">
-                            <label for="localidad" class="form-label">Localidad</label>
-                            <input type="text" class="form-control" id="localidad" name="localidad">
-                        </div>
-                        <div class="col-md-4">
-                            <label for="provincia" class="form-label">Provincia</label>
-                            <input type="text" class="form-control" id="provincia" name="provincia">
+                            <input type="tel" class="form-control" id="telefono" name="telefono" required pattern="[0-9 +]{9,15}" autocomplete="tel" maxlength="15">
+                            <div class="invalid-feedback">Escribe un teléfono de 9 cifras.</div>
                         </div>
                         <div class="col-md-6">
-                            <label for="empresa" class="form-label">Empresa *</label>
-                            <input type="text" class="form-control" id="empresa" name="empresa" required>
+                            <label for="email" class="form-label">Correo electrónico</label>
+                            <input type="email" class="form-control" id="email" name="email" autocomplete="email" maxlength="80">
                         </div>
                         <div class="col-md-6">
-                            <label for="sector" class="form-label">Sector *</label>
-                            <select class="form-select" id="sector" name="sector" required>
-                                <option value="">Elige un sector…</option>
-                                <option>Administración pública</option>
-                                <option>Comercio</option>
-                                <option>Educación</option>
-                                <option>Hostelería</option>
-                                <option>Industria</option>
-                                <option>Limpieza</option>
-                                <option>Sanidad</option>
-                                <option>Seguridad</option>
-                                <option>Transporte</option>
-                                <option>Otro</option>
+                            <label for="horario" class="form-label">¿Cuándo te viene mejor?</label>
+                            <select class="form-select" id="horario" name="horario">
+                                <option>Cualquier momento</option>
+                                <option>Por la mañana</option>
+                                <option>Por la tarde</option>
                             </select>
                         </div>
                         <div class="col-12">
-                            <label for="mensaje" class="form-label">¿Algo que debamos saber?</label>
-                            <textarea class="form-control" id="mensaje" name="mensaje" rows="3"></textarea>
+                            <label for="mensaje" class="form-label">¿En qué podemos ayudarte?</label>
+                            <textarea class="form-control" id="mensaje" name="mensaje" rows="3" maxlength="1500" placeholder="Por ejemplo: quiero afiliarme y tengo dudas sobre la cuota, tengo un problema en mi empresa…"></textarea>
                         </div>
 
                         <!-- Trampa anti-spam: los humanos no la ven -->
@@ -283,14 +244,13 @@
                                 </label>
                             </div>
                             <p class="legal-note">
-                                Responsable: Sindicato Progresa. Finalidad: gestionar tu solicitud de afiliación.
-                                Legitimación: tu consentimiento. Tus datos de afiliación sindical son de categoría
-                                especial y no se cederán a terceros. Puedes ejercer tus derechos en
-                                info@sindicato-progresa.com.
+                                Responsable: Sindicato Progresa. Finalidad: contactar contigo para responder a tu consulta.
+                                Legitimación: tu consentimiento. No cederemos tus datos a terceros. Puedes ejercer tus
+                                derechos en info@sindicato-progresa.com.
                             </p>
                         </div>
                         <div class="col-12">
-                            <button type="submit" class="btn btn-primary btn-lg w-100">Enviar solicitud</button>
+                            <button type="submit" class="btn btn-primary btn-lg w-100">Quiero que me llamen</button>
                             <div id="form-estado" class="mt-3" role="status" aria-live="polite"></div>
                         </div>
                     </div>
