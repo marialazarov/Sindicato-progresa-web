@@ -339,6 +339,28 @@ section[id]   { scroll-margin-top: 90px; }
 .right-card--green  { border-top-color: var(--verde); }
 .law-ref { font-size: .82rem; font-weight: 600; color: var(--azul); }
 
+/* Convenios: pestañas por sector y tablas */
+.convenio-tabs { gap: .5rem; }
+.convenio-tabs .nav-link {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    color: var(--azul-oscuro);
+    border: 2px solid var(--azul);
+    border-radius: 999px;
+    padding: .55rem 1.3rem;
+}
+.convenio-tabs .nav-link i { margin-right: .3rem; }
+.convenio-tabs .nav-link.active { background: var(--azul); color: #fff; }
+.convenio-table { margin-bottom: 0; border-radius: 8px; overflow: hidden; }
+.convenio-table thead th {
+    background: var(--azul-oscuro);
+    color: #fff;
+    font-weight: 600;
+    white-space: nowrap;
+}
+.convenio-table td:first-child { font-weight: 600; min-width: 12rem; }
+.convenio-table td { min-width: 9rem; }
+
 .law-group { font-size: 1.15rem; margin-bottom: 1rem; }
 .law-group i { color: var(--azul); margin-right: .4rem; }
 .law-card {

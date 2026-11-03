@@ -60,6 +60,11 @@ const PREGUNTAS = [
         respuesta: 'Es el acuerdo entre sindicatos y empresas que fija las condiciones de un sector o empresa: salario, jornada, vacaciones, pluses, permisos… Suele mejorar lo que dice la ley. Si no sabes cuál te toca, te ayudamos a encontrarlo.'
     },
     {
+        pregunta: '¿Qué permisos y excedencias tengo en mi convenio?',
+        claves: ['mi convenio', 'excedencia', 'excedencias', 'seguridad privada', 'vigilante', 'residencia', 'residencias', 'libre disposicion', 'asuntos propios', 'permiso sin sueldo','boda', 'matrimonio', 'fallecimiento', 'mudanza'],
+        respuesta: 'Hemos resumido en tablas los permisos, excedencias y vacaciones de los convenios de <strong>seguridad privada</strong> y de <strong>residencias de la Comunidad de Madrid</strong>: <a href="convenios.html">ver permisos por convenio</a>. Si tu sector no aparece, pregúntanos y te ayudamos.'
+    },
+    {
         pregunta: '¿Qué es un delegado sindical?',
         claves: ['delegado', 'comite', 'representante', 'elecciones sindicales'],
         respuesta: 'Es la persona elegida por la plantilla para representarla ante la empresa. En empresas de más de 10 trabajadores (o desde 6 si así lo deciden) se eligen delegados de personal, y a partir de 50, un comité de empresa. Tienen garantías para que no sufran represalias.'
@@ -67,7 +72,7 @@ const PREGUNTAS = [
     {
         pregunta: 'Vacaciones, jornada y permisos',
         claves: ['vacaciones', 'jornada', 'horas', 'horario', 'permiso', 'descanso', 'horas extra', 'registro'],
-        respuesta: 'Por ley tienes al menos 30 días naturales de vacaciones, un máximo de 40 horas semanales de media y permisos pagados por motivos familiares, mudanza y otros. Tu convenio puede mejorarlo. Lo explicamos en <a href="legislacion.html">Legislación</a>.'
+        respuesta: 'Por ley tienes al menos 30 días naturales de vacaciones, un máximo de 40 horas semanales de media y permisos pagados por motivos familiares, mudanza y otros. Tu convenio puede mejorarlo. Lo explicamos en <a href="legislacion.html">Legislación</a> y, por sectores, en <a href="convenios.html">Convenios</a>.'
     },
     {
         pregunta: 'Festivos y calendario laboral',
