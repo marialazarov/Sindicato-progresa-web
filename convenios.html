@@ -55,20 +55,13 @@
 
 <main>
 
-
 <!-- ===== Cabecera de la página ===== -->
 <section class="page-header">
     <div class="container">
         <p class="eyebrow">Conoce tu convenio</p>
         <h1>Permisos y excedencias</h1>
-        <p class="lead">Lo que dice tu convenio colectivo sobre permisos, excedencias y vacaciones, resumido en tablas fáciles de consultar.</p>
-    </div>
-</section>
-
-<section class="section pt-5">
-    <div class="container">
-        <p class="text-secondary mb-4">Elige tu sector:</p>
-        <ul class="nav nav-pills convenio-tabs mb-5" role="tablist">
+        <p class="lead mb-4">Elige tu sector y consulta de un vistazo qué días te corresponden.</p>
+        <ul class="nav nav-pills convenio-tabs" role="tablist">
             <li class="nav-item" role="presentation">
                 <button class="nav-link active" id="tab-seguridad" data-bs-toggle="pill" data-bs-target="#seguridad" type="button" role="tab" aria-controls="seguridad" aria-selected="true"><i class="bi bi-shield-lock"></i> Seguridad privada</button>
             </li>
@@ -76,146 +69,322 @@
                 <button class="nav-link" id="tab-residencias" data-bs-toggle="pill" data-bs-target="#residencias" type="button" role="tab" aria-controls="residencias" aria-selected="false"><i class="bi bi-house-heart"></i> Residencias (Madrid)</button>
             </li>
         </ul>
-
-        <div class="tab-content">
-
-            <!-- ===== Seguridad privada ===== -->
-            <div class="tab-pane fade show active" id="seguridad" role="tabpanel" aria-labelledby="tab-seguridad" tabindex="0">
-                <h2 class="mb-2">Convenio estatal de empresas de seguridad 2026</h2>
-                <p class="text-secondary mb-5">Para vigilantes y demás personal de las empresas de seguridad privada de toda España.</p>
-
-                <h3 class="law-group"><i class="bi bi-calendar-check"></i> Permisos laborales</h3>
-                <div class="table-responsive mb-5">
-                    <table class="table convenio-table">
-                        <thead><tr><th scope="col">Motivo</th><th scope="col">Duración o derecho</th><th scope="col">¿Retribuido?</th></tr></thead>
-                        <tbody>
-                            <tr><td>Matrimonio o registro de pareja de hecho</td><td>17 días naturales</td><td>Sí</td></tr>
-                            <tr><td>Accidente o enfermedad grave, hospitalización o intervención quirúrgica con reposo domiciliario de familiares contemplados legalmente</td><td>5 días laborables</td><td>Sí</td></tr>
-                            <tr><td>Fallecimiento de cónyuge, pareja de hecho o familiar hasta segundo grado</td><td>2 días laborables, con ampliaciones por desplazamiento cuando proceda</td><td>Sí</td></tr>
-                            <tr><td>Traslado de domicilio habitual</td><td>2 días naturales según el convenio</td><td>Sí</td></tr>
-                            <tr><td>Deber público y personal inexcusable</td><td>Tiempo indispensable</td><td>Sí, conforme a la normativa</td></tr>
-                            <tr><td>Boda de determinados familiares</td><td>1 día natural; ampliación por desplazamiento cuando corresponda</td><td>Sí, según convenio</td></tr>
-                            <tr><td>Bautizo de un descendiente</td><td>1 día natural</td><td>Sí, según convenio</td></tr>
-                            <tr><td>Primera Comunión de un descendiente</td><td>1 día natural</td><td>Sí, según convenio</td></tr>
-                            <tr><td>Exámenes prenatales y preparación al parto</td><td>Tiempo indispensable, cuando no puedan realizarse fuera de la jornada</td><td>Sí</td></tr>
-                            <tr><td>Cita con médico especialista del sistema público de salud</td><td>Hasta 3 horas, según requisitos del convenio</td><td>Sí, según convenio</td></tr>
-                            <tr><td>Asuntos propios</td><td>1 día, sujeto a las condiciones y restricciones del convenio</td><td>Sí</td></tr>
-                            <tr><td>Permiso sin sueldo</td><td>Hasta 15 días naturales, con los requisitos del convenio</td><td>No</td></tr>
-                            <tr><td>Lactancia</td><td>En los términos y modalidades previstos en la legislación laboral</td><td>Sí</td></tr>
-                            <tr><td>Nacimiento y cuidado del menor</td><td>Duración legal vigente, según el supuesto</td><td>Prestación conforme a la normativa</td></tr>
-                            <tr><td>Exámenes oficiales y formación</td><td>Según el Estatuto de los Trabajadores y los requisitos aplicables</td><td>Según el supuesto</td></tr>
-                            <tr><td>Cumplimiento de funciones sindicales o de representación</td><td>Tiempo legal o convencionalmente reconocido</td><td>Según el supuesto</td></tr>
-                            <tr><td>Situaciones de violencia de género o sexual</td><td>Reducción o reorganización de jornada y otras medidas legales</td><td>Según la medida aplicable</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <h3 class="law-group"><i class="bi bi-door-open"></i> Excedencias</h3>
-                <div class="table-responsive mb-5">
-                    <table class="table convenio-table">
-                        <thead><tr><th scope="col">Tipo</th><th scope="col">Duración</th><th scope="col">Antigüedad necesaria</th><th scope="col">¿Se cobra?</th><th scope="col">Reserva del puesto y reincorporación</th></tr></thead>
-                        <tbody>
-                            <tr><td>Voluntaria</td><td>Mínimo 4 meses y máximo 5 años</td><td>1 año en la empresa</td><td>No</td><td>No garantiza el mismo puesto; el reingreso depende de las vacantes y condiciones del convenio.</td></tr>
-                            <tr><td>Por cuidado de hijos</td><td>Hasta 3 años por hijo</td><td>No se exige antigüedad mínima específica</td><td>No</td><td>Reserva del puesto durante el primer año; después, reserva de un puesto del mismo grupo o nivel equivalente.</td></tr>
-                            <tr><td>Por cuidado de familiares</td><td>Hasta 2 años, salvo mejora por negociación colectiva</td><td>No se exige antigüedad mínima específica</td><td>No</td><td>Mismas reglas generales de reserva que la excedencia por cuidado de hijos.</td></tr>
-                            <tr><td>Forzosa por cargo público</td><td>Mientras dure la causa</td><td>Según el supuesto legal</td><td>No se cobra salario de la empresa por el trabajo suspendido</td><td>Reserva del puesto y cómputo de antigüedad.</td></tr>
-                            <tr><td>Forzosa por funciones sindicales</td><td>Mientras dure el cargo representativo que cumpla los requisitos</td><td>Según el supuesto legal</td><td>No se cobra salario de la empresa por el trabajo suspendido</td><td>Reserva del puesto y cómputo de antigüedad.</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <h3 class="law-group"><i class="bi bi-info-circle"></i> Condiciones importantes de las excedencias</h3>
-                <div class="table-responsive mb-5">
-                    <table class="table convenio-table">
-                        <thead><tr><th scope="col">Cuestión</th><th scope="col">Qué debes tener en cuenta</th></tr></thead>
-                        <tbody>
-                            <tr><td>Solicitud de excedencia voluntaria</td><td>Debe respetar el preaviso establecido en el convenio para las bajas voluntarias.</td></tr>
-                            <tr><td>Prórroga de excedencia voluntaria</td><td>Solicitarla por escrito con 30 días naturales de antelación al vencimiento.</td></tr>
-                            <tr><td>Reingreso tras excedencia voluntaria</td><td>Solicitarlo por escrito al menos un mes antes de terminar. Si no lo haces, el convenio establece la baja definitiva.</td></tr>
-                            <tr><td>Antigüedad durante excedencia voluntaria</td><td>No computa a efectos laborales según el artículo 62.</td></tr>
-                            <tr><td>Antigüedad durante excedencia por cuidado</td><td>Sí computa.</td></tr>
-                            <tr><td>Reserva por familia numerosa</td><td>En la excedencia por cuidado de hijos, puede ampliarse hasta 15 meses para categoría general y 18 meses para categoría especial.</td></tr>
-                            <tr><td>Reincorporación tras excedencia por cuidado</td><td>El convenio establece un plazo máximo de 30 días desde que desaparezca la causa, con las condiciones previstas en el artículo 63.</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <h3 class="law-group"><i class="bi bi-sun"></i> Vacaciones y otros derechos relacionados</h3>
-                <div class="table-responsive">
-                    <table class="table convenio-table">
-                        <thead><tr><th scope="col">Derecho</th><th scope="col">Duración o condición</th><th scope="col">¿Retribuido?</th></tr></thead>
-                        <tbody>
-                            <tr><td>Vacaciones anuales</td><td>31 días naturales por año de servicio</td><td>Sí</td></tr>
-                            <tr><td>Día de asuntos propios</td><td>1 día libre, sujeto a las restricciones de fechas y disponibilidad del artículo 55</td><td>Sí</td></tr>
-                            <tr><td>Descanso anual compensatorio para personal con jornadas diarias de 8 horas o más</td><td>Mínimo de 96 días naturales de descanso anual, excluidas las vacaciones</td><td>No es un permiso adicional retribuido; es descanso</td></tr>
-                            <tr><td>Permiso sin sueldo</td><td>Hasta 15 días naturales, sujeto a los requisitos del artículo 65</td><td>No</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <!-- ===== Residencias Comunidad de Madrid ===== -->
-            <div class="tab-pane fade" id="residencias" role="tabpanel" aria-labelledby="tab-residencias" tabindex="0">
-                <h2 class="mb-2">Convenio de residencias privadas y concertadas de la Comunidad de Madrid 2026</h2>
-                <p class="text-secondary mb-5">Para el personal de residencias de mayores privadas y concertadas de la Comunidad de Madrid.</p>
-
-                <h3 class="law-group"><i class="bi bi-calendar-check"></i> Permisos retribuidos</h3>
-                <div class="table-responsive mb-5">
-                    <table class="table convenio-table">
-                        <thead><tr><th scope="col">Motivo</th><th scope="col">Duración</th></tr></thead>
-                        <tbody>
-                            <tr><td>Matrimonio o inscripción como pareja de hecho</td><td>15 días naturales</td></tr>
-                            <tr><td>Fallecimiento de cónyuge, pareja o familiar hasta segundo grado</td><td>3 días naturales, según el supuesto del convenio</td></tr>
-                            <tr><td>Fallecimiento con desplazamiento</td><td>Posible ampliación según convenio</td></tr>
-                            <tr><td>Accidente o enfermedad grave, hospitalización o intervención quirúrgica con reposo domiciliario</td><td>5 días laborables</td></tr>
-                            <tr><td>Traslado del domicilio habitual</td><td>1 día</td></tr>
-                            <tr><td>Deber público o personal inexcusable</td><td>Tiempo indispensable</td></tr>
-                            <tr><td>Exámenes prenatales y preparación al parto</td><td>Tiempo indispensable</td></tr>
-                            <tr><td>Exámenes oficiales</td><td>Según condiciones del convenio</td></tr>
-                            <tr><td>Acompañamiento de hijos a especialistas</td><td>Hasta 3 veces al año, según condiciones</td></tr>
-                            <tr><td>Consulta de especialistas de la sanidad pública por derivación médica</td><td>Hasta 20 horas al año, según condiciones</td></tr>
-                            <tr><td>Días de libre disposición</td><td>4 días al año</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <h3 class="law-group"><i class="bi bi-calendar-heart"></i> Días de libre disposición</h3>
-                <div class="table-responsive mb-5">
-                    <table class="table convenio-table">
-                        <thead><tr><th scope="col">Concepto</th><th scope="col">Condición</th></tr></thead>
-                        <tbody>
-                            <tr><td>Número de días</td><td>4 al año</td></tr>
-                            <tr><td>Solicitud ordinaria</td><td>7 días de antelación</td></tr>
-                            <tr><td>Solicitud urgente</td><td>3 días de antelación</td></tr>
-                            <tr><td>Antigüedad previa</td><td>3 meses de trabajo por cada día solicitado</td></tr>
-                            <tr><td>Denegación por la empresa</td><td>Debe estar justificada por razones organizativas</td></tr>
-                            <tr><td>Comunicación de la denegación</td><td>Al menos 48 horas antes, salvo urgencia</td></tr>
-                            <tr><td>Disfrute pendiente</td><td>Según las condiciones previstas en el convenio</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <h3 class="law-group"><i class="bi bi-door-open"></i> Excedencias</h3>
-                <div class="table-responsive">
-                    <table class="table convenio-table">
-                        <thead><tr><th scope="col">Tipo</th><th scope="col">Duración</th><th scope="col">Condiciones y reserva del puesto</th></tr></thead>
-                        <tbody>
-                            <tr><td>Cuidado de hijos</td><td>Hasta 3 años por cada hijo</td><td>Computa a efectos de antigüedad. Reserva del puesto durante el primer año; después, reserva de puesto del mismo grupo profesional o categoría equivalente.</td></tr>
-                            <tr><td>Cuidado de familiares</td><td>Hasta 3 años</td><td>Para familiares hasta segundo grado que no puedan valerse por sí mismos y no realicen actividad retribuida. Computa a efectos de antigüedad y tiene las condiciones de reserva indicadas en el convenio.</td></tr>
-                            <tr><td>Cuidado de hijos o familiares en familias numerosas</td><td>Según la excedencia correspondiente</td><td>Reserva del puesto hasta 15 meses para categoría general y hasta 18 meses para categoría especial.</td></tr>
-                            <tr><td>Cuidado de hijos cuando ambos progenitores ejercen el derecho en iguales condiciones</td><td>Según la excedencia correspondiente</td><td>Reserva del puesto hasta un máximo de 18 meses.</td></tr>
-                            <tr><td>Voluntaria</td><td>Mínimo 4 meses y máximo 5 años</td><td>Requiere al menos 1 año de antigüedad. No es retribuida ni computa a efectos de antigüedad. No garantiza la reserva del puesto concreto; existe derecho preferente al reingreso si hay vacante de la misma categoría o similar.</td></tr>
-                            <tr><td>Forzosa por cargo público</td><td>Durante el desempeño del cargo</td><td>Reserva del puesto y cómputo de antigüedad.</td></tr>
-                            <tr><td>Por cargo sindical</td><td>Durante el nombramiento, para cargos sindicales de ámbito local o superior</td><td>Reserva del puesto y reincorporación automática al finalizar el nombramiento.</td></tr>
-                            <tr><td>Nueva excedencia voluntaria</td><td>Tras 2 años de trabajo efectivo desde la finalización de la anterior</td><td>Según el artículo 55 del convenio.</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-        </div>
     </div>
 </section>
+
+<div class="tab-content">
+
+<!-- =====================================================
+     SEGURIDAD PRIVADA
+     ===================================================== -->
+<div class="tab-pane fade show active" id="seguridad" role="tabpanel" aria-labelledby="tab-seguridad" tabindex="0">
+
+    <section class="section pt-5 pb-4">
+        <div class="container">
+            <p class="eyebrow">Convenio estatal de empresas de seguridad 2026</p>
+            <h2 class="mb-4">Lo más consultado</h2>
+            <div class="row g-3">
+                <div class="col-6 col-lg-3"><div class="key-fact"><strong>31</strong><span>días naturales de <b>vacaciones</b> al año</span></div></div>
+                <div class="col-6 col-lg-3"><div class="key-fact"><strong>17</strong><span>días naturales por <b>matrimonio</b> o pareja de hecho</span></div></div>
+                <div class="col-6 col-lg-3"><div class="key-fact"><strong>5</strong><span>días laborables por <b>hospitalización</b> o enfermedad grave de un familiar</span></div></div>
+                <div class="col-6 col-lg-3"><div class="key-fact"><strong>1</strong><span>día de <b>asuntos propios</b> al año</span></div></div>
+            </div>
+            <nav class="jump-nav" aria-label="En esta sección">
+                <span>Ir a:</span>
+                <a href="#seg-permisos">Permisos</a>
+                <a href="#seg-excedencias">Excedencias</a>
+                <a href="#seg-vacaciones">Vacaciones y descansos</a>
+            </nav>
+        </div>
+    </section>
+
+    <section class="section section--alt" id="seg-permisos">
+        <div class="container">
+            <h2 class="mb-2">Permisos</h2>
+            <p class="text-secondary mb-4">Avisa a tu empresa con antelación y justifica el motivo.
+                <span class="pill pill--si">Pagado</span> <span class="pill pill--no">Sin sueldo</span> <span class="pill pill--depende">Depende del caso</span></p>
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <div class="perm-group">
+                        <h3><i class="bi bi-people"></i> Familia</h3>
+                        <ul class="perm-list">
+                            <li><div><b>Matrimonio o registro de pareja de hecho</b></div><span class="perm-dur">17 días naturales</span><span class="pill pill--si">Pagado</span></li>
+                            <li><div><b>Accidente, enfermedad grave u hospitalización de un familiar</b><small>También intervención quirúrgica con reposo en casa.</small></div><span class="perm-dur">5 días laborables</span><span class="pill pill--si">Pagado</span></li>
+                            <li><div><b>Fallecimiento de cónyuge, pareja o familiar hasta 2.º grado</b><small>Más días si tienes que desplazarte.</small></div><span class="perm-dur">2 días laborables</span><span class="pill pill--si">Pagado</span></li>
+                            <li><div><b>Boda de un familiar</b><small>Más días si tienes que desplazarte.</small></div><span class="perm-dur">1 día natural</span><span class="pill pill--si">Pagado</span></li>
+                            <li><div><b>Bautizo o Primera Comunión de un descendiente</b></div><span class="perm-dur">1 día natural</span><span class="pill pill--si">Pagado</span></li>
+                            <li><div><b>Nacimiento y cuidado del menor</b><small>Lo paga la Seguridad Social, no la empresa.</small></div><span class="perm-dur">Lo que marque la ley</span><span class="pill pill--depende">Prestación</span></li>
+                            <li><div><b>Lactancia</b></div><span class="perm-dur">Lo que marque la ley</span><span class="pill pill--si">Pagado</span></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="perm-group mb-4">
+                        <h3><i class="bi bi-heart-pulse"></i> Salud</h3>
+                        <ul class="perm-list">
+                            <li><div><b>Médico especialista de la sanidad pública</b></div><span class="perm-dur">Hasta 3 horas</span><span class="pill pill--si">Pagado</span></li>
+                            <li><div><b>Exámenes prenatales y preparación al parto</b><small>Si no puedes hacerlos fuera del horario de trabajo.</small></div><span class="perm-dur">El tiempo necesario</span><span class="pill pill--si">Pagado</span></li>
+                        </ul>
+                    </div>
+                    <div class="perm-group">
+                        <h3><i class="bi bi-briefcase"></i> Trámites y otros</h3>
+                        <ul class="perm-list">
+                            <li><div><b>Mudanza (traslado de domicilio)</b></div><span class="perm-dur">2 días naturales</span><span class="pill pill--si">Pagado</span></li>
+                            <li><div><b>Deber público o personal inexcusable</b><small>Por ejemplo, formar parte de una mesa electoral o acudir a un juicio.</small></div><span class="perm-dur">El tiempo necesario</span><span class="pill pill--si">Pagado</span></li>
+                            <li><div><b>Asuntos propios</b><small>Con las restricciones de fechas del artículo 55.</small></div><span class="perm-dur">1 día al año</span><span class="pill pill--si">Pagado</span></li>
+                            <li><div><b>Permiso sin sueldo</b><small>Con los requisitos del artículo 65.</small></div><span class="perm-dur">Hasta 15 días naturales</span><span class="pill pill--no">Sin sueldo</span></li>
+                            <li><div><b>Exámenes oficiales y formación</b></div><span class="perm-dur">Según el Estatuto de los Trabajadores</span><span class="pill pill--depende">Depende</span></li>
+                            <li><div><b>Funciones sindicales o de representación</b></div><span class="perm-dur">El tiempo reconocido</span><span class="pill pill--depende">Depende</span></li>
+                            <li><div><b>Víctimas de violencia de género o sexual</b></div><span class="perm-dur">Reducción o cambio de jornada y otras medidas</span><span class="pill pill--depende">Depende</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="seg-excedencias">
+        <div class="container">
+            <h2 class="mb-2">Excedencias</h2>
+            <p class="text-secondary mb-4">Durante una excedencia dejas de trabajar y de cobrar, pero mantienes tu relación con la empresa.</p>
+            <div class="row g-3">
+                <div class="col-md-6 col-lg-4">
+                    <div class="exc-card">
+                        <h3>Por cuidado de hijos</h3>
+                        <p class="exc-dur">Hasta 3 años por hijo</p>
+                        <dl>
+                            <dt>Antigüedad</dt><dd>No se exige</dd>
+                            <dt>Tu puesto</dt><dd>Reservado el primer año; después, uno del mismo grupo o nivel</dd>
+                            <dt>Cuenta como antigüedad</dt><dd>Sí</dd>
+                        </dl>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="exc-card">
+                        <h3>Por cuidado de familiares</h3>
+                        <p class="exc-dur">Hasta 2 años</p>
+                        <dl>
+                            <dt>Antigüedad</dt><dd>No se exige</dd>
+                            <dt>Tu puesto</dt><dd>Igual que en la de cuidado de hijos</dd>
+                            <dt>Cuenta como antigüedad</dt><dd>Sí</dd>
+                        </dl>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="exc-card">
+                        <h3>Voluntaria</h3>
+                        <p class="exc-dur">De 4 meses a 5 años</p>
+                        <dl>
+                            <dt>Antigüedad</dt><dd>1 año en la empresa</dd>
+                            <dt>Tu puesto</dt><dd>No está garantizado: vuelves si hay vacante</dd>
+                            <dt>Cuenta como antigüedad</dt><dd>No (artículo 62)</dd>
+                        </dl>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="exc-card">
+                        <h3>Forzosa por cargo público</h3>
+                        <p class="exc-dur">Mientras dure el cargo</p>
+                        <dl>
+                            <dt>Tu puesto</dt><dd>Reservado</dd>
+                            <dt>Cuenta como antigüedad</dt><dd>Sí</dd>
+                        </dl>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="exc-card">
+                        <h3>Forzosa por funciones sindicales</h3>
+                        <p class="exc-dur">Mientras dure el cargo</p>
+                        <dl>
+                            <dt>Tu puesto</dt><dd>Reservado</dd>
+                            <dt>Cuenta como antigüedad</dt><dd>Sí</dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+
+            <div class="note-box mt-4">
+                <h3><i class="bi bi-lightbulb"></i> Ten en cuenta</h3>
+                <ul>
+                    <li><b>Para pedir la voluntaria</b>, respeta el mismo preaviso que para una baja voluntaria.</li>
+                    <li><b>Para alargarla</b>, pídelo por escrito 30 días naturales antes de que termine.</li>
+                    <li><b>Para volver</b>, pídelo por escrito al menos un mes antes de que termine. Si no lo haces, el convenio lo considera baja definitiva.</li>
+                    <li><b>Familia numerosa:</b> en la de cuidado de hijos, el puesto se reserva hasta 15 meses (categoría general) o 18 meses (especial).</li>
+                    <li><b>Tras una de cuidado</b>, tienes como máximo 30 días para reincorporarte desde que desaparece la causa (artículo 63).</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section--alt" id="seg-vacaciones">
+        <div class="container">
+            <h2 class="mb-4">Vacaciones y descansos</h2>
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <div class="exc-card">
+                        <h3>Vacaciones anuales</h3>
+                        <p class="exc-dur">31 días naturales</p>
+                        <p class="mb-0 text-secondary">Por cada año trabajado, pagadas.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="exc-card">
+                        <h3>Descanso anual compensatorio</h3>
+                        <p class="exc-dur">Mínimo 96 días naturales</p>
+                        <p class="mb-0 text-secondary">Para jornadas de 8 horas o más al día, sin contar las vacaciones. Es descanso, no un permiso pagado extra.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- =====================================================
+     RESIDENCIAS COMUNIDAD DE MADRID
+     ===================================================== -->
+<div class="tab-pane fade" id="residencias" role="tabpanel" aria-labelledby="tab-residencias" tabindex="0">
+
+    <section class="section pt-5 pb-4">
+        <div class="container">
+            <p class="eyebrow">Convenio de residencias privadas y concertadas de la Comunidad de Madrid 2026</p>
+            <h2 class="mb-4">Lo más consultado</h2>
+            <div class="row g-3">
+                <div class="col-6 col-lg-3"><div class="key-fact"><strong>15</strong><span>días naturales por <b>matrimonio</b> o pareja de hecho</span></div></div>
+                <div class="col-6 col-lg-3"><div class="key-fact"><strong>4</strong><span>días de <b>libre disposición</b> al año</span></div></div>
+                <div class="col-6 col-lg-3"><div class="key-fact"><strong>5</strong><span>días laborables por <b>hospitalización</b> o enfermedad grave de un familiar</span></div></div>
+                <div class="col-6 col-lg-3"><div class="key-fact"><strong>20 h</strong><span>al año para ir al <b>médico especialista</b></span></div></div>
+            </div>
+            <nav class="jump-nav" aria-label="En esta sección">
+                <span>Ir a:</span>
+                <a href="#res-permisos">Permisos</a>
+                <a href="#res-libre">Días de libre disposición</a>
+                <a href="#res-excedencias">Excedencias</a>
+            </nav>
+        </div>
+    </section>
+
+    <section class="section section--alt" id="res-permisos">
+        <div class="container">
+            <h2 class="mb-2">Permisos</h2>
+            <p class="text-secondary mb-4">Todos estos permisos son <span class="pill pill--si">Pagados</span>. Avisa a tu empresa con antelación y justifica el motivo.</p>
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <div class="perm-group">
+                        <h3><i class="bi bi-people"></i> Familia</h3>
+                        <ul class="perm-list">
+                            <li><div><b>Matrimonio o inscripción como pareja de hecho</b></div><span class="perm-dur">15 días naturales</span></li>
+                            <li><div><b>Accidente, enfermedad grave u hospitalización de un familiar</b><small>También intervención quirúrgica con reposo en casa.</small></div><span class="perm-dur">5 días laborables</span></li>
+                            <li><div><b>Fallecimiento de cónyuge, pareja o familiar hasta 2.º grado</b><small>Puede ampliarse si tienes que desplazarte.</small></div><span class="perm-dur">3 días naturales</span></li>
+                            <li><div><b>Acompañar a tus hijos al especialista</b></div><span class="perm-dur">Hasta 3 veces al año</span></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="perm-group mb-4">
+                        <h3><i class="bi bi-heart-pulse"></i> Salud</h3>
+                        <ul class="perm-list">
+                            <li><div><b>Médico especialista de la sanidad pública</b><small>Con derivación de tu médico.</small></div><span class="perm-dur">Hasta 20 horas al año</span></li>
+                            <li><div><b>Exámenes prenatales y preparación al parto</b></div><span class="perm-dur">El tiempo necesario</span></li>
+                        </ul>
+                    </div>
+                    <div class="perm-group">
+                        <h3><i class="bi bi-briefcase"></i> Trámites y otros</h3>
+                        <ul class="perm-list">
+                            <li><div><b>Mudanza (traslado de domicilio)</b></div><span class="perm-dur">1 día</span></li>
+                            <li><div><b>Deber público o personal inexcusable</b></div><span class="perm-dur">El tiempo necesario</span></li>
+                            <li><div><b>Exámenes oficiales</b></div><span class="perm-dur">Según el convenio</span></li>
+                            <li><div><b>Días de libre disposición</b><small><a href="#res-libre">Cómo pedirlos</a></small></div><span class="perm-dur">4 días al año</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="res-libre">
+        <div class="container">
+            <h2 class="mb-2">Días de libre disposición</h2>
+            <p class="text-secondary mb-4">Tienes <b>4 días al año</b> para lo que necesites. Así se piden:</p>
+            <div class="row g-3">
+                <div class="col-md-6 col-lg-3"><div class="step-card"><span>1</span><h3>Antigüedad</h3><p>Necesitas 3 meses trabajados por cada día que pidas.</p></div></div>
+                <div class="col-md-6 col-lg-3"><div class="step-card"><span>2</span><h3>Pídelo con tiempo</h3><p>7 días antes. Si es urgente, 3 días antes.</p></div></div>
+                <div class="col-md-6 col-lg-3"><div class="step-card"><span>3</span><h3>Si te lo niegan</h3><p>Solo por razones organizativas justificadas, y avisándote al menos 48 horas antes (salvo urgencia).</p></div></div>
+                <div class="col-md-6 col-lg-3"><div class="step-card"><span>4</span><h3>Días pendientes</h3><p>Si no los disfrutas, se aplica lo que dice el convenio.</p></div></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section--alt" id="res-excedencias">
+        <div class="container">
+            <h2 class="mb-2">Excedencias</h2>
+            <p class="text-secondary mb-4">Durante una excedencia dejas de trabajar y de cobrar, pero mantienes tu relación con la empresa.</p>
+            <div class="row g-3">
+                <div class="col-md-6 col-lg-4">
+                    <div class="exc-card">
+                        <h3>Por cuidado de hijos</h3>
+                        <p class="exc-dur">Hasta 3 años por hijo</p>
+                        <dl>
+                            <dt>Tu puesto</dt><dd>Reservado el primer año; después, uno del mismo grupo o categoría</dd>
+                            <dt>Cuenta como antigüedad</dt><dd>Sí</dd>
+                        </dl>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="exc-card">
+                        <h3>Por cuidado de familiares</h3>
+                        <p class="exc-dur">Hasta 3 años</p>
+                        <dl>
+                            <dt>Para quién</dt><dd>Familiares hasta 2.º grado que no puedan valerse por sí mismos ni trabajen</dd>
+                            <dt>Cuenta como antigüedad</dt><dd>Sí</dd>
+                        </dl>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="exc-card">
+                        <h3>Voluntaria</h3>
+                        <p class="exc-dur">De 4 meses a 5 años</p>
+                        <dl>
+                            <dt>Antigüedad</dt><dd>1 año en la empresa</dd>
+                            <dt>Tu puesto</dt><dd>No está garantizado; tienes preferencia si hay vacante de tu categoría o similar</dd>
+                            <dt>Cuenta como antigüedad</dt><dd>No</dd>
+                        </dl>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="exc-card">
+                        <h3>Forzosa por cargo público</h3>
+                        <p class="exc-dur">Mientras dure el cargo</p>
+                        <dl>
+                            <dt>Tu puesto</dt><dd>Reservado</dd>
+                            <dt>Cuenta como antigüedad</dt><dd>Sí</dd>
+                        </dl>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="exc-card">
+                        <h3>Por cargo sindical</h3>
+                        <p class="exc-dur">Mientras dure el nombramiento</p>
+                        <dl>
+                            <dt>Para quién</dt><dd>Cargos sindicales de ámbito local o superior</dd>
+                            <dt>Tu puesto</dt><dd>Reservado, con vuelta automática al terminar</dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+
+            <div class="note-box mt-4">
+                <h3><i class="bi bi-lightbulb"></i> Ten en cuenta</h3>
+                <ul>
+                    <li><b>Familia numerosa:</b> en las de cuidado, el puesto se reserva hasta 15 meses (categoría general) o 18 meses (especial).</li>
+                    <li><b>Si ambos progenitores</b> piden la de cuidado de hijos en iguales condiciones, el puesto se reserva hasta 18 meses.</li>
+                    <li><b>Otra voluntaria:</b> puedes pedir una nueva tras 2 años de trabajo efectivo desde que acabó la anterior (artículo 55).</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+</div>
+
+</div>
 
 <!-- ===== Otro convenio ===== -->
 <section class="cta-band">
