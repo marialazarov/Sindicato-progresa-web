@@ -72,9 +72,9 @@
                 <h2 class="h3 mb-4">¿Cómo afiliarte?</h2>
                 <ol class="steps">
                     <li><strong>Rellena tu ficha</strong> en el formulario de abajo. Elige si prefieres pagar la cuota por <strong>nómina</strong> o por <strong>banco</strong>.</li>
-                    <li><strong>Descárgala</strong>: te damos la ficha oficial del sindicato con tus datos ya escritos.</li>
-                    <li><strong>Fírmala</strong> en los recuadros de "Fecha y firma".</li>
-                    <li><strong>Entrégala</strong> a tu delegado o delegada, o escanéala y envíala a <a href="mailto:s.gral@sindicato-progresa.com">s.gral@sindicato-progresa.com</a>.</li>
+                    <li><strong>Fírmala en la pantalla</strong> con el dedo o con el ratón. Tus datos y tu firma se colocan en la ficha oficial del sindicato.</li>
+                    <li><strong>Envíala</strong> con un clic: llega directamente al sindicato y recibes una copia en tu correo.</li>
+                    <li><strong>Te confirmamos el alta</strong> en cuanto la revisemos.</li>
                 </ol>
             </div>
             <div class="col-lg-5">
@@ -99,13 +99,14 @@
             <div class="col-lg-10 col-xl-9">
                 <p class="eyebrow">Ficha de afiliación</p>
                 <h2 class="mb-2">Rellena tu ficha</h2>
-                <p class="text-secondary mb-4"><i class="bi bi-shield-lock"></i> Tus datos <strong>no se envían a ningún sitio</strong>: la ficha se crea en tu propio dispositivo y solo la ves tú hasta que decidas entregarla.</p>
+                <p class="text-secondary mb-4"><i class="bi bi-shield-lock"></i> La ficha se prepara en tu propio dispositivo. Tus datos <strong>solo llegan al sindicato cuando pulsas «Firmar y enviar»</strong>, y los tratamos de forma confidencial.</p>
 
                 <ol class="wizard-steps" aria-label="Pasos de la ficha">
                     <li class="is-active"><span>1</span> Forma de pago</li>
                     <li><span>2</span> Tus datos</li>
                     <li><span>3</span> Tu trabajo</li>
                     <li><span>4</span> Autorización</li>
+                    <li><span>5</span> Firma</li>
                 </ol>
 
                 <form id="ficha-form" class="form-card" novalidate>
@@ -347,36 +348,53 @@
                                 </div>
                             </div>
                         </div>
+                    </fieldset>
+
+                    <!-- Paso 5 -->
+                    <fieldset class="wizard-pane" data-paso="5" hidden>
+                        <legend class="h4">Firma tu ficha</legend>
+                        <p class="text-secondary">Firma dentro del recuadro con el dedo (en el móvil) o con el ratón. Tu firma se colocará en los recuadros de «Fecha y firma» de la ficha.</p>
+                        <div class="firma-caja">
+                            <canvas id="firma-pad" class="firma-pad" aria-label="Recuadro para firmar"></canvas>
+                            <span class="firma-guia" aria-hidden="true">Firma aquí</span>
+                            <button type="button" class="btn btn-sm btn-outline-secondary firma-borrar" id="firma-borrar"><i class="bi bi-eraser"></i> Borrar</button>
+                        </div>
 
                         <div class="form-check mt-4">
                             <input class="form-check-input" type="checkbox" id="privacidad" name="privacidad" required>
                             <label class="form-check-label" for="privacidad">
-                                He leído la <a href="privacidad.html" target="_blank">política de privacidad</a> y acepto que PROGRESA trate mis datos para gestionar mi afiliación *
+                                He leído la <a href="privacidad.html" target="_blank">política de privacidad</a> y acepto que PROGRESA trate mis datos, incluida mi afiliación sindical, para gestionar mi afiliación *
                             </label>
                         </div>
+                        <input type="text" name="web" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+                        <p class="small text-secondary mt-3 mb-0"><i class="bi bi-envelope-check"></i> Al pulsar <strong>Firmar y enviar</strong>, tu ficha firmada llega directamente al sindicato y te mandamos una copia a tu correo.</p>
                     </fieldset>
+
 
                     <div id="ficha-estado" class="mt-3" role="status" aria-live="polite"></div>
 
                     <div class="wizard-nav">
                         <button type="button" class="btn btn-outline-primary" id="ficha-atras" hidden><i class="bi bi-arrow-left"></i> Atrás</button>
                         <button type="button" class="btn btn-primary ms-auto" id="ficha-siguiente">Siguiente <i class="bi bi-arrow-right"></i></button>
-                        <button type="submit" class="btn btn-primary btn-lg ms-auto" id="ficha-descargar" hidden><i class="bi bi-download"></i> Descargar mi ficha</button>
+                        <button type="button" class="btn btn-outline-primary ms-auto" id="ficha-descargar" hidden><i class="bi bi-download"></i> Solo descargar</button>
+                        <button type="submit" class="btn btn-primary btn-lg" id="ficha-enviar" hidden><i class="bi bi-send"></i> Firmar y enviar</button>
                     </div>
                 </form>
 
-                <!-- Después de descargar -->
+                <!-- Después de enviar o descargar -->
                 <div id="ficha-hecha" class="form-card text-center" hidden tabindex="-1">
                     <i class="bi bi-check-circle-fill done-icon"></i>
-                    <h3>¡Tu ficha está lista!</h3>
-                    <p>Se ha descargado el archivo <strong id="ficha-nombre-archivo"></strong>. Ahora solo te queda:</p>
-                    <ol class="text-start d-inline-block">
-                        <li>Abrirla, revisar tus datos e <strong>imprimirla</strong>.</li>
-                        <li><strong>Firmarla</strong> en los recuadros de "Fecha y firma".</li>
-                        <li>Entregarla a tu delegado/a o escanearla y enviarla a <a href="mailto:s.gral@sindicato-progresa.com">s.gral@sindicato-progresa.com</a>.</li>
-                    </ol>
-                    <div class="d-flex flex-wrap justify-content-center gap-2 mt-3">
-                        <button type="button" class="btn btn-primary" id="ficha-otra-vez"><i class="bi bi-download"></i> Descargarla otra vez</button>
+                    <div data-final="enviada">
+                        <h3>¡Ficha enviada!</h3>
+                        <p>Hemos recibido tu ficha firmada. Te hemos mandado una copia a <strong data-correo></strong>.<br>Revisaremos tus datos y te confirmaremos el alta muy pronto.</p>
+                    </div>
+                    <div data-final="descargada">
+                        <h3>¡Tu ficha está lista!</h3>
+                        <p>Se ha descargado el archivo <strong id="ficha-nombre-archivo"></strong>.</p>
+                        <p class="mb-0">Si no la has firmado en pantalla, imprímela y fírmala en los recuadros de «Fecha y firma». Después, entrégala a tu delegado/a o envíala a <a href="mailto:s.gral@sindicato-progresa.com">s.gral@sindicato-progresa.com</a>.</p>
+                    </div>
+                    <div class="d-flex flex-wrap justify-content-center gap-2 mt-4">
+                        <button type="button" class="btn btn-primary" id="ficha-otra-vez"><i class="bi bi-download"></i> Descargar una copia</button>
                         <button type="button" class="btn btn-outline-primary" id="ficha-corregir"><i class="bi bi-pencil"></i> Corregir algún dato</button>
                     </div>
                 </div>

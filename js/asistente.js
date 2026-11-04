@@ -27,7 +27,7 @@ const PREGUNTAS = [
     {
         pregunta: '¿Cómo me afilio?',
         claves: ['afiliar', 'afilio', 'afiliacion', 'apuntar', 'apunto', 'unirme', 'alta', 'hacerme socio', 'ficha', 'nomina', 'domiciliar'],
-        respuesta: 'Rellena tu <a href="afiliacion.html">ficha de afiliación online</a> (por nómina o por banco): te la damos ya rellena, la firmas y la entregas a tu delegado o la envías a s.gral@sindicato-progresa.com. Si prefieres que te llamemos, usa el <a href="index.html#afiliate">formulario de contacto</a>.'
+        respuesta: 'Rellena tu <a href="afiliacion.html">ficha de afiliación online</a> (por nómina o por banco), fírmala en la pantalla con el dedo o el ratón y envíala con un clic: nos llega al momento y recibes una copia en tu correo. Si prefieres que te llamemos, usa el <a href="index.html#afiliate">formulario de contacto</a>.'
     },
     {
         pregunta: '¿Cuánto cuesta afiliarse?',

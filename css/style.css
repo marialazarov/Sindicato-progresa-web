@@ -674,3 +674,28 @@ section[id]   { scroll-margin-top: 90px; }
 .law-link i { color: var(--azul); flex-shrink: 0; }
 .law-link:hover strong { color: var(--azul); text-decoration: underline; }
 .footer .copy-legal { font-size: .82rem; opacity: .75; }
+
+/* Ficha: recuadro de firma */
+.firma-caja { position: relative; }
+.firma-pad {
+    display: block;
+    width: 100%;
+    height: 200px;
+    background: #fff;
+    border: 2px dashed var(--azul);
+    border-radius: 10px;
+    touch-action: none;   /* que el dedo firme en vez de mover la página */
+    cursor: crosshair;
+}
+.firma-caja.is-invalid .firma-pad { border-color: var(--rojo); }
+.firma-guia {
+    position: absolute;
+    left: 1.2rem; right: 1.2rem; bottom: 3rem;
+    border-bottom: 1px solid var(--borde);
+    color: var(--texto-suave);
+    font-size: .85rem;
+    pointer-events: none;
+}
+.firma-caja.has-firma .firma-guia { color: transparent; }
+.firma-borrar { position: absolute; top: .6rem; right: .6rem; }
+[data-final][hidden] { display: none; }

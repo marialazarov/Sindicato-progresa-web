@@ -2,8 +2,9 @@
    FICHA DE AFILIACIÓN ONLINE
    Formulario por pasos que rellena la ficha oficial en PDF
    (docs/ficha-nomina.pdf o docs/ficha-banco.pdf) dentro del
-   navegador, con la librería pdf-lib. Los datos NO se envían
-   a ningún servidor.
+   navegador, con la librería pdf-lib. La persona firma en
+   pantalla y la ficha firmada se envía a enviar-ficha.php,
+   que la manda por correo al sindicato (o se descarga).
 
    Las posiciones están en puntos PDF (A4 = 595 x 842),
    contando desde la esquina INFERIOR izquierda.
@@ -55,7 +56,8 @@ const FICHAS = {
             interino: 368.5, eventual: 446, titular: 513
         },
         turnos: { y: 375.7, manana: 98.8, tarde: 168, noche: 245 },
-        fechasFirma: [[372, 318], [150, 50]]
+        fechasFirma: [[372, 318], [150, 50]],
+        firmas: [[380, 262, 175, 48], [300, 31, 250, 36]]   // recuadros "Fecha y firma": [x, y, ancho, alto]
     },
     banco: {
         pdf: 'docs/ficha-banco.pdf',
@@ -86,7 +88,8 @@ const FICHAS = {
         },
         // Casillas del IBAN: [x de inicio, nº de casillas, ancho de casilla]
         iban: { y: 164, grupos: [[123, 2, 16.5], [170.5, 4, 14.35], [242.5, 4, 14.35], [314, 4, 14.35], [385, 4, 14.35], [456.5, 4, 14.35]] },
-        fechasFirma: [[150, 50]]
+        fechasFirma: [[150, 50]],
+        firmas: [[300, 33, 250, 35]]
     }
 };
 
@@ -110,7 +113,7 @@ function ibanValido(valor) {
 }
 
 /* ---------- Rellenar el PDF ---------- */
-async function crearPdf(datos) {
+async function crearPdf(datos, firma = null) {
     const { PDFDocument, StandardFonts, rgb } = PDFLib;
     const ficha = FICHAS[datos.pago];
     const bytes = await fetch(ficha.pdf).then(r => {
@@ -182,10 +185,97 @@ async function crearPdf(datos) {
         }
     }
 
-    // Fecha junto a las firmas (la firma se pone a mano)
+    // Fecha junto a las firmas
     for (const [x, y] of ficha.fechasFirma) escribir(`Fecha: ${dd}/${mm}/${aaaa}`, x, y, 150);
 
+    // Firma hecha en pantalla: se encaja en cada recuadro sin deformarla
+    if (firma) {
+        const imagen = await doc.embedPng(firma);
+        for (const [x, y, ancho, alto] of ficha.firmas) {
+            const escala = Math.min(ancho / imagen.width, alto / imagen.height);
+            const w = imagen.width * escala, h = imagen.height * escala;
+            pagina.drawImage(imagen, { x: x + (ancho - w) / 2, y: y + (alto - h) / 2, width: w, height: h });
+        }
+    }
+
     return doc.save();
+}
+
+/* ---------- Recuadro de firma ----------
+   Guarda los trazos para poder redibujarlos si cambia el
+   tamaño de la pantalla y para recortar la firma al exportarla. */
+function iniciarFirma(canvas) {
+    const caja = canvas.parentElement;
+    const ctx = canvas.getContext('2d');
+    let trazos = [];
+    let actual = null;
+
+    function dibujar(c, lista, dx = 0, dy = 0, escala = 1) {
+        c.lineWidth = 2.2 * escala;
+        c.lineCap = c.lineJoin = 'round';
+        c.strokeStyle = '#0B1F4D';
+        for (const t of lista) {
+            c.beginPath();
+            t.forEach(([x, y], i) => i ? c.lineTo((x - dx) * escala, (y - dy) * escala) : c.moveTo((x - dx) * escala, (y - dy) * escala));
+            if (t.length === 1) c.lineTo((t[0][0] - dx) * escala + 0.1, (t[0][1] - dy) * escala);
+            c.stroke();
+        }
+    }
+
+    function ajustar() {
+        const r = canvas.getBoundingClientRect();
+        if (!r.width) return;
+        const dpr = window.devicePixelRatio || 1;
+        canvas.width = r.width * dpr;
+        canvas.height = r.height * dpr;
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        dibujar(ctx, trazos);
+    }
+
+    const punto = e => {
+        const r = canvas.getBoundingClientRect();
+        return [e.clientX - r.left, e.clientY - r.top];
+    };
+    canvas.addEventListener('pointerdown', e => {
+        canvas.setPointerCapture(e.pointerId);
+        actual = [punto(e)];
+        trazos.push(actual);
+        caja.classList.add('has-firma');
+        caja.classList.remove('is-invalid');
+        dibujar(ctx, [actual]);
+    });
+    canvas.addEventListener('pointermove', e => {
+        if (!actual) return;
+        actual.push(punto(e));
+        dibujar(ctx, [actual.slice(-2)]);
+    });
+    const soltar = () => { actual = null; };
+    canvas.addEventListener('pointerup', soltar);
+    canvas.addEventListener('pointercancel', soltar);
+    window.addEventListener('resize', ajustar);
+
+    return {
+        ajustar,
+        vacia: () => trazos.length === 0,
+        borrar() {
+            trazos = [];
+            caja.classList.remove('has-firma');
+            ajustar();
+        },
+        // PNG de la firma recortada a su tamaño, a buena resolución para el PDF
+        async png() {
+            if (!trazos.length) return null;
+            const xs = trazos.flat().map(p => p[0]), ys = trazos.flat().map(p => p[1]);
+            const margen = 4, escala = 3;
+            const x0 = Math.min(...xs) - margen, y0 = Math.min(...ys) - margen;
+            const c = document.createElement('canvas');
+            c.width = (Math.max(...xs) + margen - x0) * escala;
+            c.height = (Math.max(...ys) + margen - y0) * escala;
+            dibujar(c.getContext('2d'), trazos, x0, y0, escala);
+            const blob = await new Promise(ok => c.toBlob(ok, 'image/png'));
+            return new Uint8Array(await blob.arrayBuffer());
+        }
+    };
 }
 
 /* ---------- Formulario por pasos ---------- */
@@ -198,12 +288,22 @@ function iniciarFicha() {
     const atras     = document.getElementById('ficha-atras');
     const siguiente = document.getElementById('ficha-siguiente');
     const descargar = document.getElementById('ficha-descargar');
+    const enviar    = document.getElementById('ficha-enviar');
     const estado    = document.getElementById('ficha-estado');
     const hecha     = document.getElementById('ficha-hecha');
     const dni       = form.elements.dni;
     const iban      = form.elements.iban;
+    const firma     = iniciarFirma(document.getElementById('firma-pad'));
     let paso = 1;
     let ultimoPdf = null;
+
+    // Versión de prueba en GitHub Pages: no hay PHP, así que no se puede enviar
+    const esPrueba = location.hostname.endsWith('github.io');
+    if (esPrueba) {
+        paneles[paneles.length - 1].insertAdjacentHTML('afterbegin',
+            '<div class="alert alert-warning"><strong>Versión de prueba:</strong> aquí la ficha todavía no se envía. ' +
+            'Puedes firmar y pulsar «Solo descargar» para ver cómo queda. El envío funcionará en el dominio oficial.</div>');
+    }
 
     // Meses y años para el descuento en nómina
     const hoy = new Date();
@@ -239,14 +339,16 @@ function iniciarFicha() {
 
     function irA(n) {
         paso = n;
+        const ultimo = n === paneles.length;
         paneles.forEach(p => p.hidden = Number(p.dataset.paso) !== n);
         marcas.forEach((m, i) => {
             m.classList.toggle('is-active', i + 1 === n);
             m.classList.toggle('is-done', i + 1 < n);
         });
         atras.hidden = n === 1;
-        siguiente.hidden = n === paneles.length;
-        descargar.hidden = n !== paneles.length;
+        siguiente.hidden = ultimo;
+        descargar.hidden = enviar.hidden = !ultimo;
+        if (ultimo) firma.ajustar();   // el recuadro estaba oculto y no tenía tamaño
         form.classList.remove('was-validated');
         mostrar('');
         form.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -254,7 +356,7 @@ function iniciarFicha() {
 
     function pasoValido() {
         const panel = paneles[paso - 1];
-        const campos = [...panel.querySelectorAll('input, select')].filter(c => !c.disabled);
+        const campos = [...panel.querySelectorAll('input, select')].filter(c => !c.disabled && c.name !== 'web');
         const malo = campos.find(c => !c.checkValidity());
         if (!malo) return true;
         form.classList.add('was-validated');
@@ -274,6 +376,7 @@ function iniciarFicha() {
         irA(paso + 1);
     });
     atras.addEventListener('click', () => irA(paso - 1));
+    document.getElementById('firma-borrar').addEventListener('click', () => firma.borrar());
 
     function leerDatos() {
         const fd = new FormData(form);
@@ -293,26 +396,73 @@ function iniciarFicha() {
         setTimeout(() => URL.revokeObjectURL(url), 10000);
     }
 
-    form.addEventListener('submit', async e => {
-        e.preventDefault();
-        if (!pasoValido()) return;
-        descargar.disabled = true;
+    async function prepararPdf() {
+        const datos = leerDatos();
+        const bytes = await crearPdf(datos, await firma.png());
+        const apellido = (datos.apellidos.split(' ')[0] || 'ficha').normalize('NFD').replace(/[^A-Za-z]/g, '').toLowerCase();
+        ultimoPdf = { bytes, nombre: `${FICHAS[datos.pago].archivo}-${apellido}.pdf` };
+        return datos;
+    }
+
+    function terminar(modo, datos) {
+        hecha.querySelectorAll('[data-final]').forEach(d => d.hidden = d.dataset.final !== modo);
+        hecha.querySelector('[data-correo]').textContent = datos.email;
+        document.getElementById('ficha-nombre-archivo').textContent = ultimoPdf.nombre;
+        form.hidden = true;
+        document.querySelector('.wizard-steps').hidden = true;
+        hecha.hidden = false;
+        hecha.focus();
+    }
+
+    const ocupado = si => { descargar.disabled = enviar.disabled = si; };
+
+    // Solo descargar (con o sin firma)
+    descargar.addEventListener('click', async () => {
+        ocupado(true);
         mostrar('Preparando tu ficha…', 'info');
         try {
-            const datos = leerDatos();
-            const bytes = await crearPdf(datos);
-            const apellido = (datos.apellidos.split(' ')[0] || 'ficha').normalize('NFD').replace(/[^A-Za-z]/g, '').toLowerCase();
-            ultimoPdf = { bytes, nombre: `${FICHAS[datos.pago].archivo}-${apellido}.pdf` };
+            const datos = await prepararPdf();
             bajar(ultimoPdf.bytes, ultimoPdf.nombre);
-            document.getElementById('ficha-nombre-archivo').textContent = ultimoPdf.nombre;
-            form.hidden = true;
-            document.querySelector('.wizard-steps').hidden = true;
-            hecha.hidden = false;
-            hecha.focus();
-        } catch (err) {
+            terminar('descargada', datos);
+        } catch {
             mostrar('No se ha podido crear la ficha. Comprueba tu conexión e inténtalo de nuevo, o descarga la ficha en blanco.', 'danger');
         } finally {
-            descargar.disabled = false;
+            ocupado(false);
+        }
+    });
+
+    // Firmar y enviar
+    form.addEventListener('submit', async e => {
+        e.preventDefault();
+        if (firma.vacia()) {
+            document.querySelector('.firma-caja').classList.add('is-invalid');
+            mostrar('Firma en el recuadro antes de enviar tu ficha.', 'danger');
+            return;
+        }
+        if (!pasoValido()) return;
+        if (esPrueba) {
+            mostrar('Versión de prueba: la ficha no se ha enviado. Pulsa «Solo descargar» para ver cómo queda firmada.', 'info');
+            return;
+        }
+        ocupado(true);
+        enviar.innerHTML = '<span class="spinner-border spinner-border-sm"></span> Enviando…';
+        mostrar('');
+        try {
+            const datos = await prepararPdf();
+            const envio = new FormData();
+            for (const campo of ['pago', 'nombre', 'apellidos', 'dni', 'email', 'movil', 'empresa', 'web']) envio.append(campo, datos[campo] || '');
+            envio.append('privacidad', datos.privacidad ? '1' : '');
+            envio.append('ficha', new Blob([ultimoPdf.bytes], { type: 'application/pdf' }), ultimoPdf.nombre);
+            const resp = await fetch('enviar-ficha.php', { method: 'POST', body: envio, headers: { 'Accept': 'application/json' } });
+            const res = await resp.json().catch(() => ({}));
+            if (!resp.ok || !res.ok) throw new Error(res.error || '');
+            terminar('enviada', datos);
+        } catch (err) {
+            mostrar((err.message || 'No se ha podido enviar la ficha.') +
+                ' Puedes pulsar «Solo descargar» y enviarla a <a href="mailto:s.gral@sindicato-progresa.com">s.gral@sindicato-progresa.com</a>.', 'danger');
+        } finally {
+            ocupado(false);
+            enviar.innerHTML = '<i class="bi bi-send"></i> Firmar y enviar';
         }
     });
 
