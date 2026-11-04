@@ -92,18 +92,22 @@ $texto .= str_pad('Correo:', 18) . "$email\n";
 $texto .= str_pad('Móvil:', 18) . ($movil !== '' ? $movil : '-') . "\n";
 $texto .= str_pad('Empresa:', 18) . ($empresa !== '' ? $empresa : '-') . "\n";
 $texto .= str_pad('Forma de pago:', 18) . "$formaPago\n\n";
-$texto .= "La ficha firmada va adjunta en PDF.\n";
+$texto .= "La ficha firmada va adjunta en PDF.\n\n";
+$texto .= "PENDIENTE: revisar la ficha, tramitar el cobro de la cuota y CONFIRMAR EL ALTA\n";
+$texto .= "a la persona (por correo o por teléfono). La web solo le ha dicho que la ficha\n";
+$texto .= "se ha recibido, no que ya esté dada de alta.\n\n";
 $texto .= 'Fecha: ' . date('d/m/Y H:i') . "\n";
 $texto .= 'IP: ' . ($_SERVER['REMOTE_ADDR'] ?? '-') . "\n";
 
-if (!enviarConAdjunto($CORREO_ADMIN, "Nueva afiliación: $nombre $apellidos ($formaPago)", $texto, $CORREO_WEB, $email, $pdf, $archivo)) {
+if (!enviarConAdjunto($CORREO_ADMIN, "Nueva ficha de afiliación (pendiente de confirmar): $nombre $apellidos", $texto, $CORREO_WEB, $email, $pdf, $archivo)) {
     responder(false, 'No se ha podido enviar la ficha.');
 }
 
 // ---- Copia a la persona ----
 $copia  = "Hola $nombre:\n\n";
-$copia .= "Hemos recibido tu ficha de afiliación a PROGRESA. Te adjuntamos una copia firmada.\n";
-$copia .= "Revisaremos tus datos y te confirmaremos el alta muy pronto.\n\n";
+$copia .= "Hemos recibido tu ficha de afiliación a PROGRESA. Te adjuntamos una copia firmada.\n\n";
+$copia .= "Importante: tu alta todavía no está completa. Revisaremos tus datos y te\n";
+$copia .= "escribiremos o llamaremos para confirmarte el alta en el sindicato.\n\n";
 $copia .= "Si ves algún error, responde a este correo.\n\n";
 $copia .= "Un saludo,\nSindicato Progresa\n$CORREO_ADMIN · 685 049 357 (teléfono y WhatsApp)\n";
 @enviarConAdjunto($email, 'Tu ficha de afiliación – Sindicato Progresa', $copia, $CORREO_WEB, $CORREO_ADMIN, $pdf, $archivo);
