@@ -16,7 +16,6 @@ const FICHAS = {
         pie: { y: 15, alto: 13.5 },       // franja del pie con los datos de contacto antiguos
         archivo: 'ficha-afiliacion-nomina',
         fechaAlta: { y: 717.5, dia: 38, mes: 64, anio: 90 },
-        delegado:  { y: 720.5, si: 478, no: 534 },
         nacimiento:{ y: 661.5, dia: 437, mes: 466, anio: 494 },
         textos: {
             apellidos:         [120, 676,   295],
@@ -64,7 +63,6 @@ const FICHAS = {
         pie: { y: 16, alto: 15 },
         archivo: 'ficha-afiliacion-banco',
         fechaAlta: { y: 721, dia: 37, mes: 62, anio: 88 },
-        delegado:  { y: 724, si: 475, no: 530 },
         nacimiento:{ y: 665.5, dia: 434, mes: 463, anio: 491 },
         textos: {
             apellidos:       [117, 679.5, 300],
@@ -148,12 +146,6 @@ async function crearPdf(datos) {
     escribir(dd, ficha.fechaAlta.dia, ficha.fechaAlta.y);
     escribir(mm, ficha.fechaAlta.mes, ficha.fechaAlta.y);
     escribir(aaaa, ficha.fechaAlta.anio, ficha.fechaAlta.y);
-
-    // Delegado: rodea SÍ o NO
-    pagina.drawEllipse({
-        x: ficha.delegado[datos.delegado === 'si' ? 'si' : 'no'], y: ficha.delegado.y,
-        xScale: 15, yScale: 6.5, borderColor: azul, borderWidth: 1.2
-    });
 
     // Fecha de nacimiento
     if (datos.nacimiento) {
