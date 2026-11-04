@@ -153,7 +153,7 @@ function iniciarFormulario() {
                 mostrar(datos.error || 'No se ha podido enviar. Inténtalo de nuevo.', 'danger');
             }
         } catch {
-            mostrar('Error de conexión. Escríbenos a info@sindicato-progresa.com.', 'danger');
+            mostrar('Error de conexión. Escríbenos a s.gral@sindicato-progresa.com.', 'danger');
         } finally {
             boton.disabled = false;
             boton.textContent = 'Quiero que me llamen';

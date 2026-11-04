@@ -7,8 +7,8 @@
    ========================================================= */
 
 // ---- CONFIGURACIÓN ----
-$CORREO_ADMIN = 'info@sindicato-progresa.com';     // a quién llegan las peticiones de llamada
-$CORREO_WEB   = 'no-responder@sindicato-progresa.com'; // remitente (debe ser de tu dominio)
+$CORREO_ADMIN = 's.gral@sindicato-progresa.com';     // a quién llegan las peticiones de llamada
+$CORREO_WEB   = 's.gral@sindicato-progresa.com'; // remitente (debe ser de tu dominio)
 // -----------------------
 
 header('Content-Type: application/json; charset=utf-8');
@@ -83,7 +83,7 @@ if ($d['Email'] !== '') {
     $cuerpoUsuario = "Hola {$d['Nombre']}:\n\n"
         . "Hemos recibido tus datos. Una persona del sindicato te llamará muy pronto.\n\n"
         . "Si quieres afiliarte ya, puedes rellenar tu ficha online en la sección Afíliate de nuestra web.\n\n"
-        . "Un saludo,\nSindicato Progresa\n$CORREO_ADMIN · 910 735 435 · 685 049 357\n";
+        . "Un saludo,\nSindicato Progresa\n$CORREO_ADMIN · 685 049 357 (teléfono y WhatsApp)\n";
     $cabUsuario  = "From: Sindicato Progresa <$CORREO_WEB>\r\n";
     $cabUsuario .= "Reply-To: $CORREO_ADMIN\r\n";
     $cabUsuario .= "MIME-Version: 1.0\r\nContent-Type: text/plain; charset=UTF-8\r\n";

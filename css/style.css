@@ -673,3 +673,4 @@ section[id]   { scroll-margin-top: 90px; }
 .law-link small { display: block; color: var(--texto-suave); font-size: .92rem; }
 .law-link i { color: var(--azul); flex-shrink: 0; }
 .law-link:hover strong { color: var(--azul); text-decoration: underline; }
+.footer .copy-legal { font-size: .82rem; opacity: .75; }

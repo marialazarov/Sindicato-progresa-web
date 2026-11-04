@@ -13,6 +13,7 @@
 const FICHAS = {
     nomina: {
         pdf: 'docs/ficha-nomina.pdf',
+        pie: { y: 15, alto: 13.5 },       // franja del pie con los datos de contacto antiguos
         archivo: 'ficha-afiliacion-nomina',
         fechaAlta: { y: 717.5, dia: 38, mes: 64, anio: 90 },
         delegado:  { y: 720.5, si: 478, no: 534 },
@@ -60,6 +61,7 @@ const FICHAS = {
     },
     banco: {
         pdf: 'docs/ficha-banco.pdf',
+        pie: { y: 16, alto: 15 },
         archivo: 'ficha-afiliacion-banco',
         fechaAlta: { y: 721, dia: 37, mes: 62, anio: 88 },
         delegado:  { y: 724, si: 475, no: 530 },
@@ -192,6 +194,15 @@ async function crearPdf(datos) {
 
     // Fecha junto a las firmas (la firma se pone a mano)
     for (const [x, y] of ficha.fechasFirma) escribir(`Fecha: ${dd}/${mm}/${aaaa}`, x, y, 150);
+
+    // Pie: tapamos los datos de contacto antiguos del PDF y escribimos los actuales
+    pagina.drawRectangle({ x: 40, y: ficha.pie.y, width: 515, height: ficha.pie.alto, color: rgb(1, 1, 1) });
+    const pie = 'AVD. DE ASTURIAS Nº 16 - 28029 MADRID - TEL. Y WHATSAPP 685 049 357 - s.gral@sindicato-progresa.com';
+    const tamPie = 8;
+    pagina.drawText(pie, {
+        x: (pagina.getWidth() - negrita.widthOfTextAtSize(pie, tamPie)) / 2,
+        y: ficha.pie.y + 4, size: tamPie, font: negrita, color: rgb(0, 0, 0)
+    });
 
     return doc.save();
 }

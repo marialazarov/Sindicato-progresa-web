@@ -27,12 +27,12 @@ const PREGUNTAS = [
     {
         pregunta: '¿Cómo me afilio?',
         claves: ['afiliar', 'afilio', 'afiliacion', 'apuntar', 'apunto', 'unirme', 'alta', 'hacerme socio', 'ficha', 'nomina', 'domiciliar'],
-        respuesta: 'Rellena tu <a href="afiliacion.html">ficha de afiliación online</a> (por nómina o por banco): te la damos ya rellena, la firmas y la entregas a tu delegado o la envías a afiliacion@sindicato-progresa.com. Si prefieres que te llamemos, usa el <a href="index.html#afiliate">formulario de contacto</a>.'
+        respuesta: 'Rellena tu <a href="afiliacion.html">ficha de afiliación online</a> (por nómina o por banco): te la damos ya rellena, la firmas y la entregas a tu delegado o la envías a s.gral@sindicato-progresa.com. Si prefieres que te llamemos, usa el <a href="index.html#afiliate">formulario de contacto</a>.'
     },
     {
         pregunta: '¿Cuánto cuesta afiliarse?',
         claves: ['cuanto cuesta', 'cuesta', 'precio', 'cuota', 'pagar', 'dinero', 'gratis'],
-        respuesta: 'La cuota mensual es de <strong>11 €</strong> (básica), <strong>8 €</strong> (reducida) o <strong>4 €</strong> para personas en paro y jubiladas. Por nómina se descuenta cada mes y por banco se cobra cada trimestre. Más información en <a href="afiliacion.html">Afiliación</a>.'
+        respuesta: 'La cuota mensual es de <strong>11 €</strong> (básica), <strong>9,50 €</strong> (reducida) o <strong>5 €</strong> para personas en paro y jubiladas. Por nómina se descuenta cada mes y por banco se cobra cada trimestre. Más información en <a href="afiliacion.html">Afiliación</a>.'
     },
     {
         pregunta: '¿Se entera mi empresa si me afilio?',
@@ -86,8 +86,8 @@ const PREGUNTAS = [
     },
     {
         pregunta: '¿Cómo os contacto?',
-        claves: ['contacto', 'contactar', 'telefono', 'llamar', 'email', 'correo', 'hablar con alguien', 'persona', 'direccion'],
-        respuesta: 'Escríbenos a <a href="mailto:info@sindicato-progresa.com">info@sindicato-progresa.com</a> o llámanos al <a href="tel:+34910735435">910 735 435</a> o al <a href="tel:+34685049357">685 049 357</a>.'
+        claves: ['contacto', 'contactar', 'telefono', 'whatsapp', 'wasap', 'llamar', 'email', 'correo', 'hablar con alguien', 'persona', 'direccion'],
+        respuesta: 'Llámanos o escríbenos por <a href="https://wa.me/34685049357" target="_blank" rel="noopener">WhatsApp</a> al <a href="tel:+34685049357">685 049 357</a>, o mándanos un correo a <a href="mailto:s.gral@sindicato-progresa.com">s.gral@sindicato-progresa.com</a>.'
     }
 ];
 
