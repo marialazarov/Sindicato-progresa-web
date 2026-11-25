@@ -197,3 +197,16 @@ document.querySelectorAll('[data-cartel]').forEach(tab => {
         document.querySelectorAll('[data-cartel-titulo]').forEach(h => h.textContent = tab.dataset.cartelTexto);
     });
 });
+
+/* ---------- Bloques con fecha (p. ej. la Lotería de Navidad en la portada) ----------
+   <section data-visible-desde="AAAA-MM-DD" data-visible-hasta="AAAA-MM-DD" hidden>
+   Se muestran solo entre esas fechas (las dos incluidas). */
+(function () {
+    const h = new Date();
+    const hoy = `${h.getFullYear()}-${String(h.getMonth() + 1).padStart(2, '0')}-${String(h.getDate()).padStart(2, '0')}`;
+    document.querySelectorAll('[data-visible-desde], [data-visible-hasta]').forEach(el => {
+        const desde = el.dataset.visibleDesde || '0000-00-00';
+        const hasta = el.dataset.visibleHasta || '9999-12-31';
+        el.hidden = !(hoy >= desde && hoy <= hasta);
+    });
+})();

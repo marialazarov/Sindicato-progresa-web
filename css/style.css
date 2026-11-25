@@ -789,6 +789,50 @@ section[id]   { scroll-margin-top: 90px; }
 .cdm-link { font-size: .88rem; font-weight: 600; margin-left: .6rem; white-space: nowrap; }
 @media print { .cdm { display: none !important; } }
 
+/* ---------- Portada: Lotería de Navidad (colores del cartel) ---------- */
+.navidad {
+    --granate: #8E3B46; --marron: #5B4636; --crema: #F4ECE5; --oro: #C9A15A;
+    padding: 1.8rem 0;
+    background:
+        radial-gradient(circle at 8% 20%, rgba(142,59,70,.10) 0 40px, transparent 41px),
+        radial-gradient(circle at 92% 75%, rgba(201,161,90,.18) 0 55px, transparent 56px),
+        radial-gradient(rgba(142,59,70,.12) 1.5px, transparent 1.6px) 0 0 / 22px 22px,
+        var(--crema);
+}
+.navidad-box {
+    display: flex; align-items: center; gap: 2.2rem;
+    background: rgba(255,255,255,.75); border: 2px solid rgba(201,161,90,.55);
+    border-radius: 16px; padding: 1.5rem 2rem; color: var(--marron);
+    box-shadow: 0 10px 30px rgba(91,70,54,.12);
+}
+.navidad-img { flex: 0 0 150px; position: relative; display: block; border-radius: 6px; overflow: hidden; box-shadow: 0 8px 20px rgba(91,70,54,.3); transform: rotate(-2deg); transition: transform .2s ease; }
+.navidad-img:hover { transform: rotate(0) scale(1.03); }
+.navidad-img img { display: block; width: 100%; height: auto; }
+.navidad-img span { position: absolute; left: 0; right: 0; bottom: 0; background: rgba(91,70,54,.85); color: #fff; font-size: .8rem; font-weight: 600; text-align: center; padding: .3rem; }
+.navidad-txt { flex: 1; min-width: 0; }
+.navidad-tag { font-family: var(--fuente-titulos); font-weight: 700; text-transform: uppercase; letter-spacing: .08em; font-size: .85rem; color: var(--granate); margin-bottom: .2rem; }
+.navidad-script { font-family: "Dancing Script", cursive; text-transform: none; letter-spacing: 0; font-size: 1.7rem; color: var(--marron); margin: 0 .1rem; vertical-align: -2px; }
+.navidad h2 { color: var(--marron); font-size: 1.25rem; margin-bottom: .5rem; }
+.navidad-numero { display: flex; gap: .4rem; margin-bottom: .9rem; }
+.navidad-numero span {
+    font-family: var(--fuente-titulos); font-weight: 800; font-size: clamp(1.9rem, 4vw, 2.6rem); line-height: 1;
+    background: #fff; color: #222; border: 2px solid var(--oro); border-radius: 8px;
+    width: 1.45em; padding: .22em 0; text-align: center; box-shadow: 0 3px 0 rgba(201,161,90,.5);
+}
+.navidad-datos { list-style: none; padding: 0; margin: 0 0 .7rem; display: flex; flex-wrap: wrap; gap: .3rem 1.6rem; }
+.navidad-datos i, .navidad-donde i { color: var(--granate); margin-right: .3rem; }
+.navidad-donde { margin-bottom: 1rem; }
+.navidad-btn { background: var(--granate); color: #fff; border: 2px solid var(--granate); }
+.navidad-btn:hover { background: var(--marron); border-color: var(--marron); color: #fff; }
+.navidad-btn-outline { background: transparent; color: var(--granate); border: 2px solid var(--granate); }
+.navidad-btn-outline:hover { background: var(--granate); color: #fff; }
+@media (max-width: 575.98px) {
+    .navidad-box { flex-direction: column; text-align: center; padding: 1.4rem 1.1rem; gap: 1.2rem; }
+    .navidad-img { flex-basis: auto; width: 170px; }
+    .navidad-numero, .navidad-datos, .navidad-box .d-flex { justify-content: center; }
+}
+@media print { .navidad { display: none !important; } }
+
 /* ---------- Página de carteles ---------- */
 .cartel-card { --ev: var(--azul); height: 100%; display: flex; flex-direction: column; }
 .cartel-card-img {
