@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear cartel · Sindicato Progresa</title>
+    <meta name="robots" content="noindex, nofollow">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="css/style.css?v=20261125i" rel="stylesheet">
+</head>
+<body>
+
+<!-- ===== Barra superior de contacto ===== -->
+<div class="topbar">
+    <div class="container d-flex flex-wrap justify-content-between align-items-center gap-2">
+        <div class="d-flex flex-wrap gap-3">
+            <a href="mailto:s.gral@sindicato-progresa.com"><i class="bi bi-envelope"></i> s.gral@sindicato-progresa.com</a>
+            <a href="tel:+34685049357"><i class="bi bi-telephone"></i> 685 049 357</a>
+            <a href="https://wa.me/34685049357" target="_blank" rel="noopener"><i class="bi bi-whatsapp"></i> WhatsApp</a>
+        </div>
+        <div class="d-flex align-items-center gap-3">
+            <span class="d-none d-lg-inline">Organización sindical estatal, plural y autónoma</span>
+            <a href="crear-cartel.html" class="topbar-admin active" aria-current="page"><i class="bi bi-lock-fill"></i> Zona administradores</a>
+        </div>
+    </div>
+</div>
+
+<!-- ===== Navegación ===== -->
+<nav class="navbar navbar-expand-xl sticky-top main-nav">
+    <div class="container">
+        <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+            <img src="img/logo.jpg" alt="Logo Sindicato Progresa" width="54" height="51">
+            <span class="brand-text">SINDICATO<br>PROGRESA</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Abrir menú">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="menu">
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+                <li class="nav-item"><a class="nav-link" href="index.html#quienes-somos">Quiénes somos</a></li>
+                <li class="nav-item"><a class="nav-link" href="index.html#servicios">Servicios</a></li>
+                <li class="nav-item"><a class="nav-link" href="calendario.html">Calendario laboral</a></li>
+                <li class="nav-item"><a class="nav-link" href="legislacion.html">Legislación</a></li>
+                <li class="nav-item"><a class="nav-link" href="convenios.html">Convenios</a></li>
+                <li class="nav-item"><a class="nav-link" href="carteles.html">Carteles</a></li>
+                <li class="nav-item"><a class="nav-link" href="index.html#contacto">Contacto</a></li>
+            </ul>
+            <a class="btn btn-afiliate" href="afiliacion.html">Afíliate</a>
+        </div>
+    </div>
+</nav>
+<div class="color-stripe" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+
+<main>
+
+<section class="page-header py-4">
+    <div class="container">
+        <p class="eyebrow">Zona de administración</p>
+        <h1 class="h2 mb-1">Crear un cartel</h1>
+        <p class="lead mb-0">Rellena el formulario, mira cómo queda y descárgalo en PDF o en imagen.</p>
+    </div>
+</section>
+
+<!-- ===== Acceso con la contraseña común ===== -->
+<section class="section pt-4" id="acceso">
+    <div class="container">
+        <form class="admin-login" id="form-acceso" autocomplete="off">
+            <i class="bi bi-lock-fill"></i>
+            <h2 class="h4">Solo para administradores</h2>
+            <label class="form-label" for="clave">Contraseña</label>
+            <input class="form-control form-control-lg" type="password" id="clave" required>
+            <p class="text-danger small mt-2 mb-0" id="clave-error" hidden>Contraseña incorrecta.</p>
+            <button class="btn btn-primary btn-lg w-100 mt-3" type="submit">Entrar</button>
+        </form>
+    </div>
+</section>
+
+<!-- ===== Herramienta ===== -->
+<section class="section pt-4" id="editor" hidden>
+    <div class="container">
+        <div class="row g-4 g-xl-5">
+            <!-- Formulario -->
+            <div class="col-lg-6 col-xl-5">
+                <form class="editor-form" id="form-cartel" autocomplete="off">
+                    <div class="editor-step">
+                        <label class="form-label editor-step-title" for="plantilla"><span>1</span> Empieza desde…</label>
+                        <select class="form-select" id="plantilla"></select>
+                    </div>
+
+                    <div class="editor-step">
+                        <p class="form-label editor-step-title"><span>2</span> Lo más importante</p>
+                        <label class="form-label small" for="f-grande">Texto muy grande <em>(corto: 8M, ASAMBLEA, HUELGA…)</em></label>
+                        <input class="form-control" id="f-grande" maxlength="14">
+                        <label class="form-label small mt-2" for="f-subtitulo">Subtítulo</label>
+                        <input class="form-control" id="f-subtitulo" maxlength="80">
+                        <label class="form-label small mt-2" for="f-lema">Frase principal <em>(pulsa Intro para cambiar de línea)</em></label>
+                        <textarea class="form-control" id="f-lema" rows="2" maxlength="90"></textarea>
+                        <label class="form-label small mt-2" for="f-fecha">Fecha o etiqueta de arriba <em>(opcional)</em></label>
+                        <input class="form-control" id="f-fecha" maxlength="40" placeholder="Jueves 12 de diciembre · 18:00">
+                    </div>
+
+                    <div class="editor-step">
+                        <p class="form-label editor-step-title"><span>3</span> Información</p>
+                        <label class="form-label small" for="f-titulo-caja">Título de la caja blanca</label>
+                        <input class="form-control" id="f-titulo-caja" maxlength="40" placeholder="Tus derechos, Orden del día, Dónde y cuándo…">
+                        <p class="small text-secondary mt-2 mb-1">Puntos (hasta 5). Para poner algo en <b>negrita</b>, escríbelo entre asteriscos: *así*.</p>
+                        <div id="puntos"></div>
+                    </div>
+
+                    <div class="editor-step">
+                        <p class="form-label editor-step-title"><span>4</span> Imagen <em class="fw-normal small">(opcional)</em></p>
+                        <input class="form-control" type="file" id="f-imagen" accept="image/*">
+                        <button class="btn btn-sm btn-link px-0" type="button" id="quitar-imagen" hidden>Quitar imagen</button>
+                    </div>
+
+                    <div class="editor-step">
+                        <p class="form-label editor-step-title"><span>5</span> Colores y final</p>
+                        <div class="color-swatches" id="colores"></div>
+                        <div class="row g-2 mt-1">
+                            <div class="col-sm-6">
+                                <label class="form-label small" for="f-icono">Dibujo de fondo</label>
+                                <select class="form-select form-select-sm" id="f-icono"></select>
+                            </div>
+                            <div class="col-sm-6 d-flex align-items-end">
+                                <div class="form-check mb-1">
+                                    <input class="form-check-input" type="checkbox" id="f-arcoiris">
+                                    <label class="form-check-label small" for="f-arcoiris">Franja arcoíris abajo</label>
+                                </div>
+                            </div>
+                        </div>
+                        <label class="form-label small mt-2" for="f-llamada">Frase final</label>
+                        <input class="form-control" id="f-llamada" maxlength="90" placeholder="¿Tienes dudas? Te asesoramos.">
+                        <div class="form-check mt-2">
+                            <input class="form-check-input" type="checkbox" id="f-resaltar">
+                            <label class="form-check-label small" for="f-resaltar">Resaltar la frase final en un recuadro</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="f-contacto" checked>
+                            <label class="form-check-label small" for="f-contacto">Poner el WhatsApp y el correo del sindicato</label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Vista previa y descarga -->
+            <div class="col-lg-6 col-xl-7">
+                <div class="editor-preview">
+                    <div class="editor-actions">
+                        <button class="btn btn-afiliate" type="button" id="descargar-pdf"><i class="bi bi-file-earmark-pdf"></i> Descargar PDF</button>
+                        <button class="btn btn-primary" type="button" id="descargar-img"><i class="bi bi-image"></i> Descargar imagen</button>
+                        <button class="btn btn-outline-secondary" type="button" id="reiniciar"><i class="bi bi-arrow-counterclockwise"></i> Empezar de nuevo</button>
+                    </div>
+                    <p class="editor-aviso" id="aviso-largo" hidden><i class="bi bi-exclamation-triangle-fill"></i> Hay demasiado texto y no cabe todo: acorta algún punto o quita la imagen.</p>
+                    <p class="editor-aviso editor-aviso--ok" id="aviso-descarga" hidden></p>
+                    <div class="editor-frame" id="marco">
+                        <iframe src="carteles/cartel-dia.html?editor=1&amp;v=20261125b" id="vista" title="Vista previa del cartel" tabindex="-1"></iframe>
+                    </div>
+                    <p class="small text-secondary mt-2 mb-0">PDF en tamaño A3 (también se imprime bien en A4). La imagen sirve para WhatsApp o redes sociales.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+</main>
+
+<!-- ===== Pie ===== -->
+<footer class="footer">
+    <div class="color-stripe" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+    <div class="container py-5">
+        <div class="row g-4">
+            <div class="col-md-5">
+                <h5>SINDICATO PROGRESA</h5>
+                <p>Organización sindical estatal, plural, democrática y autónoma, creada y dirigida por trabajadores.</p>
+            </div>
+            <div class="col-6 col-md-3">
+                <h6>Navegación</h6>
+                <ul>
+                    <li><a href="index.html#quienes-somos">Quiénes somos</a></li>
+                    <li><a href="index.html#servicios">Servicios</a></li>
+                    <li><a href="calendario.html">Calendario laboral</a></li>
+                    <li><a href="legislacion.html">Legislación</a></li>
+                    <li><a href="convenios.html">Convenios</a></li>
+                    <li><a href="carteles.html">Carteles</a></li>
+                    <li><a href="afiliacion.html">Afíliate</a></li>
+                    <li><a href="index.html#contacto">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="col-6 col-md-4">
+                <h6>Legal</h6>
+                <ul>
+                    <li><a href="aviso-legal.html">Aviso legal</a></li>
+                    <li><a href="privacidad.html">Política de privacidad</a></li>
+                    <li><a href="cookies.html">Política de cookies</a></li>
+                    <li><a href="#" data-cookie-settings>Configurar cookies</a></li>
+                    <li><a href="crear-cartel.html" class="footer-admin"><i class="bi bi-lock"></i> Zona administradores</a></li>
+                </ul>
+            </div>
+        </div>
+        <p class="copy">© <span id="anio"></span> Sindicato Progreso y Autonomía (PROGRESA) · CIF G87709242 · Avda. de Asturias, 16 · 28029 Madrid<br><span class="copy-legal">Estatutos depositados en el Ministerio de Trabajo, expediente nº 99/2016/006612</span></p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/main.js?v=20261125"></script>
+<script src="js/asistente.js"></script>
+<script src="js/calendario.js?v=20261124"></script>
+<script src="js/carteles.js?v=20261125"></script>
+<script src="js/crear-cartel.js?v=20261125d"></script>
+</body>
+</html>

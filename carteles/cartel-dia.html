@@ -2,57 +2,18 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
+<meta name="robots" content="noindex">
 <title>Cartel · Sindicato Progresa</title>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
 <link href="cartel.css" rel="stylesheet">
-<style>
-    /* Cartel de día importante o festivo (A3) */
-    .dia { background: var(--c1); color: #fff; position: relative; }
-    .dia::before {   /* degradado suave */
-        content: ""; position: absolute; inset: 0;
-        background: radial-gradient(circle at 85% 18%, rgba(255,255,255,.14), transparent 55%),
-                    linear-gradient(180deg, transparent 40%, var(--c2));
-    }
-    .dia > * { position: relative; }
-    .bg-icon { position: absolute; right: -28mm; top: 48mm; font-size: 250mm; line-height: 1; color: rgba(255,255,255,.07); }
-
-    .d-top { display: flex; align-items: center; justify-content: space-between; padding: 14mm 16mm 0; }
-    .d-brand { display: flex; align-items: center; gap: 4mm; }
-    .d-brand .logo { background: #fff; border-radius: 4mm; padding: 2mm; width: 30mm; }
-    .d-brand .logo img { width: 100%; display: block; }
-    .d-brand span { font-family: var(--titulos); font-weight: 800; font-size: 15pt; line-height: 1.05; letter-spacing: .04em; }
-    .d-date { background: var(--acento); color: var(--azul-oscuro); font-family: var(--titulos); font-weight: 800; font-size: 17pt; border-radius: 99px; padding: 3mm 7mm; }
-
-    .d-mid { flex: 1; display: flex; flex-direction: column; justify-content: space-evenly; padding: 4mm 0 8mm; }
-    .d-main { padding: 0 16mm; }
-    .d-siglas { font-family: var(--titulos); font-weight: 900; font-size: 215pt; line-height: .85; color: var(--acento); letter-spacing: -.02em; }
-    .d-siglas.largo { font-size: 150pt; }
-    .d-siglas small { display: block; font-size: 46pt; letter-spacing: .02em; margin-top: 4mm; }
-    .d-nombre { font-family: var(--titulos); font-weight: 700; font-size: 25pt; margin-top: 8mm; color: rgba(255,255,255,.88); }
-    .d-lema { font-family: var(--titulos); font-weight: 800; font-size: 58pt; line-height: 1.05; margin-top: 7mm; color: #fff; }
-
-    .d-card { margin: 0 16mm; background: #fff; color: var(--texto); border-radius: 5mm; padding: 8mm 9mm; box-shadow: 0 4mm 12mm rgba(0,0,0,.25); }
-    .d-card h2 { font-size: 15pt; letter-spacing: .12em; text-transform: uppercase; color: var(--c1); margin-bottom: 4mm; }
-    .d-item { display: flex; gap: 5mm; align-items: center; padding: 3.5mm 0; border-top: .4mm solid var(--borde); font-size: 19pt; line-height: 1.3; }
-    .d-item:first-of-type { border-top: 0; }
-    .d-item i { flex: none; width: 15mm; height: 15mm; border-radius: 50%; background: var(--c1); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 19pt; }
-    .d-item b { color: var(--azul-oscuro); }
-
-    .d-foot { margin-top: 0; }
-    .d-call { padding: 0 16mm 9mm; }
-    .d-call strong { display: block; font-family: var(--titulos); font-weight: 800; font-size: 25pt; line-height: 1.15; }
-    .d-call.fuerte strong { background: var(--acento); color: var(--azul-oscuro); border-radius: 4mm; padding: 5mm 7mm; }
-    .d-contact { display: flex; gap: 9mm; margin-top: 4mm; font-family: var(--titulos); font-weight: 700; font-size: 16pt; }
-    .d-contact span { display: inline-flex; align-items: center; gap: 2.5mm; }
-    .arcoiris { display: flex; height: 6mm; }
-    .arcoiris span { flex: 1; }
-</style>
+<link href="cartel-dia.css" rel="stylesheet">
 </head>
 <body>
-<!-- Un mismo diseño para todos los días:
+<!-- Un mismo diseño para todos los carteles:
        cartel-dia.html?id=8m                 → días importantes (js/carteles.js)
-       cartel-dia.html?festivo=2026-12-08    → festivos (js/calendario.js) -->
+       cartel-dia.html?festivo=2026-12-08    → festivos (js/calendario.js)
+       cartel-dia.html?editor=1              → vista previa de la herramienta crear-cartel.html -->
 <div class="poster dia" id="cartel">
     <i class="bi bg-icon" id="bg-icon"></i>
 
@@ -64,23 +25,25 @@
         <div class="d-date" id="fecha"></div>
     </header>
 
-    <div class="d-mid">
-    <main class="d-main">
-        <div class="d-siglas" id="siglas"></div>
-        <div class="d-nombre" id="nombre"></div>
-        <div class="d-lema" id="lema"></div>
-    </main>
+    <div class="d-mid" id="mid">
+        <main class="d-main">
+            <div class="d-siglas" id="siglas"></div>
+            <div class="d-nombre" id="nombre"></div>
+            <div class="d-lema" id="lema"></div>
+        </main>
 
-    <section class="d-card">
-        <h2 id="titulo-derechos">Tus derechos</h2>
-        <div id="derechos"></div>
-    </section>
+        <div class="d-foto" id="foto-caja" hidden><img id="foto" alt=""></div>
+
+        <section class="d-card" id="card">
+            <h2 id="titulo-derechos">Tus derechos</h2>
+            <div id="derechos"></div>
+        </section>
     </div>
 
     <footer class="d-foot p-foot">
         <div class="d-call" id="llamada-caja">
             <strong id="llamada"></strong>
-            <div class="d-contact">
+            <div class="d-contact" id="contacto">
                 <span><i class="bi bi-whatsapp"></i> 685 049 357</span>
                 <span><i class="bi bi-envelope"></i> s.gral@sindicato-progresa.com</span>
             </div>
@@ -88,7 +51,7 @@
         <div class="arcoiris" id="franja"></div>
         <div class="legal">
             <span>SINDICATO PROGRESA · Organización sindical estatal, plural, democrática y autónoma · sindicato-progresa.com</span>
-            <span>Información orientativa</span>
+            <span id="legal-der">Información orientativa</span>
         </div>
     </footer>
 </div>
@@ -96,10 +59,84 @@
 <script src="../js/calendario.js"></script>
 <script src="../js/carteles.js"></script>
 <script>
+/* Pinta el cartel a partir de un objeto con sus textos y colores.
+   La herramienta crear-cartel.html la llama con lo que escriben en el formulario. */
+function pintarCartel(d) {
+    const $ = id => document.getElementById(id);
+    const r = document.documentElement.style;
+    r.setProperty('--c1', d.color);
+    r.setProperty('--c2', d.color2 || d.color);
+    r.setProperty('--acento', d.acento || '#FFC914');
+
+    document.title = `Cartel ${d.nombre || ''} · Sindicato Progresa`;
+    $('fecha').textContent = d.fechaTexto || '';
+    $('fecha').hidden = !d.fechaTexto;
+
+    const siglas = $('siglas');
+    siglas.innerHTML = d.siglasHtml || '';
+    siglas.hidden = !d.siglasHtml;
+    siglas.classList.toggle('largo', (d.siglas || '').length > 3);
+    siglas.style.fontSize = '';
+
+    $('nombre').textContent = d.nombre || '';
+    $('nombre').hidden = !d.nombre;
+    $('lema').innerHTML = d.lema || '';
+    $('lema').hidden = !d.lema;
+    $('lema').style.fontSize = '';
+
+    $('bg-icon').className = 'bi bg-icon ' + (d.icono || '');
+
+    $('foto-caja').hidden = !d.imagen;
+    if (d.imagen) $('foto').src = d.imagen;
+
+    const puntos = (d.derechos || []).filter(p => p[1]);
+    $('card').hidden = !puntos.length;
+    $('titulo-derechos').textContent = d.tituloDerechos || '';
+    $('titulo-derechos').hidden = !d.tituloDerechos;
+    $('derechos').innerHTML = puntos
+        .map(([ico, txt]) => `<div class="d-item"><i class="bi ${ico}"></i><div>${txt}</div></div>`).join('');
+    $('derechos').style.fontSize = '';
+
+    $('llamada').textContent = d.llamada || '';
+    $('llamada').hidden = !d.llamada;
+    $('llamada-caja').classList.toggle('fuerte', !!d.llamadaFuerte);
+    $('contacto').hidden = d.contacto === false;
+    $('legal-der').textContent = d.legal ?? 'Información orientativa';
+
+    const franja = $('franja');
+    const colores = d.arcoiris
+        ? ['#E40303', '#FF8C00', '#FFED00', '#008026', '#004DFF', '#750787']
+        : ['#1E56D9', '#FFC914', '#E3262E', '#7BC425'];
+    franja.innerHTML = colores.map(c => `<span style="background:${c}"></span>`).join('');
+    franja.style.height = d.arcoiris ? '' : '3.2mm';
+
+    ajustar();
+}
+
+/* Si el texto es largo, reduce las letras hasta que todo quepa en el cartel */
+function ajustar() {
+    const $ = id => document.getElementById(id);
+    const siglas = $('siglas'), lema = $('lema'), puntos = $('derechos'), mid = $('mid');
+    let t = parseFloat(getComputedStyle(siglas).fontSize);
+    while (siglas.scrollWidth > siglas.clientWidth + 1 && t > 40) { t -= 4; siglas.style.fontSize = t + 'px'; }
+
+    let l = parseFloat(getComputedStyle(lema).fontSize);
+    let p = parseFloat(getComputedStyle(puntos).fontSize) || 25;
+    let s = parseFloat(getComputedStyle(siglas).fontSize);
+    const sobra = () => mid.scrollHeight > mid.clientHeight + 1;
+    for (let i = 0; i < 40 && sobra(); i++) {
+        if (s > 90) { s *= .92; siglas.style.fontSize = s + 'px'; }
+        if (l > 34) { l *= .94; lema.style.fontSize = l + 'px'; }
+        if (p > 17) { p *= .95; puntos.style.fontSize = p + 'px'; }
+    }
+    document.body.dataset.cabe = sobra() ? 'no' : 'si';
+}
+
 (function () {
     const q = new URLSearchParams(location.search);
-    let d;
+    if (q.get('editor')) return;   // la herramienta manda los datos ella misma
 
+    let d;
     if (q.get('festivo')) {
         // ---- Cartel de festivo, a partir del calendario laboral ----
         const fecha = q.get('festivo');
@@ -135,32 +172,8 @@
             tituloDerechos: 'Tus derechos'
         };
     }
-
-    const r = document.documentElement.style;
-    r.setProperty('--c1', d.color);
-    r.setProperty('--c2', d.color2);
-    r.setProperty('--acento', d.acento);
-
-    document.title = `Cartel ${d.nombre} · Sindicato Progresa`;
-    document.getElementById('fecha').textContent = d.fechaTexto;
-    const siglas = document.getElementById('siglas');
-    siglas.innerHTML = d.siglasHtml;
-    if (d.siglas && d.siglas.length > 3) siglas.classList.add('largo');
-    document.getElementById('nombre').textContent = d.nombre;
-    document.getElementById('lema').innerHTML = d.lema;
-    document.getElementById('bg-icon').classList.add(d.icono);
-    document.getElementById('titulo-derechos').textContent = d.tituloDerechos;
-    document.getElementById('derechos').innerHTML = d.derechos
-        .map(([ico, txt]) => `<div class="d-item"><i class="bi ${ico}"></i><div>${txt}</div></div>`).join('');
-    document.getElementById('llamada').textContent = d.llamada;
-    if (d.llamadaFuerte) document.getElementById('llamada-caja').classList.add('fuerte');
-
-    const franja = document.getElementById('franja');
-    const colores = d.arcoiris
-        ? ['#E40303', '#FF8C00', '#FFED00', '#008026', '#004DFF', '#750787']
-        : ['#1E56D9', '#FFC914', '#E3262E', '#7BC425'];
-    franja.innerHTML = colores.map(c => `<span style="background:${c}"></span>`).join('');
-    if (!d.arcoiris) franja.style.height = '3.2mm';
+    // Esperar a las fuentes para medir bien al ajustar
+    document.fonts.ready.then(() => pintarCartel(d));
 })();
 </script>
 </body>
