@@ -901,3 +901,38 @@ section[id]   { scroll-margin-top: 90px; }
     font-weight: 600; white-space: nowrap;
 }
 .topbar .topbar-admin:hover, .topbar .topbar-admin.active { background: #fff; color: var(--bs-primary, #1E56D9); border-color: #fff; }
+
+/* Ficha para rellenar a mano (afiliacion.html) */
+.a-mano {
+    margin-top: 2.5rem; padding: 2rem 1.5rem;
+    background: #F4F7FD; border: 2px dashed #B9C8EC; border-radius: 1rem;
+    scroll-margin-top: 110px;
+}
+.a-mano-card {
+    display: flex; gap: 1.2rem; align-items: center; height: 100%;
+    background: #fff; border-radius: .8rem; padding: 1.1rem;
+    box-shadow: 0 4px 16px rgba(11, 31, 77, .08);
+}
+.a-mano-thumb {
+    flex: 0 0 120px; display: block; background: #fff; padding: 4px;
+    border: 1px solid #DDE3F0; border-radius: 4px;
+    box-shadow: 0 6px 14px rgba(11, 31, 77, .15);
+    transform: rotate(-3deg); transition: transform .2s ease;
+}
+.a-mano-thumb:hover { transform: rotate(0) scale(1.04); }
+.a-mano-thumb img { display: block; width: 100%; height: auto; }
+.a-mano-card h3 { font-size: 1.25rem; margin-bottom: .3rem; }
+.a-mano-card p { color: var(--bs-secondary-color, #5b6478); margin-bottom: .8rem; }
+.a-mano-pasos {
+    list-style: none; padding: 0; margin: 0;
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem 1.5rem;
+}
+.a-mano-pasos li { display: flex; gap: .7rem; align-items: flex-start; font-size: 1.05rem; }
+.a-mano-pasos i {
+    flex: 0 0 2.4rem; height: 2.4rem; display: grid; place-items: center;
+    border-radius: 50%; background: var(--bs-primary, #1E56D9); color: #fff; font-size: 1.1rem;
+}
+@media (max-width: 420px) {
+    .a-mano { padding: 1.5rem 1rem; }
+    .a-mano-thumb { flex-basis: 90px; }
+}

@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
-    <link href="css/style.css?v=20261125i" rel="stylesheet">
+    <link href="css/style.css?v=20261125m" rel="stylesheet">
 </head>
 <body>
 
@@ -64,7 +64,7 @@
     <div class="container">
         <p class="eyebrow">Únete a PROGRESA</p>
         <h1>Afiliación</h1>
-        <p class="lead">Rellena tu ficha aquí, descárgala ya rellena, fírmala y envíanosla. Así de fácil.</p>
+        <p class="lead">Rellena tu ficha aquí, descárgala ya rellena, fírmala y envíanosla. Así de fácil. ¿Prefieres en papel? <a href="#a-mano">Descarga la ficha para rellenarla a mano</a>.</p>
     </div>
 </section>
 
@@ -404,10 +404,43 @@
                     </div>
                 </div>
 
-                <p class="small text-secondary mt-4 mb-0">¿Prefieres rellenarla a mano? Descarga la ficha en blanco:
-                    <a href="docs/ficha-nomina.pdf" target="_blank">descuento en nómina</a> ·
-                    <a href="docs/ficha-banco.pdf" target="_blank">pago por banco</a>.
-                </p>
+                <div class="a-mano" id="a-mano">
+                    <p class="eyebrow mb-1">Otra opción</p>
+                    <h2 class="h3">¿Prefieres rellenarla a mano?</h2>
+                    <p class="lead mb-4">Descarga la ficha en blanco, imprímela y rellénala con tranquilidad.</p>
+                    <div class="row g-3 mb-4">
+                        <div class="col-md-6">
+                            <div class="a-mano-card">
+                                <a href="docs/ficha-nomina.pdf" target="_blank" class="a-mano-thumb" aria-label="Ver la ficha descuento en nómina">
+                                    <img src="img/ficha-nomina.jpg" alt="Ficha de afiliación descuento en nómina en blanco" width="367" height="520" loading="lazy">
+                                </a>
+                                <div>
+                                    <h3>Descuento en nómina</h3>
+                                    <p>La cuota se descuenta cada mes de tu nómina.</p>
+                                    <a href="docs/ficha-nomina.pdf" download="Ficha-afiliacion-nomina-Progresa.pdf" class="btn btn-primary btn-lg"><i class="bi bi-download"></i> Descargar</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="a-mano-card">
+                                <a href="docs/ficha-banco.pdf" target="_blank" class="a-mano-thumb" aria-label="Ver la ficha pago por banco">
+                                    <img src="img/ficha-banco.jpg" alt="Ficha de afiliación pago por banco en blanco" width="367" height="520" loading="lazy">
+                                </a>
+                                <div>
+                                    <h3>Pago por banco</h3>
+                                    <p>La cuota se cobra cada trimestre en tu cuenta.</p>
+                                    <a href="docs/ficha-banco.pdf" download="Ficha-afiliacion-banco-Progresa.pdf" class="btn btn-primary btn-lg"><i class="bi bi-download"></i> Descargar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <ol class="a-mano-pasos">
+                        <li><i class="bi bi-printer"></i><span><strong>Imprímela</strong> en un folio A4.</span></li>
+                        <li><i class="bi bi-pencil"></i><span><strong>Rellénala</strong> con letra clara, en mayúsculas.</span></li>
+                        <li><i class="bi bi-vector-pen"></i><span><strong>Fírmala</strong> en los recuadros de «Fecha y firma».</span></li>
+                        <li><i class="bi bi-send"></i><span><strong>Entrégala</strong> a tu delegado/a o envíanos una foto a <a href="mailto:s.gral@sindicato-progresa.com">s.gral@sindicato-progresa.com</a> o por <a href="https://wa.me/34685049357" target="_blank" rel="noopener">WhatsApp</a>.</span></li>
+                    </ol>
+                </div>
             </div>
         </div>
     </div>
