@@ -118,6 +118,10 @@ section[id]   { scroll-margin-top: 90px; }
 }
 .main-nav .nav-link:hover,
 .main-nav .nav-link.active { color: var(--azul); }
+/* Con 8 apartados en el menú, un poco menos de aire en pantallas medianas */
+@media (min-width: 1200px) and (max-width: 1399.98px) {
+    .main-nav .navbar-nav .nav-link { padding-left: .55rem !important; padding-right: .55rem !important; }
+}
 
 /* Franja de 4 colores (las piezas del puzle) */
 .color-stripe { display: flex; height: 5px; }
@@ -699,3 +703,111 @@ section[id]   { scroll-margin-top: 90px; }
 .firma-caja.has-firma .firma-guia { color: transparent; }
 .firma-borrar { position: absolute; top: .6rem; right: .6rem; }
 [data-final][hidden] { display: none; }
+
+/* ---------- Carteles para descargar (cabecera de legislación, convenios y calendario) ---------- */
+.poster-hero {
+    display: flex;
+    align-items: center;
+    gap: 1.8rem;
+    background: var(--azul-oscuro);
+    color: #fff;
+    border-radius: 14px;
+    padding: 1.8rem 1.8rem 2.1rem;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 14px 34px rgba(11, 31, 77, .22);
+}
+.poster-hero::after {   /* franja de colores del logo */
+    content: "";
+    position: absolute; left: 0; right: 0; bottom: 0; height: 6px;
+    background: linear-gradient(90deg, var(--azul) 0 25%, var(--amarillo) 25% 50%, var(--rojo) 50% 75%, var(--verde) 75%);
+}
+.poster-dl-thumb {
+    flex: 0 0 132px;
+    display: block;
+    background: #fff;
+    padding: 5px;
+    border-radius: 3px;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, .4);
+    transform: rotate(-4deg);
+    transition: transform .2s ease;
+    position: relative;
+    margin-top: 8px;
+}
+.poster-dl-thumb::before {   /* chincheta */
+    content: "";
+    position: absolute; top: -8px; left: 50%; width: 18px; height: 18px; margin-left: -9px;
+    border-radius: 50%;
+    background: var(--rojo);
+    box-shadow: inset -3px -3px 0 rgba(0, 0, 0, .2), 0 2px 4px rgba(0, 0, 0, .3);
+}
+.poster-dl-thumb:hover { transform: rotate(0) scale(1.04); }
+.poster-dl-thumb img { display: block; width: 100%; height: auto; }
+.poster-hero-tag {
+    font-family: var(--fuente-titulos);
+    font-size: .78rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+    color: var(--amarillo); margin-bottom: .4rem;
+}
+.poster-hero h2 { color: #fff; font-size: 1.45rem; margin-bottom: .5rem; }
+.poster-hero p { color: #C9D4F0; font-size: 1rem; margin-bottom: 1rem; }
+.poster-hero .btn-afiliate { display: inline-flex; gap: .45rem; align-items: center; font-size: 1.05rem; padding: .65rem 1.3rem; }
+.poster-hero-link { display: inline-block; color: #fff; margin: .7rem 0 0 .2rem; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+.poster-hero-link:hover { color: var(--amarillo); }
+.poster-hero-link i { margin-right: .3rem; }
+.poster-hero small { display: block; color: #93A2C8; font-size: .82rem; margin-top: .6rem; }
+@media (max-width: 575.98px) {
+    .poster-hero { gap: 1.2rem; padding: 1.4rem 1.2rem 1.8rem; align-items: flex-start; }
+    .poster-dl-thumb { flex-basis: 96px; }
+    .poster-hero h2 { font-size: 1.2rem; }
+    .poster-hero p { font-size: .95rem; }
+}
+
+/* ---------- Portada: cartel del mes (tarjeta clavada justo debajo de la imagen) ---------- */
+.cdm {
+    --ev: var(--azul);
+    position: relative;
+    display: flex; gap: 1.1rem; align-items: center;
+    margin-top: 1.6rem;
+    background: #fff; border-radius: 12px; border-top: 5px solid var(--ev);
+    padding: 1.2rem 1.3rem 1.1rem;
+    box-shadow: 0 14px 32px rgba(11, 31, 77, .16);
+}
+.cdm::before {   /* chincheta que la sujeta */
+    content: "";
+    position: absolute; top: -14px; left: 50%; width: 22px; height: 22px; margin-left: -11px;
+    border-radius: 50%; background: var(--rojo);
+    box-shadow: inset -4px -4px 0 rgba(0, 0, 0, .2), 0 3px 5px rgba(0, 0, 0, .3);
+}
+.cdm .poster-dl-thumb { flex: 0 0 84px; margin-top: 0; padding: 3px; transform: rotate(-3deg); box-shadow: 0 6px 14px rgba(0,0,0,.25); }
+.cdm .poster-dl-thumb::before { display: none; }
+.cdm-txt { flex: 1; min-width: 0; }
+.cdm-tag { font-family: var(--fuente-titulos); font-weight: 800; font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; color: var(--ev); margin: 0; }
+.cdm-fecha { font-size: .88rem; color: var(--texto-suave); margin: .1rem 0 .25rem; }
+.cdm h2 { font-size: 1.05rem; line-height: 1.25; margin-bottom: .65rem; }
+.cdm-siglas { color: var(--ev); font-weight: 800; }
+.cdm .btn { display: inline-flex; gap: .35rem; align-items: center; }
+.cdm-link { font-size: .88rem; font-weight: 600; margin-left: .6rem; white-space: nowrap; }
+@media print { .cdm { display: none !important; } }
+
+/* ---------- Página de carteles ---------- */
+.cartel-card { --ev: var(--azul); height: 100%; display: flex; flex-direction: column; }
+.cartel-card-img {
+    display: block; position: relative; background: #fff;
+    border: 1px solid var(--borde); border-radius: 8px; padding: 6px;
+    box-shadow: 0 6px 18px rgba(11, 31, 77, .1);
+    transition: transform .2s ease, box-shadow .2s ease;
+}
+.cartel-card-img:hover { transform: translateY(-4px); box-shadow: 0 12px 26px rgba(11, 31, 77, .18); }
+.cartel-card-img img { display: block; width: 100%; height: auto; border-radius: 3px; }
+.cartel-card.is-next .cartel-card-img { border: 3px solid var(--amarillo); }
+.cartel-card-badge {
+    position: absolute; top: -10px; left: 50%; transform: translateX(-50%);
+    background: var(--amarillo); color: var(--azul-oscuro);
+    font-family: var(--fuente-titulos); font-weight: 800; font-size: .72rem; letter-spacing: .08em; text-transform: uppercase;
+    border-radius: 999px; padding: .2rem .7rem; white-space: nowrap;
+}
+.cartel-card-date { margin: .8rem 0 .15rem; font-size: .85rem; font-weight: 600; color: var(--ev); text-transform: uppercase; letter-spacing: .04em; }
+.cartel-card h3 { font-size: 1rem; line-height: 1.25; margin-bottom: .7rem; flex: 1; }
+.cartel-card .btn { align-self: flex-start; }
+@media print { .cartel-del-mes { display: none !important; } }
+@media print { .poster-hero { display: none !important; } }

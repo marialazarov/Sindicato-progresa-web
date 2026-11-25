@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Cartel · Sindicato Progresa</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+<link href="cartel.css" rel="stylesheet">
+<style>
+    /* Cartel de día importante o festivo (A3) */
+    .dia { background: var(--c1); color: #fff; position: relative; }
+    .dia::before {   /* degradado suave */
+        content: ""; position: absolute; inset: 0;
+        background: radial-gradient(circle at 85% 18%, rgba(255,255,255,.14), transparent 55%),
+                    linear-gradient(180deg, transparent 40%, var(--c2));
+    }
+    .dia > * { position: relative; }
+    .bg-icon { position: absolute; right: -28mm; top: 48mm; font-size: 250mm; line-height: 1; color: rgba(255,255,255,.07); }
+
+    .d-top { display: flex; align-items: center; justify-content: space-between; padding: 14mm 16mm 0; }
+    .d-brand { display: flex; align-items: center; gap: 4mm; }
+    .d-brand .logo { background: #fff; border-radius: 4mm; padding: 2mm; width: 30mm; }
+    .d-brand .logo img { width: 100%; display: block; }
+    .d-brand span { font-family: var(--titulos); font-weight: 800; font-size: 15pt; line-height: 1.05; letter-spacing: .04em; }
+    .d-date { background: var(--acento); color: var(--azul-oscuro); font-family: var(--titulos); font-weight: 800; font-size: 17pt; border-radius: 99px; padding: 3mm 7mm; }
+
+    .d-mid { flex: 1; display: flex; flex-direction: column; justify-content: space-evenly; padding: 4mm 0 8mm; }
+    .d-main { padding: 0 16mm; }
+    .d-siglas { font-family: var(--titulos); font-weight: 900; font-size: 215pt; line-height: .85; color: var(--acento); letter-spacing: -.02em; }
+    .d-siglas.largo { font-size: 150pt; }
+    .d-siglas small { display: block; font-size: 46pt; letter-spacing: .02em; margin-top: 4mm; }
+    .d-nombre { font-family: var(--titulos); font-weight: 700; font-size: 25pt; margin-top: 8mm; color: rgba(255,255,255,.88); }
+    .d-lema { font-family: var(--titulos); font-weight: 800; font-size: 58pt; line-height: 1.05; margin-top: 7mm; color: #fff; }
+
+    .d-card { margin: 0 16mm; background: #fff; color: var(--texto); border-radius: 5mm; padding: 8mm 9mm; box-shadow: 0 4mm 12mm rgba(0,0,0,.25); }
+    .d-card h2 { font-size: 15pt; letter-spacing: .12em; text-transform: uppercase; color: var(--c1); margin-bottom: 4mm; }
+    .d-item { display: flex; gap: 5mm; align-items: center; padding: 3.5mm 0; border-top: .4mm solid var(--borde); font-size: 19pt; line-height: 1.3; }
+    .d-item:first-of-type { border-top: 0; }
+    .d-item i { flex: none; width: 15mm; height: 15mm; border-radius: 50%; background: var(--c1); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 19pt; }
+    .d-item b { color: var(--azul-oscuro); }
+
+    .d-foot { margin-top: 0; }
+    .d-call { padding: 0 16mm 9mm; }
+    .d-call strong { display: block; font-family: var(--titulos); font-weight: 800; font-size: 25pt; line-height: 1.15; }
+    .d-call.fuerte strong { background: var(--acento); color: var(--azul-oscuro); border-radius: 4mm; padding: 5mm 7mm; }
+    .d-contact { display: flex; gap: 9mm; margin-top: 4mm; font-family: var(--titulos); font-weight: 700; font-size: 16pt; }
+    .d-contact span { display: inline-flex; align-items: center; gap: 2.5mm; }
+    .arcoiris { display: flex; height: 6mm; }
+    .arcoiris span { flex: 1; }
+</style>
+</head>
+<body>
+<!-- Un mismo diseño para todos los días:
+       cartel-dia.html?id=8m                 → días importantes (js/carteles.js)
+       cartel-dia.html?festivo=2026-12-08    → festivos (js/calendario.js) -->
+<div class="poster dia" id="cartel">
+    <i class="bi bg-icon" id="bg-icon"></i>
+
+    <header class="d-top">
+        <div class="d-brand">
+            <div class="logo"><img src="../img/logo.jpg" alt="Sindicato Progresa"></div>
+            <span>SINDICATO<br>PROGRESA</span>
+        </div>
+        <div class="d-date" id="fecha"></div>
+    </header>
+
+    <div class="d-mid">
+    <main class="d-main">
+        <div class="d-siglas" id="siglas"></div>
+        <div class="d-nombre" id="nombre"></div>
+        <div class="d-lema" id="lema"></div>
+    </main>
+
+    <section class="d-card">
+        <h2 id="titulo-derechos">Tus derechos</h2>
+        <div id="derechos"></div>
+    </section>
+    </div>
+
+    <footer class="d-foot p-foot">
+        <div class="d-call" id="llamada-caja">
+            <strong id="llamada"></strong>
+            <div class="d-contact">
+                <span><i class="bi bi-whatsapp"></i> 685 049 357</span>
+                <span><i class="bi bi-envelope"></i> s.gral@sindicato-progresa.com</span>
+            </div>
+        </div>
+        <div class="arcoiris" id="franja"></div>
+        <div class="legal">
+            <span>SINDICATO PROGRESA · Organización sindical estatal, plural, democrática y autónoma · sindicato-progresa.com</span>
+            <span>Información orientativa</span>
+        </div>
+    </footer>
+</div>
+
+<script src="../js/calendario.js"></script>
+<script src="../js/carteles.js"></script>
+<script>
+(function () {
+    const q = new URLSearchParams(location.search);
+    let d;
+
+    if (q.get('festivo')) {
+        // ---- Cartel de festivo, a partir del calendario laboral ----
+        const fecha = q.get('festivo');
+        const anio = Number(fecha.slice(0, 4));
+        const f = FESTIVOS[anio].dias.find(x => x.fecha === fecha);
+        const [, m, dd] = fecha.split('-').map(Number);
+        const COLORES = {
+            nacional:   ['#E3262E', '#A3161C', 'Es festivo en <b>toda España</b>.'],
+            autonomico: ['#1E56D9', '#0B1F4D', 'Es festivo en <b>toda la Comunidad de Madrid</b>.'],
+            local:      ['#3F8A12', '#25560A', 'Es festivo local de <b>Madrid capital</b>: cuenta el municipio donde está tu centro de trabajo.']
+        };
+        const [c1, c2, donde] = COLORES[f.tipo];
+        d = {
+            fechaTexto: `${DIAS_SEMANA[new Date(anio, m - 1, dd).getDay()]} ${dd} de ${MESES_CARTEL[m - 1]}`,
+            siglasHtml: `${dd}<small>${MESES_CARTEL[m - 1].toUpperCase()}</small>`,
+            nombre: f.nombre,
+            lema: 'Día festivo,<br>pagado y no recuperable',
+            color: c1, color2: c2, acento: '#FFC914', icono: 'bi-calendar-heart',
+            tituloDerechos: 'Lo que tienes que saber',
+            derechos: [
+                ['bi-cash-coin',     'Es un día <b>pagado</b> y no tienes que recuperarlo.'],
+                ['bi-arrow-repeat',  'Si te toca trabajar, tu empresa debe <b>compensártelo</b> con descanso o pagártelo según tu convenio.'],
+                ['bi-geo-alt',       donde]
+            ],
+            llamada: '¿No te respetan los festivos? Te asesoramos.'
+        };
+    } else {
+        // ---- Cartel de día importante ----
+        const x = DIAS_IMPORTANTES.find(y => y.id === q.get('id')) || DIAS_IMPORTANTES[0];
+        d = { ...x,
+            fechaTexto: `${x.dia} de ${MESES_CARTEL[x.mes - 1]}`,
+            siglasHtml: x.siglas,
+            tituloDerechos: 'Tus derechos'
+        };
+    }
+
+    const r = document.documentElement.style;
+    r.setProperty('--c1', d.color);
+    r.setProperty('--c2', d.color2);
+    r.setProperty('--acento', d.acento);
+
+    document.title = `Cartel ${d.nombre} · Sindicato Progresa`;
+    document.getElementById('fecha').textContent = d.fechaTexto;
+    const siglas = document.getElementById('siglas');
+    siglas.innerHTML = d.siglasHtml;
+    if (d.siglas && d.siglas.length > 3) siglas.classList.add('largo');
+    document.getElementById('nombre').textContent = d.nombre;
+    document.getElementById('lema').innerHTML = d.lema;
+    document.getElementById('bg-icon').classList.add(d.icono);
+    document.getElementById('titulo-derechos').textContent = d.tituloDerechos;
+    document.getElementById('derechos').innerHTML = d.derechos
+        .map(([ico, txt]) => `<div class="d-item"><i class="bi ${ico}"></i><div>${txt}</div></div>`).join('');
+    document.getElementById('llamada').textContent = d.llamada;
+    if (d.llamadaFuerte) document.getElementById('llamada-caja').classList.add('fuerte');
+
+    const franja = document.getElementById('franja');
+    const colores = d.arcoiris
+        ? ['#E40303', '#FF8C00', '#FFED00', '#008026', '#004DFF', '#750787']
+        : ['#1E56D9', '#FFC914', '#E3262E', '#7BC425'];
+    franja.innerHTML = colores.map(c => `<span style="background:${c}"></span>`).join('');
+    if (!d.arcoiris) franja.style.height = '3.2mm';
+})();
+</script>
+</body>
+</html>

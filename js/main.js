@@ -183,3 +183,17 @@ document.addEventListener('DOMContentLoaded', () => {
         })
     );
 });
+
+/* ---------- Convenios: el cartel de la cabecera cambia con la pestaña ---------- */
+document.querySelectorAll('[data-cartel]').forEach(tab => {
+    tab.addEventListener('shown.bs.tab', () => {
+        const pdf = `docs/${tab.dataset.cartel}.pdf`;
+        document.querySelectorAll('[data-cartel-ver]').forEach(a => a.href = pdf);
+        document.querySelectorAll('[data-cartel-descargar]').forEach(a => {
+            a.href = pdf;
+            a.download = tab.dataset.cartelNombre;
+        });
+        document.querySelectorAll('[data-cartel-img]').forEach(img => img.src = `img/${tab.dataset.cartel}.jpg`);
+        document.querySelectorAll('[data-cartel-titulo]').forEach(h => h.textContent = tab.dataset.cartelTexto);
+    });
+});

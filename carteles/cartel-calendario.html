@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Cartel · Calendario laboral · Sindicato Progresa</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+<link href="cartel.css" rel="stylesheet">
+</head>
+<body>
+<!-- El año se elige en la dirección: cartel-calendario.html?anio=2027
+     Los festivos salen de js/calendario.js (el mismo archivo que usa la web). -->
+<div class="poster">
+
+    <header class="p-head">
+        <div class="logo"><img src="../img/logo.jpg" alt="Sindicato Progresa"></div>
+        <div>
+            <p class="eyebrow">Comunidad de Madrid · Madrid capital</p>
+            <h1>Calendario<br>laboral <span class="anio"></span></h1>
+            <p class="sub">Festivos pagados y no recuperables. Cuélgalo y tenlo siempre a mano.</p>
+        </div>
+    </header>
+    <div class="stripe"><span></span><span></span><span></span><span></span></div>
+
+    <main class="p-body">
+        <div class="cal-legend">
+            <span><i class="f--nacional"></i><b>Nacional</b></span>
+            <span><i class="f--autonomico"></i><b>Comunidad de Madrid</b></span>
+            <span><i class="f--local"></i><b>Local (Madrid capital)</b></span>
+        </div>
+
+        <section class="year" id="year"></section>
+
+        <section>
+            <h2 class="p-title"><i class="bi bi-calendar-heart"></i> Los festivos de <span class="anio"></span></h2>
+            <div class="hl" id="lista"></div>
+            <p class="note" id="nota" style="margin-top:3mm"></p>
+        </section>
+
+        <section class="duo" style="grid-template-columns:repeat(3,1fr)">
+            <div class="tips"><h4>14 festivos al año</h4>Como máximo: 12 de la Comunidad y 2 locales de tu municipio.</div>
+            <div class="tips"><h4>Si trabajas un festivo</h4>Te lo tienen que compensar con descanso o pagarlo según tu convenio.</div>
+            <div class="tips"><h4>Festivos locales</h4>Cuentan los del municipio donde está tu trabajo, no donde vives.</div>
+        </section>
+    </main>
+
+    <footer class="p-foot">
+        <div class="cta">
+            <strong>¿No te respetan los festivos?<br>Te asesoramos.</strong>
+            <div class="contact">
+                <span><i class="bi bi-whatsapp"></i> 685 049 357</span>
+                <span><i class="bi bi-envelope"></i> s.gral@sindicato-progresa.com</span>
+            </div>
+        </div>
+        <div class="stripe"><span></span><span></span><span></span><span></span></div>
+        <div class="legal">
+            <span>SINDICATO PROGRESA · sindicato-progresa.com</span>
+            <span id="fuente"></span>
+        </div>
+    </footer>
+
+</div>
+
+<script src="../js/calendario.js"></script>
+<script>
+(function () {
+    const pedido = Number(new URLSearchParams(location.search).get('anio'));
+    const anios = Object.keys(FESTIVOS).map(Number).sort();
+    const anio = anios.includes(pedido) ? pedido : anios[anios.length - 1];
+    const datos = FESTIVOS[anio];
+    const porFecha = Object.fromEntries(datos.dias.map(d => [d.fecha, d]));
+
+    document.querySelectorAll('.anio').forEach(el => el.textContent = anio);
+    document.title = 'Calendario laboral ' + anio + ' · Sindicato Progresa';
+
+    let html = '';
+    for (let m = 0; m < 12; m++) {
+        const hueco = (new Date(anio, m, 1).getDay() + 6) % 7;
+        const diasMes = new Date(anio, m + 1, 0).getDate();
+        let c = ['L','M','X','J','V','S','D'].map(d => `<span class="wd">${d}</span>`).join('');
+        c += '<span></span>'.repeat(hueco);
+        for (let d = 1; d <= diasMes; d++) {
+            const clave = `${anio}-${String(m + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
+            const f = porFecha[clave];
+            const finde = [0, 6].includes(new Date(anio, m, d).getDay());
+            c += f ? `<span class="dd f f--${f.tipo}">${d}</span>`
+                   : `<span class="dd${finde ? ' we' : ''}">${d}</span>`;
+        }
+        html += `<div class="month"><h3>${MESES[m]}</h3><div class="mgrid">${c}</div></div>`;
+    }
+    document.getElementById('year').innerHTML = html;
+
+    document.getElementById('lista').innerHTML = datos.dias.map(d => {
+        const f = aFecha(d.fecha);
+        return `<div class="h"><div class="dt f--${d.tipo}"><b>${f.getDate()}</b><small>${MESES[f.getMonth()].slice(0, 3)}</small></div>
+                <div><b>${d.nombre}</b><span class="meta">${DIAS_SEMANA[f.getDay()]}</span></div></div>`;
+    }).join('');
+
+    if (datos.dias.length > 12) document.getElementById('lista').style.gridTemplateColumns = 'repeat(4, 1fr)';
+
+    document.getElementById('nota').textContent = datos.nota;
+
+    // Si el año no cabe entero (meses de 6 semanas, muchos festivos), quita las cajitas amarillas
+    const cuerpo = document.querySelector('.p-body');
+    if (cuerpo.scrollHeight > cuerpo.clientHeight + 1) document.querySelector('.p-body > .duo').remove();
+    document.getElementById('fuente').textContent = 'Fuente: ' + datos.fuente.texto;
+})();
+</script>
+</body>
+</html>

@@ -121,12 +121,24 @@ function pintarAnio(anio) {
         `Fuente oficial ${anio}: <a href="${datos.fuente.url}" target="_blank" rel="noopener">${datos.fuente.texto}</a>.
          Festivos locales de Madrid capital: Ayuntamiento de Madrid. Si trabajas en otro municipio, consulta sus dos festivos locales en el BOCM.`;
 
+    // Cartel para descargar del año elegido (docs/cartel-calendario-AAAA.pdf,
+    // se genera con carteles/generar.sh: añade ahí cada año nuevo)
+    const cartel = `cartel-calendario-${anio}`;
+    document.querySelectorAll('[data-cartel-ver]').forEach(a => a.href = `docs/${cartel}.pdf`);
+    document.querySelectorAll('[data-cartel-descargar]').forEach(a => {
+        a.href = `docs/${cartel}.pdf`;
+        a.download = `Calendario-laboral-${anio}-Sindicato-Progresa.pdf`;
+    });
+    document.querySelectorAll('[data-cartel-img]').forEach(img => img.src = `img/${cartel}.jpg`);
+
     // Botones del selector
     document.querySelectorAll('#selector-anio button').forEach(b =>
         b.classList.toggle('active', Number(b.dataset.anio) === anio));
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    // El cartel (carteles/cartel-calendario.html) solo usa los datos de FESTIVOS
+    if (!document.getElementById('selector-anio')) return;
     const anios = Object.keys(FESTIVOS).map(Number).sort();
     const actual = new Date().getFullYear();
     const inicial = anios.includes(actual) ? actual : anios[anios.length - 1];
