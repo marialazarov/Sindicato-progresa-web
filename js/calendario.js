@@ -28,7 +28,7 @@ const FESTIVOS = {
     },
     2027: {
         fuente: { texto: 'Comunidad de Madrid, calendario laboral 2027 (aprobado el 30/09/2026)', url: 'https://www.comunidad.madrid/noticias/2026/09/30/comunidad-madrid-aprueba-calendario-laboral-2027-12-festivos-dos-fijaran-ayuntamientos' },
-        nota: 'Los dos festivos locales de Madrid capital para 2027 están pendientes de publicación. El 2 de mayo (Fiesta de la Comunidad) cae en domingo y no aparece en el calendario laboral.',
+        nota: 'El 2 de mayo (Fiesta de la Comunidad) cae en domingo y no aparece en el calendario laboral. San Isidro (15 de mayo) cae en sábado.',
         dias: [
             { fecha: '2027-01-01', nombre: 'Año Nuevo',                                 tipo: 'nacional' },
             { fecha: '2027-01-06', nombre: 'Epifanía del Señor',                        tipo: 'nacional' },
@@ -36,9 +36,11 @@ const FESTIVOS = {
             { fecha: '2027-03-25', nombre: 'Jueves Santo',                              tipo: 'autonomico' },
             { fecha: '2027-03-26', nombre: 'Viernes Santo',                             tipo: 'nacional' },
             { fecha: '2027-05-01', nombre: 'Fiesta del Trabajo',                        tipo: 'nacional' },
+            { fecha: '2027-05-15', nombre: 'San Isidro Labrador',                       tipo: 'local' },
             { fecha: '2027-08-16', nombre: 'Traslado de la Asunción de la Virgen',      tipo: 'autonomico' },
             { fecha: '2027-10-12', nombre: 'Fiesta Nacional de España',                 tipo: 'nacional' },
             { fecha: '2027-11-01', nombre: 'Todos los Santos',                          tipo: 'nacional' },
+            { fecha: '2027-11-09', nombre: 'Nuestra Señora de la Almudena',             tipo: 'local' },
             { fecha: '2027-12-06', nombre: 'Día de la Constitución Española',           tipo: 'nacional' },
             { fecha: '2027-12-08', nombre: 'Inmaculada Concepción',                     tipo: 'nacional' },
             { fecha: '2027-12-25', nombre: 'Natividad del Señor',                       tipo: 'nacional' },
@@ -121,22 +123,48 @@ function pintarAnio(anio) {
         `Fuente oficial ${anio}: <a href="${datos.fuente.url}" target="_blank" rel="noopener">${datos.fuente.texto}</a>.
          Festivos locales de Madrid capital: Ayuntamiento de Madrid. Si trabajas en otro municipio, consulta sus dos festivos locales en el BOCM.`;
 
-    // Cartel para descargar del año elegido (docs/cartel-calendario-AAAA.pdf,
-    // se genera con carteles/generar.sh: añade ahí cada año nuevo)
-    const cartel = `cartel-calendario-${anio}`;
-    document.querySelectorAll('[data-cartel-ver]').forEach(a => a.href = `docs/${cartel}.pdf`);
-    document.querySelectorAll('[data-cartel-descargar]').forEach(a => {
-        a.href = `docs/${cartel}.pdf`;
-        a.download = `Calendario-laboral-${anio}-Sindicato-Progresa.pdf`;
-    });
-    document.querySelectorAll('[data-cartel-img]').forEach(img => img.src = `img/${cartel}.jpg`);
+    anioCartel = anio;
+    pintarCartelCalendario();
 
     // Botones del selector
     document.querySelectorAll('#selector-anio button').forEach(b =>
         b.classList.toggle('active', Number(b.dataset.anio) === anio));
 }
 
+// Cartel para descargar del año y la ciudad elegidos.
+// Madrid: docs/cartel-calendario-AAAA.pdf · otras ciudades (js/calendarios-ciudades.js): docs/cartel-calendario-AAAA-ciudad.pdf
+// Se generan con  sh carteles/generar.sh
+let anioCartel;
+function pintarCartelCalendario() {
+    const anio = anioCartel;
+    const caja = document.getElementById('cartel-ciudad-caja');
+    const sel = document.getElementById('cartel-ciudad');
+    const ciudades = typeof CIUDADES === 'undefined' ? {} : CIUDADES;
+    const conAnio = Object.keys(ciudades).filter(c => ciudades[c].festivos[anio]);
+    if (sel) {
+        const elegida = sel.value;
+        sel.innerHTML = ['<option value="madrid">Madrid</option>']
+            .concat(conAnio.map(c => `<option value="${c}">${ciudades[c].nombre}</option>`)).join('');
+        sel.value = conAnio.includes(elegida) ? elegida : 'madrid';
+        caja.hidden = !conAnio.length;
+    }
+    const ciudad = sel ? sel.value : 'madrid';
+    const nombre = ciudad === 'madrid' ? 'Madrid' : ciudades[ciudad].nombre;
+    const cartel = ciudad === 'madrid' ? `cartel-calendario-${anio}` : `cartel-calendario-${anio}-${ciudad}`;
+    const v = '?v=20261125';   // cámbialo al cambiar los carteles, para que nadie vea el antiguo guardado en su navegador
+    document.querySelectorAll('[data-cartel-ver]').forEach(a => a.href = `docs/${cartel}.pdf${v}`);
+    document.querySelectorAll('[data-cartel-descargar]').forEach(a => {
+        a.href = `docs/${cartel}.pdf${v}`;
+        a.download = `Calendario-laboral-${anio}-${nombre.normalize('NFD').replace(/[\u0300-\u036f]/g, '')}-Sindicato-Progresa.pdf`;
+    });
+    document.querySelectorAll('[data-cartel-img]').forEach(img => {
+        img.src = `img/${cartel}.jpg${v}`;
+        img.alt = `Vista previa del calendario laboral ${anio} de ${nombre}`;
+    });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('cartel-ciudad')?.addEventListener('change', pintarCartelCalendario);
     // El cartel (carteles/cartel-calendario.html) solo usa los datos de FESTIVOS
     if (!document.getElementById('selector-anio')) return;
     const anios = Object.keys(FESTIVOS).map(Number).sort();

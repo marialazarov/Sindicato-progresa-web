@@ -216,8 +216,8 @@ function pintarPaginaCarteles() {
     if (cal && typeof FESTIVOS !== 'undefined') {
         const anios = Object.keys(FESTIVOS).map(Number);
         const anio = anios.includes(h.getFullYear()) ? h.getFullYear() : Math.max(...anios);
-        cal.querySelectorAll('a').forEach(a => a.href = `docs/cartel-calendario-${anio}.pdf`);
-        cal.querySelector('img').src = `img/cartel-calendario-${anio}.jpg`;
+        cal.querySelectorAll('a').forEach(a => a.href = `docs/cartel-calendario-${anio}.pdf?v=20261125`);
+        cal.querySelector('img').src = `img/cartel-calendario-${anio}.jpg?v=20261125`;
         cal.querySelector('h3').textContent = `Calendario laboral ${anio}`;
     }
 }

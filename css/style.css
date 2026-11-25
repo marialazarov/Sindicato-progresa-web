@@ -936,3 +936,8 @@ section[id]   { scroll-margin-top: 90px; }
     .a-mano { padding: 1.5rem 1rem; }
     .a-mano-thumb { flex-basis: 90px; }
 }
+
+/* Elegir ciudad del calendario para descargar (calendario.html) */
+.poster-hero .cartel-ciudad { display: flex; align-items: center; gap: .6rem; margin: -.2rem 0 1rem; }
+.poster-hero .cartel-ciudad label { color: var(--amarillo); font-weight: 700; white-space: nowrap; }
+.poster-hero .cartel-ciudad .form-select { max-width: 200px; font-weight: 600; }

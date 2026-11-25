@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex">
+<title>Calendario laboral · Sindicato Progresa</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<!-- Calendario de una ciudad con el mismo diseño que el calendario oficial del sindicato
+     (carteles/oficiales/calendario-2027.jpg). La parte de arriba se recorta de esa imagen
+     y solo se cambia el nombre de la ciudad; los meses se dibujan aquí.
+       cartel-calendario-ciudad.html?ciudad=valencia&anio=2027
+     Los festivos de cada ciudad están en js/calendarios-ciudades.js -->
+<style>
+@page { size: 210mm 297mm; margin: 0; }
+* { box-sizing: border-box; }
+html, body { margin: 0; background: #fff; }
+/* La hoja se diseña a 1131 × 1600 px (el tamaño de la imagen oficial) y se encoge a A4 al imprimir */
+.hoja { position: relative; width: 1131px; height: 1600px; overflow: hidden; background: #fff; font-family: 'Poppins', sans-serif; }
+@media print { .hoja { zoom: 0.70175; } }
+
+.cabecera { position: absolute; left: 0; top: 0; width: 1131px; height: 775px;
+    background: url(oficiales/calendario-2027.jpg) 0 0 / 1131px 1600px no-repeat; }
+.ciudad { position: absolute; left: 92px; top: 586px; min-width: 200px; padding: 2px 8px; background: #fff;
+    font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 15.5px; letter-spacing: .02em; color: #111; text-transform: uppercase; }
+
+.meses { position: absolute; left: 52px; top: 788px; width: 1024px;
+    display: grid; grid-template-columns: repeat(4, 1fr); column-gap: 22px; row-gap: 22px; }
+.mes { height: 238px; }
+.mes-cab { display: flex; align-items: stretch; height: 47px; margin-bottom: 14px; }
+.mes-cab .num { flex: none; margin-right: 3px; line-height: 47px; height: 47px;
+    font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 58px; letter-spacing: -.05em; color: var(--num); }
+.mes-cab .barra { flex: 1; background: linear-gradient(90deg, var(--g1), var(--g2));
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 19px; letter-spacing: .16em; color: var(--txt, #fff); }
+.rejilla { display: grid; grid-template-columns: repeat(7, 1fr); row-gap: 3px; text-align: center; padding: 0 2px; }
+.rejilla span { height: 23px; line-height: 23px; font-size: 16px; font-weight: 300; color: #555; position: relative; }
+.rejilla .wd { font-weight: 600; color: #666; font-size: 15px; margin-bottom: 5px; }
+.rejilla .dom { color: #7B2D8E; font-weight: 600; }
+.rejilla .fest { color: var(--ftxt, #fff); font-weight: 600; z-index: 0; }
+.rejilla .fest::before { content: ""; position: absolute; left: 50%; top: 50%; width: 34px; height: 34px; margin: -17px 0 0 -17px;
+    border-radius: 50%; background: linear-gradient(135deg, var(--f1), var(--f2)); z-index: -1; }
+
+.web { position: absolute; right: 70px; bottom: 26px; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 29px; color: #111; }
+</style>
+</head>
+<body>
+<div class="hoja" id="hoja">
+    <div class="cabecera"><div class="ciudad" id="ciudad">CIUDAD DE MADRID</div></div>
+    <div class="meses" id="meses"></div>
+    <div class="web">www.sindicato-progresa.com</div>
+</div>
+
+<script src="../js/calendario.js"></script>
+<script src="../js/calendarios-ciudades.js"></script>
+<script>
+// Colores de cada mes, copiados del calendario oficial
+//            barra (de → a)          número     texto barra  círculo (de → a)        número del círculo
+const ESTILO_MES = [
+    ['#F2353A', '#FF8F4E', '#E8333A', '#fff', '#F2353A', '#FF8F4E', '#fff'],     // enero
+    ['#19B6D6', '#19B6D6', '#19B6D6', '#fff', '#19B6D6', '#19B6D6', '#fff'],     // febrero
+    ['#3E7B3B', '#3E7B3B', '#3E7B3B', '#fff', '#3E7B3B', '#3E7B3B', '#fff'],     // marzo
+    ['#9A58F2', '#F7905C', '#8E57EC', '#fff', '#9A58F2', '#F7905C', '#fff'],     // abril
+    ['#FFD43B', '#F7905C', '#111',    '#111', '#FFD43B', '#F7905C', '#E8333A'],  // mayo
+    ['#3A6EF2', '#3FA6F6', '#3A8DF4', '#fff', '#3A6EF2', '#3FA6F6', '#fff'],     // junio
+    ['#7B58F0', '#F7905C', '#111',    '#111', '#7B58F0', '#F7905C', '#fff'],     // julio
+    ['#8F46F2', '#C64FE2', '#111',    '#111', '#A54BF3', '#A54BF3', '#fff'],     // agosto
+    ['#1463C4', '#0E9ED9', '#111',    '#111', '#1463C4', '#0E9ED9', '#fff'],     // septiembre
+    ['#CDEFA0', '#F3F8A6', '#111',    '#111', '#CDEFA0', '#E9F7A0', '#E8333A'],  // octubre
+    ['#17A39B', '#F5DF5A', '#111',    '#111', '#17A39B', '#F5DF5A', '#111'],     // noviembre
+    ['#F2353A', '#F2353A', '#F2353A', '#fff', '#F2353A', '#F2353A', '#fff'],     // diciembre
+];
+const NOMBRES_MES = ['ENERO','FEBRERO','MARZO','ABRIL','MAYO','JUNIO','JULIO','AGOSTO','SEPTIEMBRE','OCTUBRE','NOVIEMBRE','DICIEMBRE'];
+
+const q = new URLSearchParams(location.search);
+const anio = Number(q.get('anio')) || 2027;
+const clave = q.get('ciudad') || 'madrid';
+let nombre, fechas;
+if (clave === 'madrid') {               // Madrid usa los festivos de la página Calendario
+    nombre = 'Madrid';
+    fechas = FESTIVOS[anio].dias.map(d => d.fecha);
+} else {
+    const c = CIUDADES[clave];
+    nombre = c.nombre;
+    fechas = c.festivos[anio].map(d => d.fecha);
+}
+document.title = `Calendario laboral ${anio} · ${nombre} · Sindicato Progresa`;
+document.getElementById('ciudad').textContent = `CIUDAD DE ${nombre.toUpperCase()}`;
+
+const festivos = new Set(fechas);
+let html = '';
+for (let m = 0; m < 12; m++) {
+    const [g1, g2, num, txt, f1, f2, ftxt] = ESTILO_MES[m];
+    const hueco = (new Date(anio, m, 1).getDay() + 6) % 7;
+    const dias = new Date(anio, m + 1, 0).getDate();
+    let celdas = 'LMMJVSD'.split('').map(l => `<span class="wd">${l}</span>`).join('') + '<span></span>'.repeat(hueco);
+    for (let d = 1; d <= dias; d++) {
+        const f = `${anio}-${String(m + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
+        const clase = festivos.has(f) ? 'fest' : (new Date(anio, m, d).getDay() === 0 ? 'dom' : '');
+        celdas += `<span class="${clase}">${d}</span>`;
+    }
+    html += `<div class="mes" style="--g1:${g1};--g2:${g2};--num:${num};--txt:${txt};--f1:${f1};--f2:${f2};--ftxt:${ftxt}">
+        <div class="mes-cab"><div class="num">${m + 1}</div><div class="barra">${NOMBRES_MES[m]}</div></div>
+        <div class="rejilla">${celdas}</div></div>`;
+}
+document.getElementById('meses').innerHTML = html;
+</script>
+</body>
+</html>
