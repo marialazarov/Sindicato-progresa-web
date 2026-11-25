@@ -95,11 +95,14 @@ const ICONOS_PUNTO = Object.keys(ICONOS_PUNTO_NOMBRES);
         $('editor').hidden = false;
         ajustarMarco();
     }
-    try { if (sessionStorage.getItem('admin-carteles') === CLAVE_HUELLA) abrirEditor(); } catch (e) {}
+    // La contraseña se pide SIEMPRE que se entra: no se recuerda en ningún sitio
+    try { sessionStorage.removeItem('admin-carteles'); } catch (e) {}
+    // Si vuelven con el botón "atrás", el navegador puede enseñar la página tal cual: se recarga para pedirla otra vez
+    window.addEventListener('pageshow', ev => { if (ev.persisted) location.reload(); });
     $('form-acceso').addEventListener('submit', async ev => {
         ev.preventDefault();
         if (await huella($('clave').value) === CLAVE_HUELLA) {
-            try { sessionStorage.setItem('admin-carteles', CLAVE_HUELLA); } catch (e) {}
+            $('clave').value = '';
             abrirEditor();
         } else {
             $('clave-error').hidden = false;
