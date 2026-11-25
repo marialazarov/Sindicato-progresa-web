@@ -111,7 +111,7 @@ const CHARLA = [
     }
 ];
 
-const NO_ENTIENDO = 'No tengo una respuesta preparada para eso. Prueba con otras palabras, elige una de las preguntas de abajo o <a href="index.html#contacto">escríbenos</a> y te responde una persona del sindicato.';
+const NO_ENTIENDO = 'Lo siento, no puedo responder a eso. 🙏 <strong>Recuerda que no soy una inteligencia artificial</strong>: soy un asistente automático y solo respondo a <strong>dudas generales</strong> sobre el sindicato y los derechos laborales (elige una de las preguntas de abajo).<br><br>Para tu caso concreto, <a href="https://wa.me/34685049357" target="_blank" rel="noopener">escríbenos por WhatsApp</a>, llama al <a href="tel:+34685049357">685 049 357</a> o manda un correo a <a href="mailto:s.gral@sindicato-progresa.com">s.gral@sindicato-progresa.com</a> y te responde una persona del sindicato.';
 
 // Quita acentos y mayúsculas para comparar ("Afiliación" = "afiliacion")
 function normalizar(texto) {
